@@ -1,0 +1,633 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Se",
+				"SeekerData"
+			],
+			[
+				"seeke",
+				"seeker_id"
+			],
+			[
+				"func",
+				"func_value"
+			],
+			[
+				"employe",
+				"employer_id"
+			],
+			[
+				"max",
+				"maxlength\tAttr"
+			],
+			[
+				"ca",
+				"category_ids"
+			],
+			[
+				"loca",
+				"location_id"
+			],
+			[
+				"job",
+				"jobs_data_map"
+			],
+			[
+				"acc",
+				"accept-charset\tAttr"
+			],
+			[
+				"esc",
+				"esc_html_score_messages"
+			],
+			[
+				"es",
+				"esc_html_score_messages"
+			],
+			[
+				"is_ex",
+				"is_exist_n_is_number"
+			],
+			[
+				"base",
+				"base64_decode"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"set",
+				"setTimeout\t( handler: any, timeout?: long, arguments_..: any ): long Window"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"box-s",
+				"box-shadow"
+			],
+			[
+				"pad",
+				"padding-top"
+			],
+			[
+				"off",
+				"offer_id"
+			],
+			[
+				"pay",
+				"paying_offer_row"
+			],
+			[
+				"user_d",
+				"user_id_or_email"
+			],
+			[
+				"user",
+				"user_email"
+			],
+			[
+				"head",
+				"header\t<header>"
+			],
+			[
+				"mysqli_fet",
+				"mysqli_fetch_assoc"
+			],
+			[
+				"_",
+				"_COOKIE"
+			],
+			[
+				"html",
+				"htmlspecialchars"
+			],
+			[
+				"ui",
+				"uri_data"
+			],
+			[
+				"ini",
+				"ini_set"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"__",
+				"_HR_"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"as",
+				"assoc_arr"
+			],
+			[
+				"erro",
+				"error_reporting"
+			],
+			[
+				"err",
+				"error_reporting"
+			],
+			[
+				"get_cur",
+				"get_current_user_id"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"w",
+				"width\tAttr"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"Success",
+				"_successClass"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"dis",
+				"display"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"bac",
+				"background-repeat"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"cus",
+				"customer_fullname"
+			],
+			[
+				"curr",
+				"currency"
+			],
+			[
+				"var",
+				"var_dump"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "syn html",
+		"selected_items":
+		[
+			[
+				"syn html",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn php",
+				"Set Syntax: PHP"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"sy",
+				"Set Syntax: PHP"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"syn json",
+				"Set Syntax: JSON"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 657.0
+	},
+	"console":
+	{
+		"height": 143.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/html/projects/theregistrtt_app"
+	],
+	"file_history":
+	[
+		"/var/www/html/theregistrytt/app/theregistrtt_app/README.md",
+		"/tmp/fz3temp-1/find-seekers.php",
+		"/tmp/fz3temp-1/browse-resume-map.php",
+		"/tmp/fz3temp-1/functions-simple.php",
+		"/tmp/fz3temp-1/single.php",
+		"/tmp/fz3temp-1/template-blog.php",
+		"/tmp/fz3temp-1/section-3.php",
+		"/tmp/fz3temp-1/questions.js",
+		"/tmp/fz3temp-1/style.css",
+		"/tmp/fz3temp-1/bootstrap.css",
+		"/tmp/fz3temp-1/mailchimp_widget.php",
+		"/tmp/fz3temp-1/style 2.css",
+		"/tmp/fz3temp-1/footer.php",
+		"/tmp/fz3temp-1/browse-jobs-map.php",
+		"/tmp/fz3temp-1/browse-jobs.php",
+		"/tmp/fz3temp-1/helper_class.php",
+		"/tmp/fz3temp-1/seeker_class.php",
+		"/tmp/fz3temp-1/header.php",
+		"/var/www/html/theregistrytt/error_log",
+		"/tmp/fz3temp-1/seeker-map.php",
+		"/tmp/fz3temp-1/section-2.php",
+		"/tmp/fz3temp-1/login.php",
+		"/tmp/fz3temp-1/section-1.php",
+		"/var/www/html/uac_system/test.php",
+		"/tmp/fz3temp-1/encode.min.js",
+		"/tmp/fz3temp-1/section-4.php",
+		"/tmp/fz3temp-1/page_header.php",
+		"/tmp/fz3temp-1/functions.php",
+		"/tmp/fz3temp-1/searchform.php",
+		"/tmp/fz3temp-1/sidebar.php",
+		"/tmp/fz3temp-1/search.php",
+		"/home/muhammad/Desktop/ring-2.svg",
+		"/tmp/fz3temp-1/mailchimp.php",
+		"/tmp/fz3temp-1/appointlet.php",
+		"/tmp/fz3temp-1/widget.php",
+		"/tmp/fz3temp-1/bootstrap.min.js",
+		"/var/www/html/web_affinityscore/VineUp homepage/Licensing/GPL.txt",
+		"/var/www/html/web_affinityscore/VineUp homepage/templatera.xml",
+		"/var/www/html/web_affinityscore/VineUp homepage/Licensing/README_License.txt",
+		"/tmp/fz3temp-1/ipn 2.php",
+		"/tmp/fz3temp-1/cancel-user-offer.php",
+		"/tmp/fz3temp-1/employer_class.php",
+		"/tmp/fz3temp-1/pricing.php",
+		"/tmp/fz3temp-1/create-job.php",
+		"/tmp/fz3temp-1/check-offer-paid.php",
+		"/tmp/fz3temp-1/update-user-offer.php",
+		"/tmp/fz3temp-1/test.php",
+		"/tmp/fz3temp-1/log_14.1.2018 2.txt",
+		"/tmp/fz3temp-1/ipn.php",
+		"/tmp/fz3temp-1/log_14.1.2018.txt",
+		"/tmp/fz3temp-1/cancel.php",
+		"/home/muhammad/Desktop/IPNSampleCode.php",
+		"/var/www/html/coinsoft/new/log_14.1.2018.txt",
+		"/var/www/html/coinsoft/employer/log_12.1.2018.txt",
+		"/var/www/html/error_log",
+		"/tmp/fz3temp-1/log_13.1.2018 2.txt",
+		"/home/muhammad/Desktop/Vine Up Backups/plugins backup/revslider.php",
+		"/tmp/fz3temp-1/revslider.php",
+		"/tmp/fz3temp-1/operations.class.php",
+		"/tmp/fz3temp-1/index.php",
+		"/tmp/fz3temp-1/sql.php",
+		"/var/www/html/coinsoft/test/index.php",
+		"/tmp/fz3temp-1/header 2.php",
+		"/tmp/fz3temp-1/login 2.php",
+		"/tmp/fz3temp-1/db_config.php",
+		"/tmp/fz3temp-1/sliders_output.php",
+		"/var/www/html/uac_system/.config/functions.inc.php",
+		"/var/www/html/uac_system/templates/content.php",
+		"/var/www/html/uac_system/templates/home.php",
+		"/var/www/html/uac_system/.config/databaseconnect.inc.php",
+		"/var/www/html/uac_system/app/routes.php",
+		"/var/www/html/uac_system/index.php",
+		"/var/www/html/coinsoft/browse-jobs.php",
+		"/var/www/html/uac_system/templates/contact_us.php",
+		"/var/www/html/uac_system/templates/about_us.php",
+		"/var/www/html/uac_system/.config/init.inc.php",
+		"/var/www/html/uac_system/partials/header.php",
+		"/var/www/html/uac_system/.htaccess",
+		"/var/www/html/theregistrytt/Study Material:",
+		"/var/www/html/uac_system/404.php",
+		"/var/www/html/prestastore/.htaccess",
+		"/var/www/html/uac_system/partials/footer.php",
+		"/var/www/html/uac_system/templates/layout.php",
+		"/var/www/html/uac_system/partials/breadcrumbs.php",
+		"/var/www/html/uac_system/500.php",
+		"/home/muhammad/Downloads/Admin Lte Theme/404.php",
+		"/var/www/html/uac_system/partials/side_settings.php",
+		"/var/www/html/uac_system/partials/sidebar.php",
+		"/home/muhammad/Downloads/Admin Lte Theme/AdminLTE-2.4.2/README.md",
+		"/var/www/html/theregistrytt/test.php",
+		"/var/www/html/theregistrytt/assets/css/style3.css",
+		"/var/www/html/theregistrytt/assets/css/style.css",
+		"/var/www/html/theregistrytt/index.php",
+		"/var/www/html/theregistrytt/products.php",
+		"/var/www/html/theregistrytt/project-faqs/Freelancer.com",
+		"/var/www/html/theregistrytt/project-faqs/questions.txt",
+		"/var/www/html/github_projects/README.md",
+		"/var/www/html/github_projects/modern.txt",
+		"/var/www/html/github_projects/test.txt",
+		"/var/www/html/theregistrytt/assets/css/style2.css",
+		"/home/muhammad/Downloads/programs/httrack-3.49.2/install-sh",
+		"/var/www/html/programming_practise/index.html",
+		"/var/www/html/portfolio/private/config.inc.php",
+		"/var/www/html/portfolio/index.php",
+		"/var/www/html/3d/demo/demo.html",
+		"/tmp/fz3temp-1/config.inc.php",
+		"/tmp/fz3temp-1/main.js",
+		"/tmp/fz3temp-1/main.css",
+		"/tmp/fz3temp-1/theme.css",
+		"/tmp/fz3temp-1/footer.inc.php",
+		"/home/muhammad/my backup/My Projects Backups Schedule/AngularApp_Old/assets/js/angular.min.js",
+		"/tmp/fz3temp-1/template-expert-tips-users.php",
+		"/tmp/fz3temp-1/template-user-info.php",
+		"/home/muhammad/my backup/My Projects Backups Schedule/AngularApp_Old/index.html",
+		"/tmp/fz3temp-1/custom 2.css",
+		"/tmp/fz3temp-1/scripts.js",
+		"/tmp/fz3temp-1/custom.css",
+		"/var/www/html/4dhype/breadnbutter/my-listing/sections/listing-feed.php",
+		"/tmp/fz3temp-1/listing-preview.php",
+		"/var/www/html/4dhype/breadnbutter/my-listing/partials/listing-preview.php",
+		"/var/www/html/4dhype/breadnbutter/my-listing/sections/add-listing.php",
+		"/var/www/html/4dhype/breadnbutter/my-listing/includes/integrations/wp-job-manager-wc-paid-listings/wp-job-manager-wc-paid-listings.php",
+		"/tmp/fz3temp-1/content-single.php",
+		"/var/www/html/portfolio/error_log",
+		"/var/www/html/portfolio/sendemail.php",
+		"/tmp/fz3temp-1/header.inc.php",
+		"/home/muhammad/Desktop/email-template-forgot-password.html",
+		"/var/www/html/web4-tatbib/production/ar_providers.html"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 132.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 66.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "theregistrtt-app.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main.min.js",
+				"production/assets/js/main.min.js"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"main.m",
+				"production/assets/css/main.min.css"
+			],
+			[
+				"vendor/wizard_form/css/wizard.css",
+				"vendor/wizard_form/css/wizard.css"
+			],
+			[
+				"vendor/rs-plugin/css/navigation.css",
+				"vendor/rs-plugin/css/navigation.css"
+			],
+			[
+				"vendor/rs-plugin/css/layers.css",
+				"vendor/rs-plugin/css/layers.css"
+			],
+			[
+				"vendor/rs-plugin/css/settings.css",
+				"vendor/rs-plugin/css/settings.css"
+			],
+			[
+				"demo",
+				"css/demos/demo-app-landing.css"
+			],
+			[
+				"custom.js",
+				"js/custom.js"
+			],
+			[
+				"theme-el",
+				"css/theme-elements.css"
+			],
+			[
+				"wiz",
+				"vendor/wizard_form/css/wizard.css"
+			],
+			[
+				"navs.less",
+				"vendor/font-awesome/less/variables.less"
+			],
+			[
+				"th",
+				"css/theme.css"
+			],
+			[
+				"main.",
+				"assets/css/main.css"
+			],
+			[
+				"custom",
+				"classes/Customer.php"
+			],
+			[
+				"address",
+				"classes/Address.php"
+			],
+			[
+				"customer",
+				"controllers/admin/AdminCustomersController.php"
+			],
+			[
+				"admin/order",
+				"admin/AdminOrdersController.php"
+			],
+			[
+				"order",
+				"front/OrderController.php"
+			],
+			[
+				"app/code/core/mage/install/etc/config.xml",
+				"app/app/code/core/Mage/Install/etc/config.xml"
+			],
+			[
+				"function",
+				"Fancy_Product_Designer_v3.4.3/inc/fpd-functions.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 267.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
