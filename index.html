@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="./vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 	<!-- Daterange picker -->
 	<link rel="stylesheet" href="./vendors/bootstrap-daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 	<!-- Main Theme Css -->
 	<link rel="stylesheet" href="./assets/css/main.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -57,11 +58,20 @@
 	        <!--/.nav-collapse -->
 	    </div>
 	</nav>
-	<div class="banner-main">
-		<div class="col-md-6 pull-right container-site-info text-center">
-			<h3 class="text-light">THE #1 UNIVERSAL</h3>
-			<h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
-            <a href="#" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+	<div class="slider">
+		<div class="banner-main">
+			<div class="col-md-6 pull-right container-site-info text-center">
+				<h3 class="text-light">THE #1 UNIVERSAL</h3>
+				<h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
+	            <a href="#" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+			</div>
+		</div>
+		<div class="banner-main" style="background-image:url(./assets/img/slide2.jpg)">
+			<div class="col-md-6 pull-right container-site-info text-center">
+				<h3 class="text-light">THE #1 UNIVERSAL</h3>
+				<h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
+	            <a href="#" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+			</div>
 		</div>
 	</div>
 	<div class="ticker-main text-center">
@@ -195,6 +205,23 @@
 	<script src="./vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 	<!-- datepicker -->
 	<script src="./vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+	<script>
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+      	responsive: true,
+      	mode: 'fade',
+      	auto: true,
+  speed: 1500,
+  hideControlOnEnd: true,
+  controls: false,
+  pager: false
+      });
+    });
+  </script>
+
 
 </body>
 </html>
