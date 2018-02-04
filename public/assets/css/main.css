@@ -15,6 +15,10 @@ body {
 a {
 	color: #e5c100;
 }
+a:hover{
+	color: #e5c100 ;
+	text-decoration: none;
+}
 a.navbar-brand{
 	color: #e5c100 !important;
 	font-size: 28px;
@@ -179,7 +183,8 @@ footer p{
 	padding: 30px 0;
 }
 .gradient-ticker{
-	background: -webkit-linear-gradient(left, #e5c100 , #ffeb7f); 
+	background: -webkit-linear-gradient(left, #e5c100 , #ffeb7f);
+	padding: 45px;
 }
 .gradient-ticker i.fa{
 	color: #e5c100;
@@ -244,4 +249,33 @@ section.contact-us h1{
 }
 .text-theme{
 	color: #e5c100 !important;
+}
+.contact-frm-group .input-group-addon{
+	background: #e5c100;
+    border: 1px solid #e5c100;
+    border-radius: 0;
+}
+.contact-frm-group .form-control{
+	border: 0;
+	color: #3e4348;
+}
+.contact-frm-group textarea{
+	height: 100px;
+}
+.modal-login .form-control{
+	border: transparent;
+}
+.loadersmall {
+    border: 5px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

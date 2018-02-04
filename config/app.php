@@ -26,7 +26,8 @@ return [
     |
     */
 
-    'url' => 'http://localhost/projects/myproject/',
+    'url' => 'http://localhost/projects/theregistrtt_app/public/',
+    //'url' => 'http://theregistrytt.optimalsolutionsonline.com/',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +96,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'errorlog'),
 
     /*
     |--------------------------------------------------------------------------

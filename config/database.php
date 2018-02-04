@@ -51,18 +51,30 @@ return [
             'database' => database_path('database.sqlite'),
             'prefix'   => '',
         ],
-
+        //local
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'forge'),
-            'username'  => env('DB_USERNAME', 'forge'),
-            'password'  => env('DB_PASSWORD', ''),
+            'database'  => env('DB_DATABASE', 'tregtt_db_v1'),
+            'username'  => env('DB_USERNAME', 'root'),
+            'password'  => env('DB_PASSWORD', 'qasim123'),
             'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => '',
+            'collation' => 'utf8_general_ci',
+            'prefix'    => 'trtt_',
             'strict'    => false,
         ],
+        //live
+        // 'mysql' => [
+        //     'driver'    => 'mysql',
+        //     'host'      => env('DB_HOST', 'localhost'),
+        //     'database'  => env('DB_DATABASE', 'oso_qasim1'),
+        //     'username'  => env('DB_USERNAME', 'tregtt_user_01'),
+        //     'password'  => env('DB_PASSWORD', 'qMsu337#'),
+        //     'charset'   => 'utf8',
+        //     'collation' => 'utf8_general_ci',
+        //     'prefix'    => 'trtt_',
+        //     'strict'    => false,
+        // ],
 
         'pgsql' => [
             'driver'   => 'pgsql',
