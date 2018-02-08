@@ -1,0 +1,23 @@
+@media (min-width: 768px){
+	.navbar-nav>li>a {
+	    padding-top: 25px;
+		padding-bottom: 25px;
+	}
+	.anchor-form{
+		padding-top: 25px;
+		padding-bottom: 15px;
+	}
+	.navbar-center{
+		margin: 0 auto;
+		float: none;
+		display: inline-block;
+		position: absolute;
+		left: 50%;
+		/* transform: translateX(-50%); */
+		transform: translateX(-15%);
+		width: 100%;
+	}
+	.modal-login {
+	    width: 485px !important;
+	}
+}

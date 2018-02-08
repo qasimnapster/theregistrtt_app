@@ -1,6 +1,5 @@
 <?php
 
-use Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +13,20 @@ use Request;
 */
 
 Route::get('/', function () {
-	// try {
-	//     DB::connection()->getPdo();
-	// } catch (\Exception $e) {
-	//     die("Could not connect to the database.  Please check your configuration.");
-	// }
-	// exit;
+	if (Auth::check()) {
+		// The user is logged in...
+		// var_dump( Auth::user()->first_name . ' ' . Auth::user()->last_name );
+		// exit;
+	}
 	$reg_types = DB::table('registry_types')->select()->get();
-    return view('home', [ 'reg_types' => $reg_types]);
+    return view('home', [ 'reg_types' => $reg_types ]);
+});
+
+Route::get('/logout', function () {
+	if (Auth::check())
+		Auth::logout();
+
+	return Redirect::to('/');
 });
 
 Route::post('/signup', function () {
@@ -57,4 +62,7 @@ Route::post('/signup', function () {
 	}
 
 });
+
+Route::post('/login', array('uses' => 'LoginController@doLogin'));
+
 //

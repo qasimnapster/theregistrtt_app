@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Home Page</title>
+    <title>Wedding Registry, Baby Registry &amp; Gift Registry | TheRegistryTT.com</title>
+    <meta name='description' content="The #1 Universal Wedding Registry, Baby Registry and Gift Registry for all occasions! Create a wedding wish list! Add gifts from any store to this online multistore bridal registry."/>
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="./vendors/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -16,11 +17,13 @@
     <link rel="stylesheet" href="./vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="./vendors/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="./vendors/bxslider/css/jquery.bxslider.css">
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="./plugins/iCheck/all.css">
     <!-- Main Theme Css -->
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="./assets/css/anim.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,8 +56,23 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" data-toggle="modal" data-target=".bs-login-modal-lg"><i class="fa fa-user-o" aria-hidden="true"></i> LOGIN</a></li>
-                    <li><a href="#" data-toggle="modal" data-target=".bs-signup-modal-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> SIGN UP</a></li>
+                    @if (Auth::id())
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"> <i class="fa fa-gear"></i> Profile Setting</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#"> <i class="fa fa-edit"></i> Change Password</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="./logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
+                                <!-- <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Nav header</li> -->
+                            </ul>
+                        </li>
+                    @else
+                        <li><a href="#" data-toggle="modal" data-target=".bs-login-modal-lg"><i class="fa fa-user-o" aria-hidden="true"></i> LOGIN</a></li>
+                        <li><a href="#" data-toggle="modal" data-target=".bs-signup-modal-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> SIGN UP</a></li>
+                    @endif
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -118,8 +136,8 @@
         <div class="container">
             <div class="col-sm-6">
                 <div style="position: relative;">
-                    <img class="hp_w100" src="http://preview.oklerthemes.com/porto/5.7.2/img/demos/app-landing/product/how-works-product-image-1.png" alt="Add gifts on-the-go from your smartphone">
-                    <img class="hp_w100" src="http://preview.oklerthemes.com/porto/5.7.2/img/demos/app-landing/product/how-works-product-image-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: -0999;">
+                    <img class="hp_w100" src="./assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone">
+                    <img class="hp_w100" src="./assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: -0999;">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -138,7 +156,7 @@
     </section>
     <a href="./about-us">
         <div class="ticker-main gradient-ticker text-center">
-            <span style="color:#fff; font-weight: 300;font-size: 24px;padding: 30px; color: #fff;">More information About Us!</span>
+            <span style="color:#fff; font-weight: 300;font-size: 24px;padding: 30px; color: #fff;">Want to know more about us!</span>
             <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="What is a Bridal Registry?"><i class="fa fa-gift" aria-hidden="true"></i> W </span>
             <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="Why Use a Registry?"><i class="fa fa-gift" aria-hidden="true"></i> BW </span>
             <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff;" data-toggle="tooltip" data-placement="left" title="Why select your Registry with Us?"><i class="fa fa-gift" aria-hidden="true"></i> WL</span>
@@ -152,19 +170,19 @@
                     <div class="title-sample">
                         <a href="#">Sample Wishlist 1</a>
                     </div>
-                    <img src="https://www.hopsej.com/resize/e/300/300/files/produkty/zima/sled-dogs/sled-dogs-sjezd-300.jpg" alt="" class="sample-imgs">
+                    <img src="./assets/img/skate.jpg" alt="" class="sample-imgs">
                 </div>
                 <div class="col-sm-4 text-center">
                     <div class="title-sample">
                         <a href="#">Sample Wishlist 2</a>
                     </div>
-                    <img src="https://www.hopsej.com/resize/e/300/300/files/produkty/zima/sled-dogs/sled-dogs-sjezd-300.jpg" alt="" class="sample-imgs">
+                    <img src="./assets/img/skate.jpg" alt="" class="sample-imgs">
                 </div>
                 <div class="col-sm-4 text-center">
                     <div class="title-sample">
                         <a href="#">Sample Wishlist 3</a>
                     </div>
-                    <img src="https://www.hopsej.com/resize/e/300/300/files/produkty/zima/sled-dogs/sled-dogs-sjezd-300.jpg" alt="" class="sample-imgs">
+                    <img src="./assets/img/skate.jpg" alt="" class="sample-imgs">
                 </div>
             </div>
         </div>
@@ -178,26 +196,6 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias minima unde minus esse est voluptate! Quis dicta quisquam, sint sunt sit, deserunt, est magni in aperiam illum repudiandae minima rem!
                 </p>
                 <div class="block-contact">
-                    <div class="col-sm-6 row">
-                        <form>
-                            <div class="form-group input-group contact-frm-group">
-                                <span class="input-group-addon" id="basic-addon1">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                </span>
-                                <input type="text" class="form-control" placeholder="Enter your Name">
-                            </div>
-                            <div class="form-group input-group contact-frm-group">
-                                <span class="input-group-addon" id="basic-addon1">
-                                    <span class="glyphicon glyphicon-envelope"></span>
-                                </span>
-                                <input type="email" class="form-control" placeholder="Enter your Email">
-                            </div>
-                            <div class="form-group contact-frm-group">
-                                <textarea class="form-control" placeholder="Enter your message"></textarea>
-                            </div>
-                            <button type="button" class="btn btn-primary pull-right"> <span class="glyphicon glyphicon-send" style="padding-right: 10px;"></span> SEND</button>
-                        </form>
-                    </div>
                     <div class="col-sm-6 row">
                         <div class="clearfix">
                             <div class="col-sm-5 col-xs-5 text-right">
@@ -220,6 +218,32 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-6 row">
+                        <form>
+                            <div class="form-group input-group contact-frm-group">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Enter your Name">
+                            </div>
+                            <div class="form-group input-group contact-frm-group">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    <span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" class="form-control" placeholder="Enter your Email">
+                            </div>
+                            <div class="form-group input-group contact-frm-group">
+                                <span class="input-group-addon" id="basic-addon1">
+                                    <span class="glyphicon glyphicon-earphone"></span>
+                                </span>
+                                <input type="number" class="form-control" placeholder="Enter your Phone number">
+                            </div>
+                            <div class="form-group contact-frm-group">
+                                <textarea class="form-control" placeholder="Enter your message"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary pull-right"> <span class="glyphicon glyphicon-send" style="padding-right: 10px;"></span> SEND</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -232,15 +256,16 @@
         <div class="modal-dialog modal-login" role="document">
             <div class="modal-content" style="padding: 30px; background: #f8f9f9d1;">
                 <button type="button"  class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 26px;">&times;</span></button>
-               <form>
+            <form method="POST" action="./login">
+                {{ csrf_field() }}
                 <h1 class="text-light text-center">Login To ttRegistry</h1>
               <div class="form-group" style="margin-top: 20px">
                 <label class="label-lighter" for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="Email">
               </div>
               <div class="form-group">
                 <label class="label-lighter" for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
               </div>
               <div class="checkbox">
                 <label class="label-lighter">
@@ -317,7 +342,7 @@
     <script src="./vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- datepicker -->
     <script src="./vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="./vendors/bxslider/js/jquery.bxslider.min.js"></script>
     <script src="./plugins/iCheck/icheck.min.js"></script>
 
     <script>

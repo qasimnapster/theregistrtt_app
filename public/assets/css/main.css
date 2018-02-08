@@ -104,7 +104,7 @@ a.navbar-brand{
 	transform: translateY(-25%);
 }
 .banner-ads{
-	background-image: url('https://www.rockmywedding.co.uk/wp-content/uploads/2016/05/reception.jpg');
+	background-image: url('../img/reception.jpg');
 	background-position: center;
 	background-size: cover;
 	width: 100%;
@@ -224,29 +224,6 @@ section.contact-us h1{
 .col-contact-us h3{
 	font-size: 18px;
 }
-@media (min-width: 768px){
-	.navbar-nav>li>a {
-	    padding-top: 25px;
-		padding-bottom: 25px;
-	}
-	.anchor-form{
-		padding-top: 25px;
-		padding-bottom: 15px;
-	}
-	.navbar-center{
-		margin: 0 auto;
-		float: none;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		/* transform: translateX(-50%); */
-		transform: translateX(-15%);
-		width: 100%;
-	}
-	.modal-login {
-	    width: 485px !important;
-	}
-}
 .text-theme{
 	color: #e5c100 !important;
 }
@@ -275,7 +252,21 @@ section.contact-us h1{
     height: 50px;
     margin: 0 auto;
 }
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.navbar-fixed-top .caret{
+	color: #e5c100;
+}
+.navbar-fixed-top ul.dropdown-menu{
+	border: 0;
+	border-radius: 0;
+	background: #fafbf6e3;
+}
+.navbar-fixed-top .dropdown-menu>li>a:focus, .navbar-fixed-top .dropdown-menu>li>a:hover, .navbar-fixed-top .dropdown-menu>li>a:focus i.fa, .navbar-fixed-top .dropdown-menu>li>a:hover i.fa{
+	background: #e5c100;
+	color: #fff; 
+}
+.navbar-fixed-top .dropdown-menu>li>a i.fa{
+	padding-right: 5px;
+}
+.navbar-fixed-top .navbar-nav>.open>a, .navbar-fixed-top .navbar-nav>.open>a:focus, .navbar-fixed-top .navbar-nav>.open>a:hover {
+    background-color: #fff;
 }
