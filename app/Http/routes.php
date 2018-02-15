@@ -29,6 +29,11 @@ Route::get('/logout', function () {
 	return Redirect::to('/');
 });
 
+Route::get('/about-us', function () {
+	$reg_types = DB::table('registry_types')->select()->get();
+    return view('about-us', [ 'reg_types' => $reg_types ]);
+});
+
 Route::post('/signup', function () {
 	
 	$reg_type   = strlen( Input::get('xslcRegType') ) > 0 ? Input::get('xslcRegType') : 'N/A';

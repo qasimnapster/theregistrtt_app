@@ -175,6 +175,11 @@ footer{
 	text-align: center;
 	padding: 30px;
 }
+/* footer.sticky{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+} */
 footer p{
 	margin-bottom: 0;
 	color: #fff;
@@ -269,4 +274,28 @@ section.contact-us h1{
 }
 .navbar-fixed-top .navbar-nav>.open>a, .navbar-fixed-top .navbar-nav>.open>a:focus, .navbar-fixed-top .navbar-nav>.open>a:hover {
     background-color: #fff;
+}
+.bridal-info-container{
+	background: #eeeeee87;
+	min-height: 85vh;
+}
+.bridal-info-container .container{
+	height: 85vh;
+	padding: 30px 0;
+}
+.bi-detail p{
+    font-size: 16px;
+    letter-spacing: .8px;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    line-height: 30px;
+    padding-left: 25px;
+    text-align: justify;
+}
+.img-cats {
+	height: 100px
+}
+.img-cats .img-responsive{
+	margin: 0 auto;
+	opacity: .7;
 }
