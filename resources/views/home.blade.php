@@ -1,4 +1,13 @@
 @extends('master')
+@section('stylesheets')
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="./vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="./vendors/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="./vendors/bxslider/css/jquery.bxslider.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="./plugins/iCheck/all.css">
+@endsection
 @section('content')
     <div class="slider">
         <div class="banner-main">
@@ -27,37 +36,37 @@
                     <div class="img-cats">
                         <img src="./assets/img/icons/glassware.png" alt="" class="img-responsive">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">glassware</a>
+                    <a href="./products" class="h4 text-center text-capitalize">glassware</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/crockery.png" alt="" class="img-responsive">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">crockery</a>
+                    <a href="./products" class="h4 text-center text-capitalize">crockery</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/kitchen_utensils.png" alt="" class="img-responsive">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">kitchen utensils</a>
+                    <a href="./products" class="h4 text-center text-capitalize">kitchen utensils</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/linens.png" alt="" class="img-responsive" style="    height: 100px;">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">linens</a>
+                    <a href="./products" class="h4 text-center text-capitalize">linens</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/bathroom_accessories.png" alt="" class="img-responsive">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">bathroom accessories</a>
+                    <a href="./products" class="h4 text-center text-capitalize">bathroom accessories</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/mini_appliances.png" alt="" class="img-responsive">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">mini appliances</a>
+                    <a href="./products" class="h4 text-center text-capitalize">mini appliances</a>
                 </div>
             </div>
             <div class="row">
@@ -65,7 +74,7 @@
                     <div class="img-cats">
                         <img src="./assets/img/icons/home_accents.png" alt="" class="img-responsive">
                     </div>
-                    <a href="#" class="h4 text-center text-capitalize">home accents</a>
+                    <a href="./products" class="h4 text-center text-capitalize">home accents</a>
                 </div>
             </div>
             <!-- <img src="https://images-platform.99static.com/JsmXH_1twMGCO3EedzmGJhdKyss=/fit-in/900x675/99designs-contests-attachments/4/4843/attachment_4843165" style="opacity: .6;"> -->
@@ -114,14 +123,13 @@
             </div>
         </div>
     </section>
-    <a href="./about-us">
-        <div class="ticker-main gradient-ticker text-center">
-            <span style="color:#fff; font-weight: 300;font-size: 24px;padding: 30px; color: #fff;">Want to know more about us!</span>
-            <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="What is a Bridal Registry?"><i class="fa fa-gift" aria-hidden="true"></i> W </span>
-            <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="Why Use a Registry?"><i class="fa fa-gift" aria-hidden="true"></i> BW </span>
-            <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff;" data-toggle="tooltip" data-placement="left" title="Why select your Registry with Us?"><i class="fa fa-gift" aria-hidden="true"></i> WL</span>
-        </div>
-    </a>
+    <div class="ticker-main gradient-ticker text-center">
+        <span style="color:#fff; font-weight: 300;font-size: 24px;padding: 30px; color: #fff;">Want to know more about us!</span>
+        <a href="./about-us" class="btn btn-default btn-lg">Click Here</a>
+        <!-- <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="What is a Bridal Registry?"><i class="fa fa-gift" aria-hidden="true"></i> W </span>
+        <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="Why Use a Registry?"><i class="fa fa-gift" aria-hidden="true"></i> BW </span>
+        <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff;" data-toggle="tooltip" data-placement="left" title="Why select your Registry with Us?"><i class="fa fa-gift" aria-hidden="true"></i> WL</span> -->
+    </div>
     <section class="sample-wishlist">
         <h1 class="text-light text-center">View a sample Wishlist</h1>
         <div class="samples-container container">

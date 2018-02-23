@@ -34,6 +34,11 @@ Route::get('/about-us', function () {
     return view('about-us', [ 'reg_types' => $reg_types ]);
 });
 
+Route::get('/products', function () {
+	$reg_types = DB::table('registry_types')->select()->get();
+    return view('products', [ 'reg_types' => $reg_types ]);
+});
+
 Route::post('/signup', function () {
 	
 	$reg_type   = strlen( Input::get('xslcRegType') ) > 0 ? Input::get('xslcRegType') : 'N/A';

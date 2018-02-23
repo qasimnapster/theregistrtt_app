@@ -13,13 +13,9 @@
     <link rel="stylesheet" href="./vendors/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="./vendors/Ionicons/css/ionicons.min.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="./vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="./vendors/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="./vendors/bxslider/css/jquery.bxslider.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="./plugins/iCheck/all.css">
+
+    @yield('stylesheets')
+    
     <!-- Main Theme Css -->
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">

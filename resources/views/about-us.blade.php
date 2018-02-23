@@ -1,8 +1,13 @@
 @extends('master')
+
+@section('stylesheets')
+
+@endsection
+
 @section('content')
 	
 
-	<section class="bridal-info-container">
+	<section class="bridal-info-container clearfix">
 		<div class="block-container container">
 			<div class="block-info row clearfix">
 				<div class="col-xs-12">
@@ -48,6 +53,6 @@
 	</section> 
 
 	@section('scripts')
-	<p></p>
+	<!-- <p></p> -->
 	@endsection
 @endsection
