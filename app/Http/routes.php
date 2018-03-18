@@ -75,4 +75,42 @@ Route::post('/signup', function () {
 
 Route::post('/login', array('uses' => 'LoginController@doLogin'));
 
+Route::any('/profile', function () {
+	
+	$reg_types = DB::table('registry_types')->select()->get();
+
+	$updation = 0;
+
+	if( count( Input::all() ) > 0 )
+	{
+		$first_name  = Input::get('xtxtCustFirstName');
+		$last_name   = Input::get('xtxtCustLastName');
+		$address_1   = Input::get('xtxtAddress1');
+		$address_2   = Input::get('xtxtAddress2');
+		$postal_code = Input::get('xtxtPostalcode');
+		$state       = Input::get('xtxtState');
+		$city        = Input::get('xtxtCity');
+		$country     = Input::get('xtxtCountry');
+
+		$updation = DB::table('customers')
+            ->where('id', Auth::user()->id)
+            ->update([
+				'first_name'  => $first_name,
+				'last_name'   => $last_name,
+				'address_1'   => $address_1,
+				'address_2'   => $address_2,
+				'postal_code' => $postal_code,
+				'state'       => $state,
+				'city'        => $city,
+				'country'     => $country
+            ]);
+	}
+
+    return view('profile-setting', [
+    	'reg_types' => $reg_types,
+    	'customer'  => Auth::user(),
+    	'updation'  => $updation
+    ]);
+});
+
 //

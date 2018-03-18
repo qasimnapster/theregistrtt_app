@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"file",
+				"filename"
+			],
+			[
+				"num",
+				"number_format"
+			],
+			[
+				"prevent",
+				"preventDefault\t(): void Event"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"tran",
+				"transparent"
+			],
+			[
+				"roun",
+				"roundFig"
+			],
+			[
 				"em",
 				"email_addr"
 			],
@@ -24,16 +60,8 @@
 				"text-decoration"
 			],
 			[
-				"mar",
-				"margin-bottom"
-			],
-			[
 				"city",
 				"city_ids"
-			],
-			[
-				"padd",
-				"padding-right"
 			],
 			[
 				"Se",
@@ -200,10 +228,6 @@
 				"_successClass"
 			],
 			[
-				"pa",
-				"padding-left"
-			],
-			[
 				"padding",
 				"padding-right"
 			],
@@ -243,67 +267,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "\n\n\nGlassware - DONE\n\nCrockery - DONE\n\nKitchen Utensils - DONE\n\nLinens  - DONE\n\nBathroom Accessories - DONE\n\nMini Appliances\n\nHome Accents  \n\nmilk: 10g\nnuts: 20g\neggs: 18g\ndesi chicken: 54g\nyogurt: 15g\nbeans: 20g\noats: 17g\n\nform with contact us\n",
-			"settings":
-			{
-				"buffer_size": 244,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/app.php",
-			"settings":
-			{
-				"buffer_size": 8257,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/database.php",
-			"settings":
-			{
-				"buffer_size": 4726,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": ".env",
-			"settings":
-			{
-				"buffer_size": 409,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "sql/main.sql",
-			"settings":
-			{
-				"buffer_size": 2230,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/tmp/fz3temp-1/routes.php",
-			"settings":
-			{
-				"buffer_size": 1935,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "tregtt_user_01\nqMsu337#\noso_qasim1",
-			"settings":
-			{
-				"buffer_size": 34,
-				"line_ending": "Unix",
-				"name": "tregtt_user_01"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -312,25 +275,33 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 217.0,
-		"last_filter": "instal",
+		"height": 174.0,
+		"last_filter": "syn sql",
 		"selected_items":
 		[
-			[
-				"instal",
-				"Package Control: Install Package"
-			],
 			[
 				"syn sql",
 				"Set Syntax: SQL"
 			],
 			[
-				"syn html",
+				"syn htlm",
 				"Set Syntax: HTML"
 			],
 			[
 				"syn php",
 				"Set Syntax: PHP"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"syn html",
+				"Set Syntax: HTML"
 			],
 			[
 				"syn ",
@@ -391,48 +362,91 @@
 	"expanded_folders":
 	[
 		"/var/www/html/projects/theregistrtt_app",
-		"/var/www/html/projects/theregistrtt_app/config",
-		"/var/www/html/projects/theregistrtt_app/database",
-		"/var/www/html/projects/theregistrtt_app/sql"
+		"/var/www/html/projects/theregistrtt_app/app",
+		"/var/www/html/projects/theregistrtt_app/public",
+		"/var/www/html/projects/theregistrtt_app/public/vendors",
+		"/var/www/html/projects/theregistrtt_app/public/vendors/bootstrap-slider",
+		"/var/www/html/projects/theregistrtt_app/resources",
+		"/var/www/html/projects/theregistrtt_app/resources/views",
+		"/var/www/html/projects/theregistrtt_app/resources/views/partials"
 	],
 	"file_history":
 	[
-		"/tmp/fz3temp-1/app.php",
-		"/tmp/fz3temp-1/database.php",
-		"/var/www/html/projects/theregistrtt_app/sql/main.sql",
+		"/home/muhammad/Desktop/my notes.txt",
+		"/var/www/html/projects/testing/test3.php",
+		"/home/muhammad/Desktop/All Projects Cred and Info.txt",
+		"/tmp/fz3temp-1/functions-simple.php",
+		"/tmp/fz3temp-1/questions.js",
+		"/tmp/fz3temp-1/section-2.php",
+		"/var/www/html/projects/testing/phpinfo.php",
+		"/tmp/fz3temp-1/wp-config.php",
+		"/tmp/fz3temp-1/footer.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/partials/header.blade.php",
+		"/home/muhammad/Desktop/production-v2/test.html",
+		"/var/www/html/projects/theregistrtt_app/resources/views/products.blade.php",
 		"/var/www/html/projects/theregistrtt_app/public/assets/css/main.css",
-		"/var/www/html/projects/theregistrtt_app/app/Http/routes.php",
+		"/tmp/fz3temp-1/section-3.php",
+		"/home/muhammad/Downloads/Admin Lte Theme/AdminLTE-2.4.2/pages/UI/sliders.html",
+		"/var/www/html/projects/theregistrtt_app/resources/views/partials/footer.blade.php",
+		"/var/www/html/projects/theregistrtt_app/public/vendors/bootstrap-slider/slider.css",
 		"/var/www/html/projects/theregistrtt_app/resources/views/home.blade.php",
-		"/var/www/html/projects/theregistrtt_app/app/Http/Kernel.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/about-us.blade.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/master.blade.php",
+		"/var/www/html/projects/testing/test2.php",
+		"/tmp/fz3temp-1/template-blog.php",
+		"/tmp/fz3temp-1/page.php",
+		"/tmp/fz3temp-1/style.css",
+		"/tmp/fz3temp-1/loop-grid.php",
+		"/tmp/fz3temp-1/loop-grid 2.php",
+		"/tmp/fz3temp-1/loop-page.php",
+		"/var/www/html/projects/theregistrtt_app/app/Http/routes.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/bridal-info.blade.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/partials/nav.blade.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/sections/signup.blade.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/sections/login.blade.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/home2.blade.php",
+		"/var/www/html/projects/theregistrtt_app/resources/views/sections/contactus.blade.php",
 		"/var/www/html/projects/theregistrtt_app/resources/views/partials/alert.blade.php",
-		"/var/www/html/projects/theregistrtt_app/config/database.php",
-		"/var/www/html/projects/theregistrtt_app/config/session.php",
-		"/home/muhammad/Downloads/Admin Lte Theme/AdminLTE-2.4.2/pages/forms/advanced.html",
+		"/var/www/html/projects/theregistrtt_app/public/vendors/bxslider/css/jquery.bxslider.css",
+		"/var/www/html/projects/theregistrtt_app/app/Http/Controllers/LoginController.php",
+		"/var/www/html/projects/theregistrtt_app/public/assets/css/anim.css",
+		"/var/www/html/projects/theregistrtt_app/public/assets/css/responsive.css",
+		"/tmp/fz3temp-1/pricing.php",
+		"/tmp/fz3temp-1/check-offer-paid.php",
+		"/tmp/fz3temp-1/create-job.php",
+		"/tmp/fz3temp-1/helper_class.php",
+		"/tmp/fz3temp-1/employer_class.php",
+		"/tmp/fz3temp-1/db_config.php",
+		"/var/www/html/projects/theregistrtt_app/app/User.php",
+		"/var/www/html/projects/theregistrtt_app/database/migrations/2018_02_05_185821_create_customers_table.php",
+		"/var/www/html/projects/theregistrtt_app/database/seeds/CustomersTableSeeder.php",
+		"/var/www/html/projects/theregistrtt_app/app/Http/Controllers/Auth/AuthController.php",
+		"/var/www/html/projects/theregistrtt_app/config/auth.php",
+		"/tmp/fz3temp-1/routes.php",
+		"/var/www/html/projects/theregistrtt_app/database/seeds/DatabaseSeeder.php",
+		"/var/www/html/projects/theregistrtt_app/app/Http/Controllers/Controller.php",
+		"/var/www/html/projects/theregistrtt_app/app/Http/Controllers/Auth/PasswordController.php",
+		"/var/www/html/projects/theregistrtt_app/sql/main.sql",
+		"/var/www/html/projects/theregistrtt_app/.env - live",
 		"/var/www/html/projects/theregistrtt_app/.env",
 		"/var/www/html/projects/theregistrtt_app/config/app.php",
-		"/tmp/fz3temp-1/questions.js",
-		"/home/muhammad/Desktop/All Projects Cred and Info.txt",
+		"/var/www/html/projects/theregistrtt_app/config/database.php",
+		"/tmp/fz3temp-1/app.php",
+		"/tmp/fz3temp-1/database.php",
+		"/var/www/html/projects/theregistrtt_app/app/Http/Kernel.php",
+		"/var/www/html/projects/theregistrtt_app/config/session.php",
+		"/home/muhammad/Downloads/Admin Lte Theme/AdminLTE-2.4.2/pages/forms/advanced.html",
 		"/var/www/html/projects/theregistrtt_app/index.html",
 		"/var/www/html/projects/theregistrtt_app/resources/views/welcome.blade.php",
 		"/tmp/fz3temp-1/index.php",
-		"/tmp/fz3temp-1/routes.php",
 		"/tmp/fz3temp-1/home.blade.php",
 		"/tmp/fz3temp-1/welcome.blade.php",
-		"/tmp/fz3temp-1/helper_class.php",
 		"/tmp/fz3temp-1/ipn.php",
-		"/tmp/fz3temp-1/check-offer-paid.php",
 		"/tmp/fz3temp-1/set-plan.php",
 		"/tmp/fz3temp-1/logout.php",
-		"/tmp/fz3temp-1/pricing.php",
-		"/tmp/fz3temp-1/employer_class.php",
-		"/tmp/fz3temp-1/create-job.php",
 		"/var/www/html/projects/theregistrtt_app/error_log",
 		"/tmp/fz3temp-1/section-1.php",
-		"/tmp/fz3temp-1/functions-simple.php",
-		"/tmp/fz3temp-1/section-3.php",
-		"/tmp/fz3temp-1/section-2.php",
 		"/var/www/html/projects/theregistrtt_app/assets/css/main.css",
-		"/var/www/html/projects/testing/phpinfo.php",
 		"/tmp/fz3temp-1/browse-jobs-map.php",
 		"/tmp/fz3temp-1/seeker_class.php",
 		"/tmp/fz3temp-1/find-seekers-map.php",
@@ -448,11 +462,8 @@
 		"/tmp/fz3temp-1/find-seekers.php",
 		"/tmp/fz3temp-1/browse-resume-map.php",
 		"/tmp/fz3temp-1/single.php",
-		"/tmp/fz3temp-1/template-blog.php",
-		"/tmp/fz3temp-1/style.css",
 		"/tmp/fz3temp-1/bootstrap.css",
 		"/tmp/fz3temp-1/style 2.css",
-		"/tmp/fz3temp-1/footer.php",
 		"/tmp/fz3temp-1/browse-jobs.php",
 		"/tmp/fz3temp-1/header.php",
 		"/var/www/html/theregistrytt/error_log",
@@ -488,47 +499,11 @@
 		"/home/muhammad/Desktop/Vine Up Backups/plugins backup/revslider.php",
 		"/tmp/fz3temp-1/revslider.php",
 		"/tmp/fz3temp-1/operations.class.php",
-		"/tmp/fz3temp-1/sql.php",
-		"/var/www/html/coinsoft/test/index.php",
-		"/tmp/fz3temp-1/header 2.php",
-		"/tmp/fz3temp-1/login 2.php",
-		"/tmp/fz3temp-1/db_config.php",
-		"/tmp/fz3temp-1/sliders_output.php",
-		"/var/www/html/uac_system/.config/functions.inc.php",
-		"/var/www/html/uac_system/templates/content.php",
-		"/var/www/html/uac_system/templates/home.php",
-		"/var/www/html/uac_system/.config/databaseconnect.inc.php",
-		"/var/www/html/uac_system/app/routes.php",
-		"/var/www/html/uac_system/index.php",
-		"/var/www/html/coinsoft/browse-jobs.php",
-		"/var/www/html/uac_system/templates/contact_us.php",
-		"/var/www/html/uac_system/templates/about_us.php",
-		"/var/www/html/uac_system/.config/init.inc.php",
-		"/var/www/html/uac_system/partials/header.php",
-		"/var/www/html/uac_system/.htaccess",
-		"/var/www/html/theregistrytt/Study Material:",
-		"/var/www/html/uac_system/404.php",
-		"/var/www/html/prestastore/.htaccess",
-		"/var/www/html/uac_system/partials/footer.php",
-		"/var/www/html/uac_system/templates/layout.php",
-		"/var/www/html/uac_system/partials/breadcrumbs.php",
-		"/var/www/html/uac_system/500.php",
-		"/home/muhammad/Downloads/Admin Lte Theme/404.php",
-		"/var/www/html/uac_system/partials/side_settings.php",
-		"/var/www/html/uac_system/partials/sidebar.php",
-		"/home/muhammad/Downloads/Admin Lte Theme/AdminLTE-2.4.2/README.md",
-		"/var/www/html/theregistrytt/test.php",
-		"/var/www/html/theregistrytt/assets/css/style3.css",
-		"/var/www/html/theregistrytt/assets/css/style.css",
-		"/var/www/html/theregistrytt/index.php",
-		"/var/www/html/theregistrytt/products.php",
-		"/var/www/html/theregistrytt/project-faqs/Freelancer.com",
-		"/var/www/html/theregistrytt/project-faqs/questions.txt",
-		"/var/www/html/github_projects/README.md"
+		"/tmp/fz3temp-1/sql.php"
 	],
 	"find":
 	{
-		"height": 70.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -543,6 +518,100 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"TechUsed",
+			"fieldNumOfMonPlatformAct",
+			"Name",
+			"TotalNumRegUsers",
+			"inputName",
+			"inputNumOfMonPlatformAct",
+			"lineData",
+			"$i",
+			"number_format( $result->",
+			"set_quest_var",
+			"$result->",
+			"<td>1</td>",
+			"['",
+			"\n",
+			"$",
+			"=>",
+			"\n",
+			"`",
+			" ",
+			"$i",
+			"-",
+			" - ",
+			"$google_analytics_url",
+			"google_analytics_url",
+			"<a href=\"#\">",
+			"resptotalscore",
+			"class=\"sli",
+			"myplguin_admin_page",
+			"myplugin/myplugin-admin-page.php",
+			"my_admin_menu",
+			"formula_mpopurtlofdm",
+			".last-container ",
+			"content",
+			"nsr",
+			"required",
+			"roundFig",
+			"scores",
+			"formula_mroru",
+			"min",
+			".",
+			"<li class=\"list-group-item\">Bootply</li>\n\t\t\t\t\t\t\t                <li class=\"list-group-item\">Bootply</li>\n\t\t\t\t\t\t\t                <li class=\"list-group-item\">Bootply</li>",
+			"<div class=\"panel-collapse collapse\" role=\"tabpanel\" id=\"collapseListGroup3\" aria-labelledby=\"collapseListGroupHeading3\" aria-expanded=\"false\" style=\"height: 0px;\">\n\t\t\t\t\t\t\t            <ul class=\"list-group\">\n\t\t\t\t\t\t\t                <li class=\"list-group-item\">Bootply</li>\n\t\t\t\t\t\t\t                <li class=\"list-group-item\">Bootply</li>\n\t\t\t\t\t\t\t                <li class=\"list-group-item\">Bootply</li>\n\t\t\t\t\t\t\t            </ul>\n\t\t\t\t\t\t\t        </div>",
+			"2",
+			"1",
+			"<a href=\"#\"",
+			"h4 text-light text-center text-capitalize\"",
+			"_",
+			"h4 text-light text-center",
+			"<div class=\"h3",
+			"text-left",
+			"class=\"img-responsive\"",
+			"h3",
+			"/assets/img/icons/",
+			"class=\"img-responsive\"",
+			"alt=\"\">",
+			"bridal-info",
+			"<h3 class=\"text-light\">",
+			"@if",
+			"partials",
+			"<div class=\"bi-head\"></div>",
+			"<div class=\"bi-detail\"></div>",
+			",",
+			"toFixed()",
+			"console.log",
+			"console",
+			"$minutes",
+			"min.",
+			"$strCalcHours",
+			"$strCalc",
+			"$splitHour",
+			"$strHour",
+			"$hours",
+			"echo ",
+			"display",
+			"non_formula_nsr",
+			"images/",
+			"bxSlider",
+			"bxslider",
+			"http",
+			"https://www.hopsej.com/resize/e/300/300/files/produkty/zima/sled-dogs/sled-dogs-sjezd-300",
+			"http",
+			"navbar-default",
+			"if",
+			"offer_id",
+			"$result",
+			"userdata",
+			"users",
+			"user",
+			"Customers",
+			"customers",
+			"trtt_customers",
+			"32",
+			"btns-plan-group",
+			"paid plan",
 			"frmSignUp",
 			",",
 			"$",
@@ -576,101 +645,7 @@
 			"trrt_customers",
 			"customers_signup",
 			"PersonID",
-			"PK",
-			"PRIMARY KEY (ID)",
-			"app_users",
-			"varchar (66)",
-			"trtt_users_app",
-			"datetime NULL",
-			"datetime",
-			"DEFAULT",
-			"<span style=\"font-size:24px;",
-			"gradient-ticker",
-			"</a>",
-			"<a href=\"#\"",
-			"Tooltip on left",
-			"1px solid",
-			"<div class=\"col-sm-6 col-contact-us\">",
-			"<div class=\"col-sm-5 text-right\">",
-			"<div class=\"input-group\">",
-			"form-group",
-			"form",
-			"exampleInputEmail1",
-			"* 100",
-			"Math.round",
-			"cookie",
-			"CreateCookie",
-			"_SESSION",
-			"$_SESSION['pricing_plan']",
-			"CreateCookie",
-			"cookie",
-			"function(){",
-			"-",
-			"cimhpm",
-			"$mroru",
-			"formula_mpopurtlofdm",
-			"<i class=\"fa",
-			"<div class=\"col-sm-6\">",
-			"h3",
-			"<i class=\"fa fa-map\"></i>",
-			"<div class=\"col-sm-5 text-right\"> <i class=\"fa fa-map\"></i> </div>",
-			"col-sm-6 text-right",
-			"center",
-			"col-sm-10",
-			"col-sm-2",
-			"marker",
-			"h1",
-			"job",
-			"jobs",
-			"location",
-			"<script src=\"",
-			"</script> <script",
-			".toFixed(2)",
-			"VarNumActMentoring",
-			"NumActMentoring",
-			"$fieldGreaterAlumniNet",
-			"var_d",
-			"inputGreaterAlumniNet1",
-			"\"",
-			"$fieldGreaterAlumniNet",
-			"fieldGreaterAlumniNet",
-			"GreaterAlumniNet",
-			"$nosgmrpm >",
-			"$nosgmrpm <",
-			"$var",
-			"$var <",
-			"2",
-			"0.",
-			"$var < ",
-			"$var <",
-			")",
-			".",
-			".1",
-			"$scores['var'] =",
-			"else if( ",
-			"nosgmrpm",
-			"modal-login",
-			"bs-example-modal-lg",
-			"<label>",
-			"class=\"\"",
-			"<label",
-			"col-xs-12 col-sm-2 ",
-			"<a href=\"#\"",
-			"| ",
-			"font-size:24px;",
-			"p>",
-			"p",
-			"\n    ",
-			"href=\"#\"",
-			"lighter",
-			"style=\"color:#fff\"",
-			"href",
-			"hopsej",
-			"col-sm-4",
-			"h3",
-			"xs-6",
-			"col-sm-3",
-			"col-xs-6 col-sm-3"
+			"PK"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -688,218 +663,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 244,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								140,
-								140
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"rainbowth.lispy": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "config/app.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8257,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3526,
-								3526
-							]
-						],
-						"settings":
-						{
-							"rainbowth.lispy": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1377.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "config/database.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4726,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2699,
-								2699
-							]
-						],
-						"settings":
-						{
-							"rainbowth.lispy": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 918.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": ".env",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 409,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								179,
-								179
-							]
-						],
-						"settings":
-						{
-							"rainbowth.lispy": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "sql/main.sql",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2230,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								727,
-								727
-							]
-						],
-						"settings":
-						{
-							"rainbowth.lispy": false,
-							"syntax": "Packages/SQL/SQL.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/tmp/fz3temp-1/routes.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1935,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6,
-								6
-							]
-						],
-						"settings":
-						{
-							"rainbowth.lispy": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 34,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								34,
-								24
-							]
-						],
-						"settings":
-						{
-							"auto_name": "tregtt_user_01",
-							"rainbowth.lispy": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -951,6 +716,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"main.css",
+				"public/assets/css/main.css"
+			],
 			[
 				"database",
 				"config/database.php"
@@ -1071,8 +840,8 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 267.0,
+	"side_bar_visible": false,
+	"side_bar_width": 292.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

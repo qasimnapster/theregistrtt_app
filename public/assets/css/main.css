@@ -394,3 +394,30 @@ section.contact-us h1{
 .space-prod{
 	margin-bottom: 5px;
 }
+.profile-container{
+    background: #eeeeee87;
+    padding: 30px 0; 
+}
+.profile-container .container{
+	border: 1px solid #dcdcdc;
+	background: #fff;
+	padding: 0;
+	box-shadow: #ddd 0 1px 15px 0;
+}
+.head-block-profile {
+    background: #f7f7f7;
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+}
+.title-profile-head{
+	font-size: 28px;
+}
+.content-block-profile{
+	padding: 15px;	
+}
+.profile-form-container .row{
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 2px -2px #efefef;
+}

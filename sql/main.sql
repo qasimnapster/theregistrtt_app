@@ -62,3 +62,10 @@ CREATE TABLE `trtt_customers`(
 	CONSTRAINT PK_customers_id PRIMARY KEY (ID),
 	CONSTRAINT FK_customers_registry_type_id FOREIGN KEY (registry_type_id) REFERENCES trtt_registry_types(ID)
 );
+
+ALTER TABLE  `trtt_customers` ADD  `address_1` VARCHAR( 255 ) NOT NULL AFTER  `password` ,
+ADD  `address_2` VARCHAR( 255 ) NOT NULL AFTER  `address_1` ,
+ADD  `postal_code` VARCHAR( 255 ) NOT NULL AFTER  `address_2` ,
+ADD  `state` VARCHAR( 255 ) NOT NULL AFTER  `postal_code` ,
+ADD  `city` VARCHAR( 255 ) NOT NULL AFTER  `state` ,
+ADD  `country` VARCHAR( 255 ) NOT NULL AFTER  `city`
