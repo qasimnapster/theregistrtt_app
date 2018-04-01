@@ -8,18 +8,18 @@
     <title>Wedding Registry, Baby Registry &amp; Gift Registry | TheRegistryTT.com</title>
     <meta name='description' content="The #1 Universal Wedding Registry, Baby Registry and Gift Registry for all occasions! Create a wedding wish list! Add gifts from any store to this online multistore bridal registry."/>
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="./vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="./vendors/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/vendors/Ionicons/css/ionicons.min.css">
 
     @yield('stylesheets')
     
     <!-- Main Theme Css -->
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/responsive.css">
-    <link rel="stylesheet" href="./assets/css/anim.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <link rel="stylesheet" href="/assets/css/anim.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

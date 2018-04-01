@@ -36,37 +36,37 @@
                     <div class="img-cats">
                         <img src="./assets/img/icons/glassware.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">glassware</a>
+                    <a href="./categories/glassware" class="h4 text-center text-capitalize">glassware</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/crockery.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">crockery</a>
+                    <a href="./categories/crockery" class="h4 text-center text-capitalize">crockery</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/kitchen_utensils.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">kitchen utensils</a>
+                    <a href="./categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/linens.png" alt="" class="img-responsive" style="    height: 100px;">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">linens</a>
+                    <a href="./categories/linens" class="h4 text-center text-capitalize">linens</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/bathroom_accessories.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">bathroom accessories</a>
+                    <a href="./categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
                         <img src="./assets/img/icons/mini_appliances.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">mini appliances</a>
+                    <a href="./categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
                 </div>
             </div>
             <div class="row">
@@ -74,7 +74,7 @@
                     <div class="img-cats">
                         <img src="./assets/img/icons/home_accents.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./products" class="h4 text-center text-capitalize">home accents</a>
+                    <a href="./categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
                 </div>
             </div>
             <!-- <img src="https://images-platform.99static.com/JsmXH_1twMGCO3EedzmGJhdKyss=/fit-in/900x675/99designs-contests-attachments/4/4843/attachment_4843165" style="opacity: .6;"> -->

@@ -39,33 +39,6 @@ Route::get('/products', function () {
     return view('products', [ 'reg_types' => $reg_types ]);
 });
 
-Route::get('/categories/{type}', function ($type) {
-	$reg_types           = DB::table('registry_types')->select()->get();
-	if( $type == 'all' )
-	{
-		$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
-	} else 
-	{
-		$cat_id = DB::table('categories')->where('slug', '=', $type)->select('id')->get();
-		$category_id = $cat_id[0]->id;
-
-		$products = DB::table('products as p')
-		->select('p.*')
-		->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id')
-		->where(['apc.category_id' => $category_id])
-		->orderBy('p.title', 'ASC')
-		->get();
-
-	}
-	
-	$categories = DB::table('categories')->select()->get();
-    return view('categories', [ 
-		'reg_types'  => $reg_types,
-		'products'   => $products,
-		'categories' => $categories
-    ]);
-});
-
 Route::post('/signup', function () {
 	
 	$reg_type   = strlen( Input::get('xslcRegType') ) > 0 ? Input::get('xslcRegType') : 'N/A';
