@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('stylesheets')
-	<link rel="stylesheet" href="/vendors/bootstrap-slider/slider.css">
+	<link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-slider/slider.css">
 @endsection
 
 @section('content')
@@ -25,7 +25,7 @@
 							    	@foreach($categories as $cat)    
 								        <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
 								            <h4 class="panel-title">
-								            	<a href="/categories/{{ $cat->slug }}" class="collapsed"> {{ $cat->title }} </a>
+								            	<a href="{{ config('app.url') }}categories/{{ $cat->slug }}" class="collapsed"> {{ $cat->title }} </a>
 								            </h4>
 								        </div>
 								        @if( $cat->parent_id != 0 )
@@ -125,7 +125,7 @@
 	</section>
 
 	@section('scripts')
-		<script src="/vendors/bootstrap-slider/bootstrap-slider.js"></script>
+		<script src="{{ config('app.url') }}vendors/bootstrap-slider/bootstrap-slider.js"></script>
 		<script>
 		  $(function () {
 		    /* BOOTSTRAP SLIDER */

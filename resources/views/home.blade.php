@@ -1,12 +1,12 @@
 @extends('master')
 @section('stylesheets')
     <!-- Date Picker -->
-    <link rel="stylesheet" href="./vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="./vendors/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="./vendors/bxslider/css/jquery.bxslider.css">
+    <link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{ config('app.url') }}vendors/bxslider/css/jquery.bxslider.css">
     <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="./plugins/iCheck/all.css">
+    <link rel="stylesheet" href="{{ config('app.url') }}plugins/iCheck/all.css">
 @endsection
 @section('content')
     <div class="slider">
@@ -34,47 +34,47 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/glassware.png" alt="" class="img-responsive">
+                        <img src="{{ config('app.url') }}/assets/img/icons/glassware.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./categories/glassware" class="h4 text-center text-capitalize">glassware</a>
+                    <a href="{{ config('app.url') }}categories/glassware" class="h4 text-center text-capitalize">glassware</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/crockery.png" alt="" class="img-responsive">
+                        <img src="{{ config('app.url') }}/assets/img/icons/crockery.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./categories/crockery" class="h4 text-center text-capitalize">crockery</a>
+                    <a href="{{ config('app.url') }}categories/crockery" class="h4 text-center text-capitalize">crockery</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/kitchen_utensils.png" alt="" class="img-responsive">
+                        <img src="{{ config('app.url') }}/assets/img/icons/kitchen_utensils.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
+                    <a href="{{ config('app.url') }}categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/linens.png" alt="" class="img-responsive" style="    height: 100px;">
+                        <img src="{{ config('app.url') }}/assets/img/icons/linens.png" alt="" class="img-responsive" style="    height: 100px;">
                     </div>
-                    <a href="./categories/linens" class="h4 text-center text-capitalize">linens</a>
+                    <a href="{{ config('app.url') }}categories/linens" class="h4 text-center text-capitalize">linens</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/bathroom_accessories.png" alt="" class="img-responsive">
+                        <img src="{{ config('app.url') }}/assets/img/icons/bathroom_accessories.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
+                    <a href="{{ config('app.url') }}categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/mini_appliances.png" alt="" class="img-responsive">
+                        <img src="{{ config('app.url') }}/assets/img/icons/mini_appliances.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
+                    <a href="{{ config('app.url') }}categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                     <div class="img-cats">
-                        <img src="./assets/img/icons/home_accents.png" alt="" class="img-responsive">
+                        <img src="{{ config('app.url') }}/assets/img/icons/home_accents.png" alt="" class="img-responsive">
                     </div>
-                    <a href="./categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
+                    <a href="{{ config('app.url') }}categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
                 </div>
             </div>
             <!-- <img src="https://images-platform.99static.com/JsmXH_1twMGCO3EedzmGJhdKyss=/fit-in/900x675/99designs-contests-attachments/4/4843/attachment_4843165" style="opacity: .6;"> -->
@@ -105,8 +105,8 @@
         <div class="container">
             <div class="col-sm-6">
                 <div style="position: relative;">
-                    <img class="hp_w100" src="./assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone">
-                    <img class="hp_w100" src="./assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: -0999;">
+                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone">
+                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: -0999;">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -125,7 +125,7 @@
     </section>
     <div class="ticker-main gradient-ticker text-center">
         <span style="color:#fff; font-weight: 300;font-size: 24px;padding: 30px; color: #fff;">Want to know more about us!</span>
-        <a href="./about-us" class="btn btn-default btn-lg">Click Here</a>
+        <a href="{{ config('app.url') }}about-us" class="btn btn-default btn-lg">Click Here</a>
         <!-- <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="What is a Bridal Registry?"><i class="fa fa-gift" aria-hidden="true"></i> W </span>
         <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="Why Use a Registry?"><i class="fa fa-gift" aria-hidden="true"></i> BW </span>
         <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff;" data-toggle="tooltip" data-placement="left" title="Why select your Registry with Us?"><i class="fa fa-gift" aria-hidden="true"></i> WL</span> -->
@@ -138,19 +138,19 @@
                     <div class="title-sample">
                         <a href="#">Sample Wishlist 1</a>
                     </div>
-                    <img src="./assets/img/skate.jpg" alt="" class="sample-imgs">
+                    <img src="{{ config('app.url') }}/assets/img/skate.jpg" alt="" class="sample-imgs">
                 </div>
                 <div class="col-sm-4 text-center">
                     <div class="title-sample">
                         <a href="#">Sample Wishlist 2</a>
                     </div>
-                    <img src="./assets/img/skate.jpg" alt="" class="sample-imgs">
+                    <img src="{{ config('app.url') }}/assets/img/skate.jpg" alt="" class="sample-imgs">
                 </div>
                 <div class="col-sm-4 text-center">
                     <div class="title-sample">
                         <a href="#">Sample Wishlist 3</a>
                     </div>
-                    <img src="./assets/img/skate.jpg" alt="" class="sample-imgs">
+                    <img src="{{ config('app.url') }}/assets/img/skate.jpg" alt="" class="sample-imgs">
                 </div>
             </div>
         </div>
@@ -159,11 +159,11 @@
     @section('scripts')
         
 
-        <script src="./vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="{{ config('app.url') }}/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
         <!-- datepicker -->
-        <script src="./vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="./vendors/bxslider/js/jquery.bxslider.min.js"></script>
-        <script src="./plugins/iCheck/icheck.min.js"></script>
+        <script src="{{ config('app.url') }}/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="{{ config('app.url') }}/vendors/bxslider/js/jquery.bxslider.min.js"></script>
+        <script src="{{ config('app.url') }}/plugins/iCheck/icheck.min.js"></script>
 
         <script>
         $(document).ready(function(){

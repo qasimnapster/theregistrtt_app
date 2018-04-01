@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('stylesheets')
-	<link rel="stylesheet" href="./vendors/bootstrap-slider/slider.css">
+	<link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-slider/slider.css">
 @endsection
 
 @section('content')
@@ -147,7 +147,7 @@
 	</section>
 
 	@section('scripts')
-		<script src="./vendors/bootstrap-slider/bootstrap-slider.js"></script>
+		<script src="{{ config('app.url') }}vendors/bootstrap-slider/bootstrap-slider.js"></script>
 		<script>
 		  $(function () {
 		    /* BOOTSTRAP SLIDER */
