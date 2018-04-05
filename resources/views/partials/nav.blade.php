@@ -32,7 +32,7 @@
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ config('app.url') }}logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#"> <i class="fa fa-paper-plane"></i> Create Wishlist</a></li>
+                                <li><a href="{{ config('app.url') }}create/wishlist/1"> <i class="fa fa-paper-plane"></i> Create Wishlist</a></li>
                             </ul>
                         </li>
                     @else

@@ -67,6 +67,19 @@ Route::get('/categories/{type}', function ($type) {
 });
 
 Route::post('/signup', function () {
+
+	// try {
+	// 	Mail::send('emails.welcome', [], function ($message) {
+	// 		$message->from('tester.registrytt@gmail.com', 'Testing - email verification');
+
+	// 		$message->to('qasimnepster@gmail.com');
+	// 	});
+	// } catch(Exception $e) {
+	// 	echo $e->getMessage();
+	// }
+
+	
+ //    exit;
 	
 	$reg_type   = strlen( Input::get('xslcRegType') ) > 0 ? Input::get('xslcRegType') : 'N/A';
 	$first_name = strlen( Input::get('xtxtFirstName') ) > 0 ? Input::get('xtxtFirstName') : 'N/A';
@@ -89,6 +102,7 @@ Route::post('/signup', function () {
 				'registry_type_id' => $reg_type
 			]
 		);
+		
 		if( $insertion )
 			return Response::json(array('message' => 'Successfully signed up'));
 		else
@@ -138,6 +152,23 @@ Route::any('/profile', function () {
     	'customer'  => Auth::user(),
     	'updation'  => $updation
     ]);
+});
+
+
+Route::any('/create/wishlist/{step}', function ($step) {
+	
+	$reg_types = DB::table('registry_types')->select()->get();
+	$products  = [];
+	if( $step == 2 )
+	{
+		$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
+	}
+
+	return view('create-wishlist-' . $step, [
+    	'reg_types' => $reg_types,
+    	'products'  => $products
+    ]);
+
 });
 
 //

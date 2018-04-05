@@ -14,14 +14,14 @@
             <div class="col-md-6 pull-right container-site-info text-center">
                 <h3 class="text-light">THE #1 UNIVERSAL</h3>
                 <h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
-                <a href="#" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+                <a href="{{ config('app.url') }}create/wishlist/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
             </div>
         </div>
         <div class="banner-main" style="background-image:url(./assets/img/slide2.jpg)">
             <div class="col-md-6 pull-right container-site-info text-center">
                 <h3 class="text-light">THE #1 UNIVERSAL</h3>
                 <h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
-                <a href="#" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+                <a href="{{ config('app.url') }}create/wishlist/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
             </div>
         </div>
     </div>
@@ -197,7 +197,7 @@
                 xpsPassword       = $('#xpsPassword').val();
                 xpsConfPassword   = $('#xpsConfPassword').val();
                 $.ajax({
-                    url: './signup',
+                    url: '{{ config("app.url") }}signup',
                     type: 'POST',
                     dataType: 'html',
                     data: {
