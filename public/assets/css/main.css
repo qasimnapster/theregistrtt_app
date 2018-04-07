@@ -10,7 +10,7 @@ body, html {
 	font-size: 15px;	
 }
 body {
-	padding-top: 70px;
+	padding-top: 120px;
 }
 a {
 	color: #e5c100;
@@ -23,6 +23,11 @@ a.navbar-brand{
 	color: #e5c100 !important;
 	font-size: 28px;
     font-weight: 300;
+}
+.navbar-brand-href .logo-brand{
+	width: 200px;
+	margin-top: -40px;
+	margin-bottom: -40px;
 }
 .container-navbar{
 	position: relative;
@@ -381,6 +386,12 @@ section.contact-us h1{
 	.form-inline .form-group {
 	    margin-right: 5px;
 	}
+	.navbar-collapse.collapse {
+		margin-top: 20px;		
+	}
+	.less-mt{
+		margin-top: -5px;
+	}
 }
 .products-list-content .block-products-list .product-box{
 	margin-bottom: 20px;
@@ -453,4 +464,58 @@ section.contact-us h1{
 }
 .container-wishlist-form{
 	padding: 30px 0;
+}
+/*-----------------------------------------------------------------------------
+
+KENBURNER RESPONSIVE BASIC STYLES OF HTML DOCUMENT
+
+Screen Stylesheet
+
+version:   	1.0
+date:      	07/27/11
+author:		themepunch
+email:     	support@themepunch.com
+website:   	http://www.themepunch.com
+-----------------------------------------------------------------------------*/
+
+
+
+.boxedcontainer		{	max-width: 1170px; margin:auto; padding:0px 30px;}
+
+/*********************************************
+	-	SETTINGS FOR BANNER CONTAINERS	-
+**********************************************/
+
+.tp-banner-container{
+	width:100%;
+	position:relative;
+	padding:0;
+
+}
+
+.tp-banner{
+	width:100%;
+	position:relative;
+}
+
+.tp-banner-fullscreen-container {
+		width:100%;
+		position:relative;
+		padding:0;
+}
+.panel-default>.panel-heading {
+    background: -webkit-linear-gradient(bottom, #e5c100 , #ffeb7f);
+}
+.block-row-listb{
+	background: #fff;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 3px;
+    padding-bottom: 5px;
+}
+p.light-rale{
+	color: #777;
+    font-family: 'Open Sans';
+}
+.faqs-main .panel-title a:hover{
+	color: #333;
 }

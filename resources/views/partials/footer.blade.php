@@ -5,8 +5,11 @@
 
 @include('sections.login')
 @include('sections.signup')
-<!-- jQuery 3 -->
-<script src="{{ config('app.url') }}vendors/jquery/dist/jquery.min.js"></script>
+
+@if( Route::getCurrentRoute()->getPath() != '/' )
+	<!-- jQuery 3 -->
+	<script src="{{ config('app.url') }}vendors/jquery/dist/jquery.min.js"></script>
+@endif
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ config('app.url') }}vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 @yield('scripts')

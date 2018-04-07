@@ -7,17 +7,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ config('app.url') }}">TheRegistryTT.com</a>
+                <a class="navbar-brand-href" href="{{ config('app.url') }}">
+                    <img src="{{ config('app.url') }}assets/img/logo.png" class="logo-brand img-responsive" alt="TheRegistryTT.com">
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-center">
                     <li>
                         <div class="anchor-form"><label class="label-navbar" for="">Find a Wishlist</label></div>
                     </li>
-                    <li>
+                    <li class="less-mt">
                         <div class="anchor-form"><input type="text" class="form-control text-center input-navbar" value="Enter Promo Code"></div>
                     </li>
-                    <li>
+                    <li class="less-mt">
                         <div class="anchor-form"><button class="btn btn-primary" style="width:100%" type="button">SEARCH</button></div>
                     </li>
                 </ul>
