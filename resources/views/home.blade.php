@@ -9,16 +9,22 @@
     <link rel="stylesheet" href="{{ config('app.url') }}plugins/iCheck/all.css">
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
-    <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <!-- <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script> -->
     <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}plugins/rs-plugin/css/settings.css" media="screen" />
+    <style>
+        .bx-viewport{
+            /*height: 500px !important;*/
+        }
+    </style>
 @endsection
 @section('content')
     <div class="slider">
 
-        <div class="tp-banner-container">
-            <div class="tp-banner" >
+        <div class="rev_slider_wrapper fullscreen-container">
+            <div id="rev_slider_1" class="rev_slider fullscreenbanner" >
                 <ul>
                     <!-- SLIDE 1 -->
                     <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
@@ -372,15 +378,15 @@
         <script>
         $(document).ready(function(){
             
-            $('.slider').bxSlider({
-                responsive: true,
-                mode: 'fade',
-                auto: true,
-                speed: 1500,
-                hideControlOnEnd: true,
-                controls: false,
-                pager: false
-            });
+            // $('.slider').bxSlider({
+            //     responsive: true,
+            //     mode: 'fade',
+            //     auto: true,
+            //     speed: 1500,
+            //     hideControlOnEnd: true,
+            //     controls: false,
+            //     pager: false
+            // });
 
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -438,14 +444,9 @@
 
         $(document).ready(function() {
 
-               revapi = $('.tp-banner').revolution(
-                {
-                    delay:9000,
-                    startwidth:1170,
-                    startheight:900,
-                    hideThumbs:10
-
-                });
+            $('#rev_slider_1').revolution({
+                sliderLayout: 'fullscreen',
+            });
 
         }); //ready
         </script>
