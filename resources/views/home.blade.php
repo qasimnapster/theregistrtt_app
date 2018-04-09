@@ -27,7 +27,7 @@
             <div id="rev_slider_1" class="rev_slider fullscreenbanner" >
                 <ul>
                     <!-- SLIDE 1 -->
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
+                    <li data-transition="fade"  data-masterspeed="700" >
                         <!-- MAIN IMAGE -->
                         <img src="{{ config('app.url') }}assets/img/main-banner/1.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <!-- SLIDE 2 -->
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
+                    <li data-transition="fade"  data-masterspeed="700" >
                         <!-- MAIN IMAGE -->
                         <img src="{{ config('app.url') }}assets/img/main-banner/4.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
@@ -114,8 +114,8 @@
                             style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/wishlist/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE WISHLIST</a>
                         </div>
                     </li>
-                    <!-- SLIDE 2 -->
-                    <li data-transition="fade" data-slotamount="5" data-masterspeed="700" >
+                    <!-- SLIDE 3 -->
+                    <li data-transition="fade"  data-masterspeed="700" >
                         <!-- MAIN IMAGE -->
                         <img src="{{ config('app.url') }}assets/img/main-banner/5.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
@@ -440,7 +440,6 @@
             // })
         });
 
-        var revapi;
 
         $(document).ready(function() {
 
