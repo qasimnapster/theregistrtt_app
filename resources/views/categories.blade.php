@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 
 @section('stylesheets')
 	<link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-slider/slider.css">

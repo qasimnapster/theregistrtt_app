@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 @section('stylesheets')
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
@@ -287,7 +287,7 @@
     <section class="sample-wishlist" style="border-bottom: 1px solid #ccc;">
         <h1 class="text-light text-center">FAQs</h1>
         <div class="samples-container container">
-            @include('sections.faqs')
+            @include('layouts.sections.faqs')
         </div>
     </section>
     <section class="sample-wishlist" style="border-bottom: 1px solid #ccc; background:#eee;">
@@ -365,7 +365,7 @@
             </div>
         </div>
     </section>
-    @include('sections.contactus')
+    @include('layouts.sections.contactus')
     @section('scripts')
         
 
@@ -376,7 +376,7 @@
         <script src="{{ config('app.url') }}/plugins/iCheck/icheck.min.js"></script>
 
         <script>
-        $(document).ready(function(){
+        $(function(){
             
             // $('.slider').bxSlider({
             //     responsive: true,
@@ -438,11 +438,7 @@
             //     checkboxClass: 'icheckbox_minimal-blue',
             //     radioClass   : 'iradio_minimal-blue'
             // })
-        });
-
-
-        $(document).ready(function() {
-
+        
             $('#rev_slider_1').revolution({
                 sliderLayout: 'fullscreen',
             });

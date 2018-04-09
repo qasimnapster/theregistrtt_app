@@ -67,19 +67,6 @@ Route::get('/categories/{type}', function ($type) {
 });
 
 Route::post('/signup', function () {
-
-	// try {
-	// 	Mail::send('emails.welcome', [], function ($message) {
-	// 		$message->from('tester.registrytt@gmail.com', 'Testing - email verification');
-
-	// 		$message->to('qasimnepster@gmail.com');
-	// 	});
-	// } catch(Exception $e) {
-	// 	echo $e->getMessage();
-	// }
-
-	
- //    exit;
 	
 	$reg_type   = strlen( Input::get('xslcRegType') ) > 0 ? Input::get('xslcRegType') : 'N/A';
 	$first_name = strlen( Input::get('xtxtFirstName') ) > 0 ? Input::get('xtxtFirstName') : 'N/A';
