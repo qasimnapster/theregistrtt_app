@@ -1,4 +1,4 @@
-<section class="sample-wishlist" style="border-bottom: 1px solid #dcdcdc; padding-bottom: 30px;">
+<section class="sample-wishlist" style="border-bottom: 1px solid #dcdcdc; border-top: 1px solid #dcdcdc; padding-bottom: 30px;">
     <h1 class="text-light text-center">FAQs</h1>
     <div class="samples-container container">
         <div class="row clearfix">

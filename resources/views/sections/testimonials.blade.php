@@ -33,7 +33,7 @@
                 <div class="col-sm-12 lr-container">
                     <p class="light-rale">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 pull-right">
                                 <div style="position: relative;">
                                     <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
                                     <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: 0;width:100%">
@@ -89,7 +89,7 @@
                 <div class="col-sm-12 lr-container">
                     <p class="light-rale">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 pull-right">
                                 <div style="position: relative;">
                                     <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
                                     <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: 0;width:100%">

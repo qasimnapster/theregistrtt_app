@@ -114,9 +114,9 @@
             <div class="brand-detail"><img src="https://s3.amazonaws.com/static.myregistry.com/cm/HomePage/SyncPartner_1_481285961-hover.png" alt=""></div> -->
         </div>
     </section>
-    <div class="ticker-main light-ticker text-center">
+    <!-- <div class="ticker-main light-ticker text-center">
         See what members are adding: <a href="#" style="font-size:24px;">Wedding Registry | </a><a href="#" style="font-size:24px;">Baby Registry | </a><a href="#" style="font-size:24px;">Wish List</a>
-    </div>
+    </div> -->
     <!-- FAQs Section -->
     @include('sections.faqs')
         

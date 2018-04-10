@@ -156,6 +156,9 @@ Route::any('/profile', function () {
 
 
 Route::any('/create/registry/{step}', function ($step) {
+
+	if ( ! Auth::check())
+		return Redirect::to('/');
 	
 	$reg_types = DB::table('registry_types')->select()->get();
 	$products  = [];

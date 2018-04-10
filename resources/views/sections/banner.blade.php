@@ -42,7 +42,7 @@
                     data-endspeed="500"
                     data-endeasing="Power4.easeIn"
                     data-captionhidden="on"
-                    style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/registry/1" class="btn btn-danger btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
+                    style="z-index: 14"><a href="{{ config('app.url') }}create/registry/1" class="btn btn-danger btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
                 </div>
             </li>
             <!-- SLIDE 2 -->
@@ -86,7 +86,7 @@
                     data-endspeed="500"
                     data-endeasing="Power4.easeIn"
                     data-captionhidden="on"
-                    style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
+                    style="z-index: 14"><a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
                 </div>
             </li>
             <!-- SLIDE 3 -->
@@ -130,7 +130,7 @@
                     data-endspeed="500"
                     data-endeasing="Power4.easeIn"
                     data-captionhidden="on"
-                    style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
+                    style="z-index: 14"><a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
                 </div>
             </li>
             <!-- SLIDE 4 -->
@@ -174,7 +174,7 @@
                     data-endspeed="500"
                     data-endeasing="Power4.easeIn"
                     data-captionhidden="on"
-                    style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
+                    style="z-index: 14"><a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
                 </div>
             </li>
             <!-- SLIDE 5 -->
@@ -218,7 +218,7 @@
                     data-endspeed="500"
                     data-endeasing="Power4.easeIn"
                     data-captionhidden="on"
-                    style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
+                    style="z-index: 14"><a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE REGISTRY</a>
                 </div>
             </li>
         </ul>
