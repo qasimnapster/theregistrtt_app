@@ -36,15 +36,28 @@
 				<div class="col-sm-12">
 					<div class="products-list-content">
 						<div class="head-products-list">
-							<form class="form-inline">
+							<form class="form-inline" name="sortingFrm" id=sortingFrm method="POST" action="">
+								{{ csrf_field() }}
 								<div class="form-group">
-									<input type="text" class="form-control" id="xtxtAllGifts" name="xtxtAllGifts" value="All Gifts">
+									<select class="form-control" onchange="sortingFrm.submit()" id="xslcCat" name="xslcCat">
+										<option value="">SELECT CATEGORY</option>
+										@foreach( $categories as $cat ):
+											<option {{ $sortByCat == $cat->id ? 'selected' : '' }}  value="{{ $cat->id }}">{{ $cat->title }}</option>
+										@endforeach
+									</select>
 								</div>
 								<div class="form-group">
-									<select class="form-control" id="xslcSortBy" name="xslcSortBy">
-										<option value="Sort By">Sort By</option>
-										<option value="1">High to Low</option>
-										<option value="2">Low to High</option>
+									<select class="form-control" onchange="sortingFrm.submit()" id="xslcSortByPrice" name="xslcSortByPrice">
+										<option value="">Sort By Price</option>
+										<option value="1" {{ $sortByPrice == 1 ? 'selected' : '' }} >High to Low</option>
+										<option value="2" {{ $sortByPrice == 2 ? 'selected' : '' }} >Low to High</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<select class="form-control" onchange="sortingFrm.submit()" id="xslcSortByAlpha" name="xslcSortByAlpha">
+										<option value="">Sort By Alpha.</option>
+										<option value="1" {{ $sortByAlpha == 1 ? 'selected' : '' }}>A-Z</option>
+										<option value="2" {{ $sortByAlpha == 2 ? 'selected' : '' }}>Z-A</option>
 									</select>
 								</div>
 								<a href="{{config('app.url')}}create/registry/3" class="btn btn-primary pull-right">FINALIZE</a>

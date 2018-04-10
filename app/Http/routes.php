@@ -38,8 +38,6 @@ Route::get('/product-checker', function () {
 		</tbody>
 	</table>
 <?php
-	//var_dump( $products );
-
 });
 
 Route::get('/', function () {
@@ -184,22 +182,93 @@ Route::any('/profile', function () {
     ]);
 });
 
-
 Route::any('/create/registry/{step}', function ($step) {
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
 	
-	$reg_types = DB::table('registry_types')->select()->get();
-	$products  = [];
+	$reg_types  = DB::table('registry_types')->select()->get();
+
+	$products    = [];
+	$categories  = [];
+	$sortByCat   = '';
+	$sortByPrice = '';
+	$sortByAlpha = '';
+	$promo_code  = '';
+
 	if( $step == 2 )
 	{
-		$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
+
+		$categories = DB::table('categories')->select()->get();
+
+		if( count( Input::all() ) > 0 )
+		{
+			$sortByCat   = request('xslcCat');
+			$sortByPrice = request('xslcSortByPrice');
+			$sortByAlpha = request('xslcSortByAlpha');
+
+			$product_inst = DB::table('products as p')
+			->select('p.*')
+			->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id');
+
+			if( strlen( $sortByCat ) > 0 )
+			{
+				$category_id = $sortByCat;
+				$product_inst->where(['apc.category_id' => $category_id]);
+			}
+			//var_dump( $sortByPrice );
+			if( $sortByPrice == '1' )
+				$product_inst->orderByRaw('CAST(trtt_p.price AS DECIMAL(10,2)) DESC');
+			else if( $sortByPrice == '2' )
+				$product_inst->orderByRaw('CAST(trtt_p.price AS DECIMAL(10,2)) ASC');
+
+			if( $sortByAlpha == '1' )
+				$product_inst->orderBy('p.title', 'ASC');
+			else if( $sortByAlpha == '2' )
+				$product_inst->orderBy('p.title', 'DESC');
+
+			$products = $product_inst->get();
+			// var_dump( $products );
+			// exit;
+			
+		} else 
+		{
+			$products   = DB::table('products')->orderBy('title', 'asc')->select()->get();	
+		}
+	}
+
+	if( $step == 3 )
+	{
+
+		function generate_promo_code( $size = 6 )
+		{
+			$alpha_key = '';
+			$keys      = range('A', 'Z');
+
+			for ($i = 0; $i < 2; $i++)
+				$alpha_key .= $keys[array_rand($keys)];
+
+			$length = $size - 2;
+			$key    = '';
+			$keys   = range(0, 9);
+
+			for ($i = 0; $i < $length; $i++)
+				$key .= $keys[array_rand($keys)];
+			
+			return $alpha_key . $key;
+		}
+
+		$promo_code = generate_promo_code();
 	}
 
 	return view('create-registry-' . $step, [
-    	'reg_types' => $reg_types,
-    	'products'  => $products
+		'reg_types'   => $reg_types,
+		'products'    => $products,
+		'categories'  => $categories,
+		'sortByCat'   => $sortByCat,
+		'sortByPrice' => $sortByPrice,
+		'sortByAlpha' => $sortByAlpha,
+		'promo_code'  => $promo_code
     ]);
 
 });
