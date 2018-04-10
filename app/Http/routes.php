@@ -12,6 +12,36 @@
 |
 */
 
+Route::get('/product-checker', function () {
+	$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
+?>
+	<table border="1" width="100%">
+		<thead>
+			<tr>
+				<!-- <th>S.NO</th> -->
+				<th>ID</th>
+				<th>Title</th>
+				<th>price</th>
+				<th>Image</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $c=0; foreach( $products as $product ): $c++;?>
+				<tr>
+					<!-- <td align="center"><?= $c ?></td> -->
+					<td align="center"><?= $product->id ?></td>
+					<td align="left"><?= $product->title ?></td>
+					<td align="center"><?= $product->price ?></td>
+					<td align="center"><img src="<?= $product->image ?>" width="100" height="100" /></td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>
+<?php
+	//var_dump( $products );
+
+});
+
 Route::get('/', function () {
 	if (Auth::check()) {
 		// The user is logged in...

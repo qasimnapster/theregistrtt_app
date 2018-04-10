@@ -1,6 +1,7 @@
 @extends('master')
 @section('stylesheets')
     <link rel="stylesheet" href="{{ config('app.url') }}assets/css/steps.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endsection
 @section('content')
 		
@@ -31,89 +32,101 @@
 	<section>
 		<div>
 			<div>
-				<h1 class="text-light text-center" >Welcome to your Registries Create Page</h1>
-				<p class="text-center" style="font-style:italic">We're so excited for you, and can't wait for you to discover how easy it is to add gifts from any store in the world. Let's get started!</p>
+				<h1 class="text-light text-center" >Welcome To Your Registry Create Page</h1>
+				<p class="text-center" style="font-style:italic">We're so excited to be starting this Registry with you both!  Let's get started!</p>
 			</div>
 		</div>
 		<div class="container container-wishlist-form">
 			<div class="clearfix">
 				<div class="col-sm-4">
 					<div class="img-wishlist-container">
-						<img src="{{ config('app.url') }}assets/img/New-Baby-Arrival.jpg" alt="" class="img-responsive">
+						<img src="{{ config('app.url') }}assets/img/main-banner/5.jpeg" alt="" class="img-responsive">
 					</div>
 				</div>
 				<div class="col-sm-8">
 					<div class="wishlist-wrapper">
 						<div>
 							<div class="form-group">
-							    <label for="xtxtOccs" class="h3 text-light">What's the ocassion?</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Baby?">
+							    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0;">What's the ocassion?</label>
+							    <select class="form-control" id="occsfield">
+							    	<option value="">SELECT</option>
+							    	<option value="">Wedding Registry</option>
+							    	<option value="2">Personal Wishlist</option>
+							    </select>
 							</div>
-							<div class="form-group">
-							    <label for="xtxtNames[0]">Who is the Happy Parent?</label>
+							<hr>
+							<div class="form-group form-group-married">
+							    <label for="xtxtNames[0]" class="h3 text-light" style="margin-top:0px;">Who are the Happy Couple?</label>
 							    <div class="clearfix">
-								    <input type="text" class="col-sm-5" name="xtxtNames[]" id="xtxtNames[0]" placeholder="Your Name" >
-								    <input type="text" class="col-sm-5 col-sm-offset-2" name="xtxtNames[]" id="xtxtNames[1]" placeholder="Partner's Name">
+								    <input type="text" class="field-control col-sm-5" name="xtxtNames[]" id="xtxtNames[0]" placeholder="Your Name" >
+								    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtNames[]" id="xtxtNames[1]" placeholder="Partner's Name">
 							    </div>
 							</div>
-							<div class="form-group">
-								<div>Your Event</div>
-								<div class="radio">
-									<label>
-										<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-										Baby's Due Date
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Baby's Already Here
-									</label>
-								</div>
-								<div class="radio">
-									<label>
-										<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-										It's an adoption!
-									</label>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="">
-									<h3 class="text-light">Where should guests ship your gifts?</h3>
-								</div>
-							    <label for="xtxtOccs">Ship to Name</label>
+							<div class="form-group form-group-single" style="display: none">
+							    <label for="xtxtNames[0]" class="h3 text-light" style="margin-top:0px;">Your Name</label>
 							    <div class="clearfix">
-								    <input type="text" class="col-sm-5" name="xtxtNames[]" id="xtxtNames[0]" placeholder="Your First Name" >
-								    <input type="text" class="col-sm-5 col-sm-offset-2" name="xtxtNames[]" id="xtxtNames[1]" placeholder="Your Last Name">
+								    <input type="text" class="field-control col-sm-5" name="xtxtNames[]" id="xtxtNames[0]" placeholder="Your First Name" >
+								    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtNames[]" id="xtxtNames[1]" placeholder="Your Last Name">
 							    </div>
 							</div>
+							<hr>
 							<div class="form-group">
-							    <label for="xtxtOccs">Address 1</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Address 1">
+							    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0px;">When is your Event?</label>
+							    <div class="input-group">
+							    	<input type="text" id="datepicker" name="datepicker" class="form-control">
+							    	<span class="input-group-addon" onclick="datepicker.focus()" id="basic-addon2"><i class="fa fa-calendar"></i></span>
+							    </div>
 							</div>
+							<hr>
 							<div class="form-group">
-							    <label for="xtxtOccs">Address 2 (optional)</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Address 2">
+							    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0px;">Would you like the Gifts Delivered or you prefer to pick up in store? <div style="font-weight: bold; font-style: italic; margin-top:5px;">*Note that a delivery fee is applicable</div></label>
+								<label class="radio-inline">
+									<input type="radio" class="pickReg" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> Delivery
+								</label>
+								<label class="radio-inline">
+									<input type="radio" class="pickReg" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Pick Up in Store
+								</label>
 							</div>
-							<div class="form-group">
-							    <label for="xtxtOccs">Zipcode</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Zipcode">
-							</div>
-							<div class="form-group">
-							    <label for="xtxtOccs">City</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your City">
-							</div>
-							<div class="form-group">
-							    <label for="xtxtOccs">State</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your State">
-							</div>
-							<div class="form-group">
-							    <label for="xtxtOccs">Country</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Country">
-							</div>
-							<div class="form-group">
-							    <label for="xtxtOccs">Phone Number</label>
-							    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Phone Number">
+							<hr>
+							<div class="ship-info-form">
+								<div class="form-group">
+									<div class="">
+										<h3 class="text-light">Where should guests ship your gifts?</h3>
+									</div>
+								    <label for="xtxtOccs">Ship to Name</label>
+								    <div class="clearfix">
+									    <input type="text" class="field-control col-sm-5" name="xtxtNames[]" id="xtxtNames[0]" placeholder="Your First Name" >
+									    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtNames[]" id="xtxtNames[1]" placeholder="Your Last Name">
+								    </div>
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">Address 1</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Address 1">
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">Address 2 (optional)</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Address 2">
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">Zipcode</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Zipcode">
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">City</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your City">
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">State</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your State">
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">Country</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Country">
+								</div>
+								<div class="form-group">
+								    <label for="xtxtOccs">Phone Number</label>
+								    <input type="text" class="form-control" id="xtxtOccs" placeholder="Your Phone Number">
+								</div>
 							</div>
 							<div class="row clearfix">
 								<div class="col-sm-12 pull-right">
@@ -129,7 +142,32 @@
 
 	@include('sections.contactus')
     @section('scripts')
-        
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+		$(function(){
+		    $( "#datepicker" ).datepicker();
+		    $('.pickReg').on('change', function(){
+		   		if( $(this).val() == 'option2' )
+		   		{
+		   			$('.ship-info-form').stop().slideUp();
+		   		} else 
+		   		{
+		   			$('.ship-info-form').stop().slideDown();
+		   		}
+		    });
+		    $('#occsfield').on('change', function(){
+		    	if( $(this).val() == '2' )
+		    	{
+		    		$('.form-group-single').stop().slideDown();
+		    		$('.form-group-married').stop().slideUp();
+		    	} else 
+		    	{
+		    		$('.form-group-single').stop().slideUp();
+		    		$('.form-group-married').stop().slideDown();
+		    	}
+		    });
+		});
+		</script>
     @endsection
 
 @endsection
