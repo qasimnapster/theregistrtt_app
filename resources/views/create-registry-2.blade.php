@@ -47,7 +47,7 @@
 										<option value="2">Low to High</option>
 									</select>
 								</div>
-								<a href="{{config('app.url')}}create/wishlist/3" class="btn btn-primary pull-right">FINALIZE</a>
+								<a href="{{config('app.url')}}create/registry/3" class="btn btn-primary pull-right">FINALIZE</a>
 							</form>
 						</div>
 						<div class="block-products-list">
@@ -88,13 +88,13 @@
 		    /* BOOTSTRAP SLIDER */
 		    $('.price-slider').slider()
 		    $('.btn-add-gift').on('click', function(){
-		    	alert('Item added to your wishlist!');
+		    	alert('Item added to your registry!');
 		    	$(this).fadeOut();
 		    	$(this).siblings('.btn-remove-gift').fadeIn();
 
 		    });
 		    $('.btn-remove-gift').on('click', function(){
-		    	alert('Item remvoed from your wishlist!');
+		    	alert('Item remvoed from your registry!');
 		    	$(this).fadeOut();
 		    	$(this).siblings('.btn-add-gift').fadeIn();
 		    });

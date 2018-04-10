@@ -3,9 +3,9 @@
     <div class="contact-container">
         <div class="container">
             <h3 class="text-light text-center">We'd <i class="fa fa-heart-o text-theme"></i> to Help!</h3>
-            <p class="text-center text-contact-us">
+            <!-- <p class="text-center text-contact-us">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias minima unde minus esse est voluptate! Quis dicta quisquam, sint sunt sit, deserunt, est magni in aperiam illum repudiandae minima rem!
-            </p>
+            </p> -->
             <div class="block-contact">
                 <div class="col-sm-6 row">
                     <div class="clearfix">

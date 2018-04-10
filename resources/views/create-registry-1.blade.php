@@ -31,7 +31,7 @@
 	<section>
 		<div>
 			<div>
-				<h1 class="text-light text-center" >Welcome to your Wishlists Create Page</h1>
+				<h1 class="text-light text-center" >Welcome to your Registries Create Page</h1>
 				<p class="text-center" style="font-style:italic">We're so excited for you, and can't wait for you to discover how easy it is to add gifts from any store in the world. Let's get started!</p>
 			</div>
 		</div>
@@ -117,7 +117,7 @@
 							</div>
 							<div class="row clearfix">
 								<div class="col-sm-12 pull-right">
-									<a href="{{ config('app.url') }}create/wishlist/2" class="btn btn-primary">CONTINUE</a>
+									<a href="{{ config('app.url') }}create/registry/2" class="btn btn-primary">CONTINUE</a>
 								</div>
 							</div>
 						</div>

@@ -14,7 +14,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-center">
                     <li>
-                        <div class="anchor-form"><label class="label-navbar" for="">Find a Wishlist</label></div>
+                        <div class="anchor-form"><label class="label-navbar" for="">Find a Registry</label></div>
                     </li>
                     <li class="less-mt">
                         <div class="anchor-form"><input type="text" class="form-control text-center input-navbar" value="Enter Promo Code"></div>
@@ -34,7 +34,7 @@
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ config('app.url') }}logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ config('app.url') }}create/wishlist/1"> <i class="fa fa-paper-plane"></i> Create Wishlist</a></li>
+                                <li><a href="{{ config('app.url') }}create/registry/1"> <i class="fa fa-paper-plane"></i> Create Registry</a></li>
                             </ul>
                         </li>
                     @else

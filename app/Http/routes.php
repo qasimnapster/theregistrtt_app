@@ -155,7 +155,7 @@ Route::any('/profile', function () {
 });
 
 
-Route::any('/create/wishlist/{step}', function ($step) {
+Route::any('/create/registry/{step}', function ($step) {
 	
 	$reg_types = DB::table('registry_types')->select()->get();
 	$products  = [];
@@ -164,7 +164,7 @@ Route::any('/create/wishlist/{step}', function ($step) {
 		$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
 	}
 
-	return view('create-wishlist-' . $step, [
+	return view('create-registry-' . $step, [
     	'reg_types' => $reg_types,
     	'products'  => $products
     ]);

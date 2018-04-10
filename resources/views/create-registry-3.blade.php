@@ -31,7 +31,7 @@
 	<section>
 		<div>
 			<div class="alert alert-success">
-				<h1 class="text-light text-center" ><span style="font-style:italic; font-size: inherit;">Congratulations!</span> You have created the wishlist successfully.</h1>
+				<h1 class="text-light text-center" ><span style="font-style:italic; font-size: inherit;">Congratulations!</span> You have created the registry successfully.</h1>
 
 			</div>
 		</div>

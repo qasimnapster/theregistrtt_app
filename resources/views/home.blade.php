@@ -23,158 +23,20 @@
 @section('content')
     <div class="slider">
 
-        <div class="rev_slider_wrapper fullscreen-container">
-            <div id="rev_slider_1" class="rev_slider fullscreenbanner" >
-                <ul>
-                    <!-- SLIDE 1 -->
-                    <li data-transition="fade"  data-masterspeed="700" >
-                        <!-- MAIN IMAGE -->
-                        <img src="{{ config('app.url') }}assets/img/main-banner/1.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYERS -->
-                        <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-200"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1600"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 10">THE #1 UNIVERSAL
-                        </div>
-                        <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-120"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1800"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 12">Wedding Wishlist, Baby Wishlist <br> and Gift Wishlist for all occasions
-                        </div>
-                        <!-- LAYER NR. 5 -->
-                        <div class="tp-caption skewfromrightshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-10"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1900"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/wishlist/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE WISHLIST</a>
-                        </div>
-                    </li>
-                    <!-- SLIDE 2 -->
-                    <li data-transition="fade"  data-masterspeed="700" >
-                        <!-- MAIN IMAGE -->
-                        <img src="{{ config('app.url') }}assets/img/main-banner/4.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYERS -->
-                        <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-200"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1600"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 10">THE #1 UNIVERSAL
-                        </div>
-                        <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-120"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1800"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 12">Wedding Wishlist, Baby Wishlist <br> and Gift Wishlist for all occasions
-                        </div>
-                        <!-- LAYER NR. 5 -->
-                        <div class="tp-caption skewfromrightshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-10"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1900"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/wishlist/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE WISHLIST</a>
-                        </div>
-                    </li>
-                    <!-- SLIDE 3 -->
-                    <li data-transition="fade"  data-masterspeed="700" >
-                        <!-- MAIN IMAGE -->
-                        <img src="{{ config('app.url') }}assets/img/main-banner/5.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYERS -->
-                        <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-200"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1600"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 10">THE #1 UNIVERSAL
-                        </div>
-                        <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-120"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1800"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 12">Wedding Wishlist, Baby Wishlist <br> and Gift Wishlist for all occasions
-                        </div>
-                        <!-- LAYER NR. 5 -->
-                        <div class="tp-caption skewfromrightshort customout"
-                            data-x="right"
-                            data-y="center" data-voffset="-10"
-                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-speed="500"
-                            data-start="1900"
-                            data-easing="Back.easeOut"
-                            data-endspeed="500"
-                            data-endeasing="Power4.easeIn"
-                            data-captionhidden="on"
-                            style="z-index: 14"><a href="http://theregistrytt.optimalsolutionsonline.com/create/wishlist/1" class="btn btn-primary btn-site-info-big text-light" style="color:#fff;">CREATE YOUR FREE WISHLIST</a>
-                        </div>
-                    </li>
-                </ul>
-                <div class="tp-bannertimer"></div>
-            </div>
-        </div>
+        @include('sections.banner')
 
         <!-- <div class="banner-main">
             <div class="col-md-6 pull-right container-site-info text-center">
                 <h3 class="text-light">THE #1 UNIVERSAL</h3>
-                <h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
-                <a href="{{ config('app.url') }}create/wishlist/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+                <h1 class="text-light">Wedding Registry, Baby Registry <br /> and Gift Registry for all occasions</h1>
+                <a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE REGISTRY</a>
             </div>
         </div>
         <div class="banner-main" style="background-image:url(./assets/img/slide2.jpg)">
             <div class="col-md-6 pull-right container-site-info text-center">
                 <h3 class="text-light">THE #1 UNIVERSAL</h3>
-                <h1 class="text-light">Wedding Wishlist, Baby Wishlist <br /> and Gift Wishlist for all occasions</h1>
-                <a href="{{ config('app.url') }}create/wishlist/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE WISHLIST</a>
+                <h1 class="text-light">Wedding Registry, Baby Registry <br /> and Gift Registry for all occasions</h1>
+                <a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE REGISTRY</a>
             </div>
         </div> -->
 
@@ -186,57 +48,79 @@
         <h1 class="text-light" style="margin-bottom: 30px;" >Items Categories</h1>
         <div class="clearfix container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/glassware.png" alt="" class="img-responsive">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="https://assets3.classic-assets.com/product_photo/48301/large_20014-glassware-vinea-set-1_1473717653.jpg" alt="" class="img-responsive">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/glassware" class="h4 text-center text-capitalize">glassware</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/glassware" class="h4 text-center text-capitalize">glassware</a>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/crockery.png" alt="" class="img-responsive">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="http://cookingchefshop.com/1491-large_default/maxwell-williams-servizio-18pz-piatti-motion.jpg" alt="" class="img-responsive">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/crockery" class="h4 text-center text-capitalize">crockery</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/crockery" class="h4 text-center text-capitalize">crockery</a>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/kitchen_utensils.png" alt="" class="img-responsive">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="https://ae01.alicdn.com/kf/HTB1ZKg2QVXXXXc0XVXXq6xXFXXXh/Kids-Stainless-Steel-Kitchen-Cooking-Utensils-Pots-Pans-Food-Gift-Miniature-Kitchen-Tools-Set-Simulation-Play.jpg_640x640.jpg" alt="" class="img-responsive">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/linens.png" alt="" class="img-responsive" style="    height: 100px;">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="https://cdn.shopify.com/s/files/1/0951/7126/products/linen-hardcore-bundle_cream--cream--cream_background_480x.jpg?v=1510930368" alt="" class="img-responsive" style="">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/linens" class="h4 text-center text-capitalize">linens</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/linens" class="h4 text-center text-capitalize">linens</a>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/bathroom_accessories.png" alt="" class="img-responsive">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="https://images.cb2.com/is/image/CB2/RubberBathSinkGroupFHF16Group/?$web_product_hero$&161121140920&wid=625&hei=625" alt="" class="img-responsive">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/mini_appliances.png" alt="" class="img-responsive">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="https://www.courts.com.sg/media/catalog/product/cache/image/4dd88cc0ac8c2f36fda1eefecbc98069/i/p/ip084299_00.jpg" alt="" class="img-responsive">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-                    <div class="img-cats">
-                        <img src="{{ config('app.url') }}/assets/img/icons/home_accents.png" alt="" class="img-responsive">
+                <div class="col-lg-4 col-md-4 col-sm-4">&nbsp;</div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="item-cats">
+                        <div class="img-cats">
+                            <img src="http://www.sneakerdunk.com/wp-content/uploads/2018/04/bathroom-shelf-decorating-ideas-pictures-of9g18-tjihome-amazing-1024x1024.jpg" alt="" class="img-responsive">
+                        </div>
+                        <a href="{{ config('app.url') }}categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
                     </div>
-                    <a href="{{ config('app.url') }}categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
                 </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">&nbsp;</div>
             </div>
             <!-- <img src="https://images-platform.99static.com/JsmXH_1twMGCO3EedzmGJhdKyss=/fit-in/900x675/99designs-contests-attachments/4/4843/attachment_4843165" style="opacity: .6;"> -->
             <!-- <div class="brand-detail"><img src="https://s3.amazonaws.com/static.myregistry.com/cm/HomePage/SyncPartner_1_481285961-hover.png" alt=""></div>
             <div class="brand-detail"><img src="https://s3.amazonaws.com/static.myregistry.com/cm/HomePage/SyncPartner_1_481285961-hover.png" alt=""></div> -->
         </div>
     </section>
-    <section class="banner-ads">
+    <div class="ticker-main light-ticker text-center">
+        See what members are adding: <a href="#" style="font-size:24px;">Wedding Registry | </a><a href="#" style="font-size:24px;">Baby Registry | </a><a href="#" style="font-size:24px;">Wish List</a>
+    </div>
+    <!-- FAQs Section -->
+    @include('sections.faqs')
+        
+    <!-- <section class="banner-ads">
         <div class="container" style="height:100%">
             <div class="col-sm-6 pull-right ads-table">
                 <div class="ads-detail">
@@ -251,11 +135,9 @@
                 </div>
             </div>
         </div>
-    </section>
-    <div class="ticker-main light-ticker text-center">
-        See what members are adding: <a href="#" style="font-size:24px;">Wedding Wishlist | </a><a href="#" style="font-size:24px;">Baby Wishlist | </a><a href="#" style="font-size:24px;">Wish List</a>
-    </div>
-    <section class="adding-gifts">
+    </section> -->
+    
+    <!-- <section class="adding-gifts">
         <div class="container">
             <div class="col-sm-6">
                 <div style="position: relative;">
@@ -264,19 +146,26 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <div>
-                    <div class="title-adding">
-                        <h2 class="text-light">Add gifts on-the-go from your smartphone</h2>
+                <div style="    transform: translate(0%, 25%);">
+                    <div class="paragraph-adding">
+                        <h3 class="text-light" style="line-height: 30px;">
+                            <i class="fa fa-check-square-o" style="padding-right: 5px;"></i> Browse and Purchase from the convenience of your mobile
+                        </h3>
                     </div>
                     <div class="paragraph-adding">
                         <h3 class="text-light" style="line-height: 30px;">
-                            Scan any barcode and add items to your gift list while browsing your favorite store. You can even add items from stores that do not have websites by taking a picture and adding a few details about where the item can be purchased.
+                            <i class="fa fa-check-square-o" style="padding-right: 5px;"></i> Complimentary Registry Invites
+                        </h3>
+                    </div>
+                    <div class="paragraph-adding">
+                        <h3 class="text-light" style="line-height: 30px;">
+                            <i class="fa fa-check-square-o" style="padding-right: 5px;"></i> Exclusive Bridal Party Discounts
                         </h3>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <div class="ticker-main gradient-ticker text-center">
         <span style="color:#fff; font-weight: 300;font-size: 24px;padding: 30px; color: #fff;">Want to know more about us!</span>
         <a href="{{ config('app.url') }}about-us" class="btn btn-default btn-lg">Click Here</a>
@@ -284,63 +173,9 @@
         <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff; border-right:1px solid" data-toggle="tooltip" data-placement="left" title="Why Use a Registry?"><i class="fa fa-gift" aria-hidden="true"></i> BW </span>
         <span style="font-size:24px; color: #e5c100; padding:15px; background-color: #fff;" data-toggle="tooltip" data-placement="left" title="Why select your Registry with Us?"><i class="fa fa-gift" aria-hidden="true"></i> WL</span> -->
     </div>
-    <section class="sample-wishlist" style="border-bottom: 1px solid #ccc;">
-        <h1 class="text-light text-center">FAQs</h1>
-        <div class="samples-container container">
-            @include('sections.faqs')
-        </div>
-    </section>
-    <section class="sample-wishlist" style="border-bottom: 1px solid #ccc; background:#eee;">
-        <h1 class="text-light text-center" style="margin-top: 0; padding-top: 25px;">Another Section</h1>
-        <div class="samples-container container">
-            <div class="row clearfix block-row-listb">
-                <div class="col-sm-3 text-right">
-                    <i class="h1 fa fa-bookmark" style="font-size: 42px;color:#e5c100"></i>
-                </div>
-                <div class="col-sm-6">
-                    <h2 class="text-light">Browse and Purchase from your mobile</h1>
-                    <p class="light-rale">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ratione, temporibus consequuntur optio. Enim, fugiat aperiam. Dignissimos ea vero magnam nesciunt ut ad quae, quaerat quia blanditiis dolor cum corporis!</p>
-                </div>
-            </div>
-            <div class="row clearfix block-row-listb">
-                <div class="col-sm-3 text-right">
-                    <i class="h1 fa fa-bookmark" style="font-size: 42px;color:#e5c100"></i>
-                </div>
-                <div class="col-sm-6">
-                    <h2 class="text-light">Complimentary Registry Invites</h1>
-                    <p class="light-rale">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero deleniti est placeat, repudiandae praesentium reiciendis saepe quaerat dolore fugit, voluptatibus magnam, odit minima esse iure distinctio consectetur tempora nemo eveniet.</p>
-                </div>
-            </div>
-            <div class="row clearfix block-row-listb">
-                <div class="col-sm-3 text-right">
-                    <i class="h1 fa fa-bookmark" style="font-size: 42px;color:#e5c100"></i>
-                </div>
-                <div class="col-sm-6">
-                    <h2 class="text-light">Exclusive Bridal Party Discounts at Kooti's</h1>
-                    <p class="light-rale">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum magnam recusandae ipsum consectetur in eaque asperiores dolorem perspiciatis, ipsa sed nemo. Maxime quibusdam, rerum repellendus provident voluptatibus, reprehenderit molestias eum.</p>
-                </div>
-            </div>
-            <div class="row clearfix block-row-listb">
-                <div class="col-sm-3 text-right">
-                    <i class="h1 fa fa-bookmark" style="font-size: 42px;color:#e5c100"></i>
-                </div>
-                <div class="col-sm-6">
-                    <h2 class="text-light">Complete your Registry at Discounted Prices</h1>
-                    <p class="light-rale">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi optio sequi inventore tenetur a modi aspernatur quas asperiores temporibus quibusdam perspiciatis sed itaque repellendus porro fugit nostrum facere, unde architecto.</p>
-                </div>
-            </div>
-            <div class="row clearfix block-row-listb">
-                <div class="col-sm-3 text-right">
-                    <i class="h1 fa fa-bookmark" style="font-size: 42px;color:#e5c100"></i>
-                </div>
-                <div class="col-sm-6">
-                    <h2 class="text-light">Access to Special Order Items</h1>
-                    <p class="light-rale">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti excepturi eveniet assumenda qui enim repudiandae quibusdam, quam pariatur aliquid repellendus quod animi, impedit ratione iste eos debitis sint voluptatem illum.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="sample-wishlist">
+    
+    @include('sections.testimonials')
+    <!-- <section class="sample-wishlist">
         <h1 class="text-light text-center">View a sample Wishlist</h1>
         <div class="samples-container container">
             <div class="row">
@@ -364,7 +199,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     @include('sections.contactus')
     @section('scripts')
         
