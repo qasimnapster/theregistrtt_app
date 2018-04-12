@@ -28,13 +28,15 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{ config('app.url') }}create/registry/1"> <i class="fa fa-paper-plane"></i> Create Registry</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ config('app.url') }}registry/index"> <i class="fa fa-briefcase"></i> My Registry</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ config('app.url') }}profile"> <i class="fa fa-gear"></i> Profile Setting</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#"> <i class="fa fa-edit"></i> Change Password</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ config('app.url') }}logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="{{ config('app.url') }}create/registry/1"> <i class="fa fa-paper-plane"></i> Create Registry</a></li>
                             </ul>
                         </li>
                     @else

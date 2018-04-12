@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="col-sm-8">
-					<form action="{{ config('app.url') }}create/registry/store" method="POST" accept-charset="UTF-8">
+					<form action="{{ config('app.url') }}edit/registry/store/{{ $edit_details->id }}" method="POST" accept-charset="UTF-8">
 						<div class="wishlist-wrapper">
 							<div>
 								<div class="form-group">
@@ -52,30 +52,30 @@
 								    <select class="form-control" id="xtxtOccs" name="xtxtOccs" required>
 								    	<option value="">SELECT</option>
 								    	@foreach( $ocassions as $ocs )
-									    	<option value="{{ $ocs->id }}">{{ $ocs->title }}</option>
+									    	<option value="{{ $ocs->id }}" {{ $edit_details->ocassion_id == $ocs->id ? 'selected' : '' }} >{{ $ocs->title }}</option>
 								    	@endforeach
 								    </select>
 								</div>
 								<hr>
-								<div class="form-group form-group-married">
+								<div class="form-group form-group-married" style="  display: {{$edit_details->ocassion_id == 1 ? 'block':'none' }} ">
 								    <label for="xtxtCoupleNames[0]" class="h3 text-light" style="margin-top:0px;">Who are the Happy Couple?</label>
 								    <div class="clearfix">
-									    <input type="text" class="field-control col-sm-5" name="xtxtCoupleNames[]" id="xtxtCoupleNames[0]" placeholder="Your Name" required>
-									    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtCoupleNames[]" id="xtxtCoupleNames[1]" placeholder="Partner's Name" required>
+									    <input type="text" class="field-control col-sm-5" name="xtxtCoupleNames[]" id="xtxtCoupleNames[0]" placeholder="Your Name" required value="{{ $edit_details->first_name }}" >
+									    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtCoupleNames[]" id="xtxtCoupleNames[1]" placeholder="Partner's Name" required value="{{ $edit_details->partner_name }}" >
 								    </div>
 								</div>
-								<div class="form-group form-group-single" style="display: none">
+								<div class="form-group form-group-single" style="display: {{$edit_details->ocassion_id == 2 ? 'block':'none' }}">
 								    <label for="xtxtYourNames[0]" class="h3 text-light" style="margin-top:0px;">Your Name</label>
 								    <div class="clearfix">
-									    <input type="text" class="field-control col-sm-5" name="xtxtYourNames[]" id="xtxtYourNames[0]" placeholder="Your First Name">
-									    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtYourNames[]" id="xtxtYourNames[1]" placeholder="Your Last Name">
+									    <input type="text" class="field-control col-sm-5" name="xtxtYourNames[]" id="xtxtYourNames[0]" placeholder="Your First Name" value="{{ $edit_details->first_name }}">
+									    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtYourNames[]" id="xtxtYourNames[1]" placeholder="Your Last Name" value="{{ $edit_details->last_name }}">
 								    </div>
 								</div>
 								<hr>
 								<div class="form-group">
 								    <label for="xtxtEventDate" class="h3 text-light" style="margin-top:0px;">When is your Event?</label>
 								    <div class="input-group">
-								    	<input type="text" id="xtxtEventDate" name="xtxtEventDate" class="form-control" required>
+								    	<input type="text" id="xtxtEventDate" name="xtxtEventDate" class="form-control" required value="{{ $edit_details->event_date }}">
 								    	<span class="input-group-addon" onclick="xtxtEventDate.focus()" id="basic-addon2"><i class="fa fa-calendar"></i></span>
 								    </div>
 								</div>
@@ -84,33 +84,33 @@
 								    <label for="xrdoDelPref1" class="h3 text-light" style="margin-top:0px;">Would you like the Gifts Delivered or you prefer to pick up in store? <div style="font-weight: bold; font-style: italic; margin-top:5px;">*Note that a delivery fee is applicable</div></label>
 								    @foreach( $delivery_pref as $inc => $pref )
 										<label class="radio-inline text-capitalize">
-											<input type="radio" class="pickReg"  name="xrdoDelPref" id="xrdoDelPref{{ $inc }}" value="{{ $pref->id }}" @if( $inc == 0 ) checked  @endif > {{ $pref->name }}
+											<input type="radio" class="pickReg"  name="xrdoDelPref" id="xrdoDelPref{{ $inc }}" value="{{ $pref->id }}" @if( $edit_details->delivery_preference_id == $pref->id ) checked  @endif > {{ $pref->name }}
 										</label>
 									@endforeach
 								</div>
 								<hr>
-								<div class="ship-info-form">
+								<div class="ship-info-form" {{ $edit_details->delivery_preference_id == 2 ? 'style=display:none' : '' }} >
 									<div class="form-group">
 										<div class="">
 											<h3 class="text-light">Where should guests ship your gifts?</h3>
 										</div>
 									    <label for="xtxtShippingFirstName">Ship to Name</label>
 									    <div class="clearfix">
-										    <input type="text" class="field-control col-sm-5" name="xtxtShippingFirstName" id="xtxtShippingFirstName" placeholder="Your First Name" required>
-										    <input type="text" class="field-control col-sm-5 col-sm-offset-2" name="xtxtShippingLastName" id="xtxtShippingLastName" placeholder="Your Last Name" required>
+										    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->first_name : '' }} " class="field-control col-sm-5" name="xtxtShippingFirstName" id="xtxtShippingFirstName" placeholder="Your First Name" required>
+										    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->last_name : '' }} " class="field-control col-sm-5 col-sm-offset-2" name="xtxtShippingLastName" id="xtxtShippingLastName" placeholder="Your Last Name" required>
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label for="xtxtAddress1">Address 1</label>
-									    <input type="text" class="form-control" name="xtxtAddress1" id="xtxtAddress1" placeholder="Your Address 1" required>
+									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->address_1 : '' }} " class="form-control" name="xtxtAddress1" id="xtxtAddress1" placeholder="Your Address 1" required>
 									</div>
 									<div class="form-group">
 									    <label for="xtxtAddress2">Address 2 (optional)</label>
-									    <input type="text" class="form-control" name="xtxtAddress2" id="xtxtAddress2" placeholder="Your Address 2">
+									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->address_2 : '' }} " class="form-control" name="xtxtAddress2" id="xtxtAddress2" placeholder="Your Address 2">
 									</div>
 									<div class="form-group">
 									    <label for="xtxtZipcode">Zipcode</label>
-									    <input type="text" class="form-control" id="xtxtZipcode" name="xtxtZipcode" placeholder="Your Zipcode">
+									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->postal_code : '' }} " class="form-control" id="xtxtZipcode" name="xtxtZipcode" placeholder="Your Zipcode">
 									</div>
 									<div class="form-group">
 									    <label for="xtxtCity">City</label>
@@ -120,7 +120,7 @@
 										    	<option value="{{ $city->id }}">{{ $city->name }}</option>
 									    	@endforeach
 									    </select> -->
-									    <input type="text" name="xtxtCity" id="xtxtCity" class="form-control" required placeholder="Your City Name">
+									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->city_id : '' }} " name="xtxtCity" id="xtxtCity" class="form-control" required placeholder="Your City Name">
 
 									</div>
 									<div class="form-group">
@@ -131,20 +131,20 @@
 										    	<option value="{{ $state->id }}">{{ $state->name }}</option>
 									    	@endforeach
 									    </select> -->
-									    <input type="text" name="xtxtState" id="xtxtState" class="form-control" required placeholder="Your State Name">
+									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->state_id : '' }} " name="xtxtState" id="xtxtState" class="form-control" required placeholder="Your State Name">
 									</div>
 									<div class="form-group">
 									    <label for="xslsCountry">Country</label>
 									    <select class="form-control" id="xslsCountry" name="xslsCountry" required>
 									    	<option value="">SELECT</option>
 									    	@foreach( $countries as $country ):
-										    	<option value="{{ $country->id }}">{{ $country->name }}</option>
+										    	<option value="{{ $country->id }}" {{ $shipping_detail && $shipping_detail->country_id == $country->id ? 'selected' : '' }} >{{ $country->name }}</option>
 									    	@endforeach
 									    </select>
 									</div>
 									<div class="form-group">
 									    <label for="xtxtShippingPhoneNumber">Phone Number</label>
-									    <input type="number" class="form-control" name="xtxtShippingPhoneNumber" id="xtxtShippingPhoneNumber" placeholder="Your Phone Number">
+									    <input type="number" value=" {{ $shipping_detail ? $shipping_detail->phone_number : '' }} " class="form-control" name="xtxtShippingPhoneNumber" id="xtxtShippingPhoneNumber" placeholder="Your Phone Number">
 									</div>
 								</div>
 								<div class="row clearfix">

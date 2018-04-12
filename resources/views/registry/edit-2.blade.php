@@ -61,10 +61,16 @@
 									</select>
 								</div>
 							</form>
-							<form action="{{config('app.url')}}create/registry/store" method="POST" accept-charset="UTF-8">
+							<form action="{{config('app.url')}}edit/registry/store/{{ $edit_details->id }}" method="POST" accept-charset="UTF-8">
 								{{ csrf_field() }}
 								<input type="hidden" name="step" value="2">
-								<input type="hidden" name="products_id[]" value="0">
+								@if( count( $edit_products_ids ) > 0 )
+									@foreach( $edit_products_ids as $edit_product_id )
+										<input type="hidden" name="products_id[]" value="{{ $edit_product_id->product_id }}">
+									@endforeach
+								@else
+									<input type="hidden" name="products_id[]" value="0">
+								@endif
 								<button type="submit" class="btn btn-primary pull-right">FINALIZE</button>
 							</form>
 						</div>
