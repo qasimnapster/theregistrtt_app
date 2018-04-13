@@ -61,12 +61,12 @@
 									</select>
 								</div>
 							</form>
-							<form action="{{config('app.url')}}edit/registry/store/{{ $edit_details->id }}" method="POST" accept-charset="UTF-8">
+							<form action="{{config('app.url')}}edit/registry/store/{{ $edit_details->id }}" method="POST" accept-charset="UTF-8" class="storeFrm">
 								{{ csrf_field() }}
 								<input type="hidden" name="step" value="2">
 								@if( count( $edit_products_ids ) > 0 )
 									@foreach( $edit_products_ids as $edit_product_id )
-										<input type="hidden" name="products_id[]" value="{{ $edit_product_id->product_id }}">
+										<input data-val="{{ $edit_product_id->product_id }}" class="hidden-pids" type="hidden" name="products_id[]" value="{{ $edit_product_id->product_id }}">
 									@endforeach
 								@else
 									<input type="hidden" name="products_id[]" value="0">
@@ -80,13 +80,13 @@
 									@foreach($products as $product)
 										<div class="col-sm-3 product-box text-center">
 											<div class="product-img-container space-prod">
-												<img src="{{ config('app.url') }}{{ $product->image }}" alt="" class="img-responsive">
+												<img src="{{ $product->image }}" alt="" class="img-responsive">
 											</div>
 											<div class="product-title space-prod">{{ $product->title }}</div>
 											<div class="product-price space-prod">{{ $product->price }}</div>
 											<div class="product-purhcase">
-												<button class="btn btn-primary btn-add-gift text-uppercase">add or view this gift</button>
-												<button class="btn btn-primary btn-remove-gift text-uppercase" style="display: none">remove this gift</button>
+												<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-add-gift text-uppercase">add or view this gift</button>
+												<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-remove-gift text-uppercase" style="display: none">remove this gift</button>
 											</div>
 										</div>
 									@endforeach
@@ -110,17 +110,38 @@
 		<script>
 		  $(function () {
 		    /* BOOTSTRAP SLIDER */
+
+		    $.each( $('.hidden-pids'), function(index, value){
+		    	$('.btn-add-gift[data-product-id="'+ $(value).data('val') +'"]').fadeOut();
+		    	$('.btn-remove-gift[data-product-id="'+ $(value).data('val') +'"]').fadeIn();
+		    });
+
 		    $('.price-slider').slider()
-		    $('.btn-add-gift').on('click', function(){
+		    var btnAddGift = $('.btn-add-gift'),
+		    	btnRmvGift = $('.btn-remove-gift'),
+		    	frmStorm   = $('.storeFrm');
+
+		    btnAddGift.on('click', function(){
+		    	var $this     = $(this),
+					$pId      = $this.data('product-id');
+		    	
+		    	frmStorm.append('<input data-val="'+$pId+'" type="hidden" name="products_id[]" value="'+$pId+'">');
 		    	alert('Item added to your registry!');
-		    	$(this).fadeOut();
-		    	$(this).siblings('.btn-remove-gift').fadeIn();
+		    	$this.fadeOut();
+		    	$this.siblings('.btn-remove-gift').fadeIn();
 
 		    });
-		    $('.btn-remove-gift').on('click', function(){
-		    	alert('Item remvoed from your registry!');
-		    	$(this).fadeOut();
-		    	$(this).siblings('.btn-add-gift').fadeIn();
+
+		    btnRmvGift.on('click', function(){
+		    	var $this     = $(this),
+					$pId      = $this.data('product-id'),
+					fieldpId  = $('[data-val="'+$pId+'"]');
+
+				fieldpId.remove();
+
+		    	alert('Item removed from your registry!');
+		    	$this.fadeOut();
+		    	$this.siblings('.btn-add-gift').fadeIn();
 		    });
 		  })
 		</script>

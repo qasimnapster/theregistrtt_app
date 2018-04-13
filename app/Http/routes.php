@@ -282,7 +282,7 @@ Route::post('/create/registry/store', function () {
 						'state_id'     => 1,
 						'city_id'      => 1,
 						'country_id'   => $shipping_country,
-						`phone_number` => $shipping_pnum
+						'phone_number' => $shipping_pnum
 					]);
 
 					var_dump( $insertion_shippings );
@@ -302,10 +302,14 @@ Route::post('/create/registry/store', function () {
 				if( ! $latest_registry_id )
 					return Redirect::to('/');
 
+				var_dump( $product_ids );
+
+				//
+
 				if( count( $product_ids ) > 0 )
 				{
 					foreach( $product_ids as $product_id ):
-						if( $product_id ):
+						if( $product_id ):							
 							DB::table('registeries_products')->insertGetId([ 
 								'registry_id' => $latest_registry_id,
 								'product_id'  => $product_id
@@ -313,6 +317,7 @@ Route::post('/create/registry/store', function () {
 						endif;
 					endforeach;
 				}
+
 
 				Cookie::queue('alot_promo_code',true, $forver);
 				return Redirect::to('/create/registry/3');	
@@ -571,7 +576,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 					foreach( $product_ids as $product_id ):
 						if( $product_id ):
 							DB::table('registeries_products')->insertGetId([ 
-								'registry_id' => $latest_registry_id,
+								'registry_id' => $edit_id,
 								'product_id'  => $product_id
 							]);
 						endif;
