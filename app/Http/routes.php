@@ -168,16 +168,45 @@ Route::post('/registry/delete', function(){
 		if( Auth::user()->id == $customer_id )
 		{
 
-			if( $registry_id == Cookie::get('latest_registry_id') )
+			// if( $registry_id == Cookie::get('latest_registry_id') )
+			// {
+			// 	Cookie::queue(
+			// 		Cookie::forget('latest_registry_id')
+			// 	);
+			// }
+
+			if( isset($_COOKIE['latest_registry_id']) && $registry_id == $_COOKIE['latest_registry_id'] )
 			{
-				Cookie::queue(
-					Cookie::forget('latest_registry_id')
-				);
+				// Cookie::queue(
+				// 	Cookie::forget('latest_registry_id')
+				// );
+				setcookie("latest_registry_id", "", time() - 3600);
 			}
 
 			return DB::table('registeries')->where( ['id'=>$registry_id,'customer_id'=>$customer_id] )->delete();
 		}
 	}
+});
+
+Route::get('/registry/search/{promo_code}', function($promo_code){
+
+	if ( ! Auth::check() || ! $promo_code )
+		return Redirect::to('/');
+	
+	$reg_types = DB::table('registry_types')->select()->get();
+	$registry  = DB::table('registeries')->where( 'promo_code', $promo_code )->where( 'registry_status_id', '<>', 3 )->select()->first();
+
+	if( $registry ):
+		$registry->registry_status = DB::table('registry_status')->where('id', $registry->registry_status_id )->select('name')->get()[0];
+		$registry->ocassion = DB::table('ocassions')->where('id', $registry->ocassion_id )->select('title')->get()[0];
+	endif;
+
+
+	return view( 'registry.search', [
+		'reg_types'   => $reg_types,
+		'registry' => $registry
+    ]);
+
 });
 
 Route::get('/registry/index', function(){
@@ -194,8 +223,6 @@ Route::get('/registry/index', function(){
 			$reg->ocassion = DB::table('ocassions')->where('id', $reg->ocassion_id )->select('title')->get()[0];
 		endforeach;
 	endif;
-	// var_dump( $registeries[0]-> );
-	// exit;
 
 	return view( 'registry.index', [
 		'reg_types'   => $reg_types,
@@ -218,7 +245,9 @@ Route::post('/create/registry/store', function () {
 
 		$step = request('step');
 
-		$latest_registry_id = Cookie::get('latest_registry_id');
+		//$latest_registry_id = Cookie::get('latest_registry_id');
+
+		$latest_registry_id = isset( $_COOKIE['latest_registry_id'] ) ? $_COOKIE['latest_registry_id'] : false;
 
 		if( count( Input::all() ) > 0 )
 		{
@@ -288,7 +317,8 @@ Route::post('/create/registry/store', function () {
 					var_dump( $insertion_shippings );
 				}
 
-				Cookie::queue('latest_registry_id', $inserted_registry_id, $forver);
+				//Cookie::queue('latest_registry_id', $inserted_registry_id, $forver);
+				setcookie('latest_registry_id',$inserted_registry_id,$forver);
 				return Redirect::to('/create/registry/2');
 				
 			
@@ -319,7 +349,8 @@ Route::post('/create/registry/store', function () {
 				}
 
 
-				Cookie::queue('alot_promo_code',true, $forver);
+				//Cookie::queue('alot_promo_code',true, $forver);
+				setcookie('alot_promo_code',true, $forver);
 				return Redirect::to('/create/registry/3');	
 				
 			}
@@ -402,8 +433,11 @@ Route::any('/create/registry/{step}', function ($step) {
 	if( $step == 3 )
 	{
 
-		$latest_registry_id = Cookie::get('latest_registry_id');
-		$alot_promo_code    = Cookie::get('alot_promo_code');
+		// $latest_registry_id = Cookie::get('latest_registry_id');
+		// $alot_promo_code    = Cookie::get('alot_promo_code');
+
+		$latest_registry_id = isset( $_COOKIE['latest_registry_id'] ) ? $_COOKIE['latest_registry_id'] : false;
+		$alot_promo_code    = isset( $_COOKIE['alot_promo_code'] ) ? $_COOKIE['alot_promo_code'] : false;
 		
 		if( ! $latest_registry_id  )
 			return Redirect::to('/');
@@ -436,13 +470,16 @@ Route::any('/create/registry/{step}', function ($step) {
 			'registry_status_id' => 2
 		]);
 
-		Cookie::queue(
-			Cookie::forget('alot_promo_code')
-		);
+		// Cookie::queue(
+		// 	Cookie::forget('alot_promo_code')
+		// );
 
-		Cookie::queue(
-			Cookie::forget('latest_registry_id')
-		);
+		// Cookie::queue(
+		// 	Cookie::forget('latest_registry_id')
+		// );
+
+		setcookie("alot_promo_code", "", time() - 3600);
+		setcookie("latest_registry_id", "", time() - 3600);
 
 	}
 

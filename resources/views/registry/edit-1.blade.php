@@ -144,7 +144,7 @@
 									</div>
 									<div class="form-group">
 									    <label for="xtxtShippingPhoneNumber">Phone Number</label>
-									    <input type="number" value=" {{ $shipping_detail ? $shipping_detail->phone_number : '' }} " class="form-control" name="xtxtShippingPhoneNumber" id="xtxtShippingPhoneNumber" placeholder="Your Phone Number">
+									    <input type="number" value="{{ $shipping_detail ? $shipping_detail->phone_number : ''}} " class="form-control" name="xtxtShippingPhoneNumber" id="xtxtShippingPhoneNumber" placeholder="Your Phone Number">
 									</div>
 								</div>
 								<div class="row clearfix">
