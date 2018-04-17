@@ -48,7 +48,7 @@
 						<div class="wishlist-wrapper">
 							<div>
 								<div class="form-group">
-								    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0;">What's the registry title?</label>
+								    <label for="xtxtRegTitle" class="h3 text-light" style="margin-top:0;">What's the registry title?</label>
 								    <input type="text" class="form-control" name="xtxtRegTitle" id="xtxtRegTitle" required placeholder="Your Registry's Title" value="{{ $edit_details->title }}" >
 								</div>
 								<hr>
@@ -174,6 +174,30 @@
         <script>
 		$(function(){
 		    $( "#xtxtEventDate" ).datepicker();
+		    //alert($('.pickReg').val())
+		    if( $('.pickReg:checked').val() == '2' )
+	   		{
+	   			$('.ship-info-form input, .ship-info-form select').removeAttr('required');
+	   			$('.ship-info-form').stop().slideUp();
+	   		} else 
+	   		{
+	   			$('.ship-info-form input, .ship-info-form select').attr('required', true);
+	   			$('.ship-info-form').stop().slideDown();
+	   		}
+	   		if( $('#xtxtOccs').val() == '2' )
+	    	{
+	    		$('.form-group-single').stop().slideDown();
+	    		$('.form-group-single input').attr('required', true);
+	    		$('.form-group-married input').removeAttr('required');
+	    		$('.form-group-married').stop().slideUp();
+	    	} else 
+	    	{
+	    		$('.form-group-single').stop().slideUp();
+	    		$('.form-group-married input').attr('required', true);
+	    		$('.form-group-single input').removeAttr('required');
+	    		$('.form-group-married').stop().slideDown();
+	    	}
+
 		    $('.pickReg').on('change', function(){
 		   		if( $(this).val() == '2' )
 		   		{
