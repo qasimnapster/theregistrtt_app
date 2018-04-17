@@ -48,6 +48,11 @@
 						<div class="wishlist-wrapper">
 							<div>
 								<div class="form-group">
+								    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0;">What's the registry title?</label>
+								    <input type="text" class="form-control" name="xtxtRegTitle" id="xtxtRegTitle" required placeholder="Your Registry's Title" value="{{ $edit_details->title }}" >
+								</div>
+								<hr>
+								<div class="form-group">
 								    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0;">What's the ocassion?</label>
 								    <select class="form-control" id="xtxtOccs" name="xtxtOccs" required>
 								    	<option value="">SELECT</option>
@@ -144,7 +149,7 @@
 									</div>
 									<div class="form-group">
 									    <label for="xtxtShippingPhoneNumber">Phone Number</label>
-									    <input type="number" value="{{ $shipping_detail ? $shipping_detail->phone_number : ''}} " class="form-control" name="xtxtShippingPhoneNumber" id="xtxtShippingPhoneNumber" placeholder="Your Phone Number">
+									    <input type="number" value="{{$shipping_detail ? $shipping_detail->phone_number : ''}}" class="form-control" name="xtxtShippingPhoneNumber" id="xtxtShippingPhoneNumber" placeholder="Your Phone Number">
 									</div>
 								</div>
 								<div class="row clearfix">

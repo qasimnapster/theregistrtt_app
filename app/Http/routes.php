@@ -280,7 +280,7 @@ Route::post('/create/registry/store', function () {
 				$shipping_country = request('xslsCountry');
 				$shipping_pnum    = request('xtxtShippingPhoneNumber');
 				$customer_id      = Auth::user()->id;
-				$registry_title   = $ocassion_id;
+				$registry_title   = request('xtxtRegTitle');
 
 				var_dump( Auth::user()->id );
 
@@ -542,7 +542,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 				$shipping_country = request('xslsCountry');
 				$shipping_pnum    = request('xtxtShippingPhoneNumber');
 				$customer_id      = Auth::user()->id;
-				$registry_title   = $ocassion_id;
+				$registry_title   = request('xtxtRegTitle');
 
 				var_dump( Auth::user()->id );
 

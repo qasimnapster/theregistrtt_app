@@ -48,6 +48,11 @@
 						<div class="wishlist-wrapper">
 							<div>
 								<div class="form-group">
+								    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0;">What's the registry title?</label>
+								    <input type="text" class="form-control" name="xtxtRegTitle" id="xtxtRegTitle" required placeholder="Your Registry's Title">
+								</div>
+								<hr>
+								<div class="form-group">
 								    <label for="xtxtOccs" class="h3 text-light" style="margin-top:0;">What's the ocassion?</label>
 								    <select class="form-control" id="xtxtOccs" name="xtxtOccs" required>
 								    	<option value="">SELECT</option>
