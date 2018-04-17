@@ -219,11 +219,13 @@ Route::get('/registry/index', function(){
 
 	if( count( $registeries ) > 0 ):
 		foreach( $registeries as $reg ):
+			$reg->product_nums = count(DB::table('registeries_products')->where('registry_id', $reg->id )->select('product_id')->get());
 			$reg->registry_status = DB::table('registry_status')->where('id', $reg->registry_status_id )->select('name')->get()[0];
 			$reg->ocassion = DB::table('ocassions')->where('id', $reg->ocassion_id )->select('title')->get()[0];
 		endforeach;
-	endif;
 
+	endif;
+	
 	return view( 'registry.index', [
 		'reg_types'   => $reg_types,
 		'registeries' => $registeries

@@ -25,6 +25,7 @@
 							<th>Ocassion</th>
 							<th>Event Date</th>
 							<th>Promo Code</th>
+							<th>Num. of Items</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
@@ -37,6 +38,7 @@
 							<td>{{ $registry->ocassion->title }}</td>
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>
+							<td align="center"><span class="badge">{{ $registry->product_nums }}</span></td>
 							<td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'success' : 'warning' }}"> {{ $registry->registry_status->name }} </span> </td>
 							<td>
 								<a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-eye" style="color:inherit;" ></i> VIEW</a>
