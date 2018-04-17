@@ -38,7 +38,12 @@
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>
 							<td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'success' : 'warning' }}"> {{ $registry->registry_status->name }} </span> </td>
-							<td> <a href="#" data-id="{{ $registry->id }}" class="btn btn-danger btn-delete-registry"> <i class="fa fa-trash" style="color:inherit;"></i> DELETE</a> <a href="{{ config('app.url') }}edit/registry/1/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-pencil" style="color:inherit;" ></i> EDIT</a> </td>
+							<td>
+								<a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-eye" style="color:inherit;" ></i> VIEW</a>
+								<a href="#" data-id="{{ $registry->id }}" class="btn btn-danger btn-delete-registry"> <i class="fa fa-trash" style="color:inherit;"></i> DELETE</a>
+								<a href="{{ config('app.url') }}edit/registry/1/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-pencil" style="color:inherit;" ></i> EDIT</a>
+								
+							</td>
 						</tr>
 						@endforeach
 					</tbody>

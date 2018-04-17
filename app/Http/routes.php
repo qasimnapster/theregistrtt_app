@@ -500,6 +500,41 @@ Route::any('/create/registry/{step}', function ($step) {
 
 });
 
+Route::any('/detail/registry/{view_id}', function ($view_id) {
+
+	$products = [];
+	$_pids    = [];
+
+	$registry_detail   = DB::table('registeries')->where('id',$view_id)->select()->get();
+
+	if( count( $registry_detail ) > 0 )
+	{
+		$reg_types         = DB::table('registry_types')->select()->get();
+		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $view_id)->select()->get();
+
+		if( count( $edit_products_ids ) > 0 )
+		{
+			foreach( $edit_products_ids as $epid ):
+				$_pids[] = $epid->product_id;
+			endforeach;
+			//var_dump( $_pids );
+			$products = DB::table('products')->whereIn('id', $_pids)->get();
+		}
+
+		// var_dump( $registry_detail[0] );
+		// exit;
+
+		return view('registry.detail', [
+			'reg_types' => $reg_types,
+			'products'  => $products,
+			'registry_detail' => $registry_detail[0]
+	    ]);
+	} else {
+		return response()->view('errors.503',[],503);
+	}
+
+});
+
 Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 
 	if ( ! Auth::check())
