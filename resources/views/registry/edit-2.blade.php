@@ -83,7 +83,7 @@
 												<img src="{{ $product->image }}" alt="" class="img-responsive">
 											</div>
 											<div class="product-title space-prod">{{ $product->title }}</div>
-											<div class="product-price space-prod">{{ $product->price }}</div>
+											<div class="product-price space-prod">${{ $product->price }}</div>
 											<div class="product-purhcase">
 												<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-add-gift text-uppercase">add or view this gift</button>
 												<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-remove-gift text-uppercase" style="display: none">remove this gift</button>

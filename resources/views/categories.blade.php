@@ -103,7 +103,7 @@
 												<img src="{{ $product->image }}" alt="" class="img-responsive">
 											</div>
 											<div class="product-title space-prod">{{ $product->title }}</div>
-											<div class="product-price space-prod">{{ $product->price }}</div>
+											<div class="product-price space-prod">${{ $product->price }}</div>
 											<div class="product-purhcase">
 												<button class="btn btn-primary text-uppercase">add or view this gift</button>
 											</div>

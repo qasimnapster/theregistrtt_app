@@ -21,7 +21,7 @@
 												<img src="{{ $product->image }}" alt="" class="img-responsive">
 											</div>
 											<div class="product-title space-prod">{{ $product->title }}</div>
-											<div class="product-price space-prod">{{ $product->price }}</div>
+											<div class="product-price space-prod">${{ $product->price }}</div>
 											<div class="product-purhcase">
 												<div class="col-sm-6 pull-left">
 													<h4 class="text-light">Desired: 1</h4>
