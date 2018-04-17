@@ -2,6 +2,7 @@
     <p>© 2018 All rights reserved - TheRegistryTT LLC   |   <span><a href="#">Site Map</a></span></p>
 </footer>
 
+<div class="alert-overlay" style="display: none"></div>
 
 @include('sections.login')
 @include('sections.signup')
@@ -13,5 +14,15 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ config('app.url') }}vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 @yield('scripts')
+<script>
+	$(function(){
+		if( $('.common-alert p').length > 0 )
+			$('.alert-overlay').css({'opacity':.5}).fadeIn(300);
+		
+		$('.common-alert button.close').on('click', function(){
+			$('.alert-overlay').css({'opacity':0}).fadeOut(300);	
+		});
+	});
+</script>
 </body>
 </html>

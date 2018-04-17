@@ -16,7 +16,7 @@
                                     <h2 class="text-light">Browse and Purchase from your mobilesmartphone</h2>
                                 </div>
                                 <div class="paragraph-adding">
-                                    <h3 class="text-light" style="line-height: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ad numquam dolor aperiam dolore harum reprehenderit hic architecto magni nulla illo necessitatibus fugiat quos, voluptatibus blanditiis? Praesentium tempora, ducimus sit.</h2>
+                                    <h3 class="text-light" style="line-height: 30px">You can browse our entire registry online and even create your own registry from the tip of your fingers.  Our easy to use website makes it simple, just click on Create to get started!  Guests can also purchase their gifts through our totally safe 3D Secure payment gateway.</h2>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                     <h2 class="text-light">Complimentary Registry Invites</h2>
                                 </div>
                                 <div class="paragraph-adding">
-                                    <h3 class="text-light" style="line-height: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ad numquam dolor aperiam dolore harum reprehenderit hic architecto magni nulla illo necessitatibus fugiat quos, voluptatibus blanditiis? Praesentium tempora, ducimus sit.</h2>
+                                    <h3 class="text-light" style="line-height: 30px">As a courtesy to the engaged couple, we'll be providing cute complimentary Registry invites for guests to view your Registry.</h2>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                     <h2 class="text-light">Exclusive Bridal Party Discounts at Kooti's</h2>
                                 </div>
                                 <div class="paragraph-adding">
-                                    <h3 class="text-light" style="line-height: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ad numquam dolor aperiam dolore harum reprehenderit hic architecto magni nulla illo necessitatibus fugiat quos, voluptatibus blanditiis? Praesentium tempora, ducimus sit.</h2>
+                                    <h3 class="text-light" style="line-height: 30px">If you're having a wedding, the must go boutique for any of you ladies is always Kooti's.  As such, we've teamed up with Kooti's as our sister company to offer you special discounts on all your dresses for the occasion, from the bridal party, to mother of the bride, mother of the groom!</h2>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                     <h2 class="text-light">Complete your Registry at Discounted Prices</h2>
                                 </div>
                                 <div class="paragraph-adding">
-                                    <h3 class="text-light" style="line-height: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ad numquam dolor aperiam dolore harum reprehenderit hic architecto magni nulla illo necessitatibus fugiat quos, voluptatibus blanditiis? Praesentium tempora, ducimus sit.</h2>
+                                    <h3 class="text-light" style="line-height: 30px">Sometimes, your entire registry may not be filled.  But no reason to be disappointed!  We're offering you the opportunity to also complete your registry at reduced prices.</h2>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                                     <h2 class="text-light">Access to Special Order Items</h2>
                                 </div>
                                 <div class="paragraph-adding">
-                                    <h3 class="text-light" style="line-height: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ad numquam dolor aperiam dolore harum reprehenderit hic architecto magni nulla illo necessitatibus fugiat quos, voluptatibus blanditiis? Praesentium tempora, ducimus sit.</h2>
+                                    <h3 class="text-light" style="line-height: 30px">You're starting a new life together, but some gifts you'd like may just be a tad bit too expensive for guests.  We can help you get that Special Smart TV you've been eyeing or that Dishwasher for bae directly in for you.</h2>
                                 </div>
                             </div>
                         </div>

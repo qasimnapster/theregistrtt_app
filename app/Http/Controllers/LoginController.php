@@ -24,15 +24,20 @@ class LoginController extends Controller
     {
         // validate the info, create rules for the inputs
         $rules = array(
-            'email'    => 'required|email', // make sure the email is an actual email
-            'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
+            // 'email'    => 'required|email', // make sure the email is an actual email
+            // 'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters
+            'email'    => 'required|email',
+            'password' => 'required|min:3;'
         );
 
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
         // if the validator fails, redirect back to the form
+
         if ($validator->fails()) {
+            // var_dump( $validator->errors()->all() );
+            // exit;
             return Redirect::to('/')
                 ->withErrors($validator) // send back all errors to the login form
                 ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
@@ -58,7 +63,7 @@ class LoginController extends Controller
             } else {        
 
                 // validation not successful, send back to form 
-                return Redirect::to('/');
+                return Redirect::to('/')->withErrors(['Incorrect Email/Password']);
 
             }
 

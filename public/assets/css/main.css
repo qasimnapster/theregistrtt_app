@@ -701,3 +701,26 @@ p.light-rale {
 .head-bottom-line{
     border-bottom: 2px solid #e5c100; width: 40px; display: block; margin:0 auto; margin-top:10px;
 }
+.common-alert {
+    position: absolute;
+    width: 360px;
+    z-index: 1111;
+    left: 50%;
+    margin-left: -180px;
+}
+.common-alert, .common-alert *{
+    color: #a94442;
+}
+.common-alert .glyphicon-asterisk{
+    font-size: 8px;
+}
+.alert-overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+    opacity: 0;
+}
