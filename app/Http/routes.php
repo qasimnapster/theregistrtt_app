@@ -225,7 +225,7 @@ Route::get('/registry/index', function(){
 		endforeach;
 
 	endif;
-	
+
 	return view( 'registry.index', [
 		'reg_types'   => $reg_types,
 		'registeries' => $registeries
@@ -750,28 +750,28 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 	if( $step == 3 )
 	{
 
-		function generate_promo_code( $size = 6 )
-		{
-			$alpha_key = '';
-			$keys      = range('A', 'Z');
+		// function generate_promo_code( $size = 6 )
+		// {
+		// 	$alpha_key = '';
+		// 	$keys      = range('A', 'Z');
 
-			for ($i = 0; $i < 2; $i++)
-				$alpha_key .= $keys[array_rand($keys)];
+		// 	for ($i = 0; $i < 2; $i++)
+		// 		$alpha_key .= $keys[array_rand($keys)];
 
-			$length = $size - 2;
-			$key    = '';
-			$keys   = range(0, 9);
+		// 	$length = $size - 2;
+		// 	$key    = '';
+		// 	$keys   = range(0, 9);
 
-			for ($i = 0; $i < $length; $i++)
-				$key .= $keys[array_rand($keys)];
+		// 	for ($i = 0; $i < $length; $i++)
+		// 		$key .= $keys[array_rand($keys)];
 			
-			return $alpha_key . $key;
-		}
+		// 	return $alpha_key . $key;
+		// }
 
-		$promo_code = generate_promo_code();
+		// $promo_code = generate_promo_code();
 
 		DB::table('registeries')->where('id', $edit_id)->update([
-			'promo_code'          => $promo_code,
+			//'promo_code'          => $promo_code,
 			'registry_status_id'  => 2
 		]);
 
