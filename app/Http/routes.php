@@ -39,22 +39,57 @@ Route::get('/products', function () {
     return view('products', [ 'reg_types' => $reg_types ]);
 });
 
-Route::get('/categories/{type}', function ($type) {
-	$reg_types           = DB::table('registry_types')->select()->get();
+Route::any('/categories/{type}', function ($type) {
+
+	$reg_types = DB::table('registry_types')->select()->get();
+
+	$sort_by_price = '';
+	$sort_by_alpha = '';
+
+	$sort_by_price = request('xslcSortByPrice');
+	$sort_by_alpha = request('xslcSortByAlpha');
+
 	if( $type == 'all' )
 	{
-		$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
+		if( count( Input::all() ) > 0 )
+		{
+			$product_inst = DB::table('products');
+			if( $sort_by_price == '1' )
+				$product_inst->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
+			else if( $sort_by_price == '2' )
+				$product_inst->orderByRaw('CAST(price AS DECIMAL(10,2)) ASC');
+
+			if( $sort_by_alpha == '1' )
+				$product_inst->orderBy('title', 'ASC');
+			else if( $sort_by_alpha == '2' )
+				$product_inst->orderBy('title', 'DESC');
+
+			$products = $product_inst->select()->get();
+		} else 
+		{
+			$products = DB::table('products')->orderBy('title', 'asc')->select()->get();
+		}
 	} else 
 	{
 		$cat_id = DB::table('categories')->where('slug', '=', $type)->select('id')->get();
 		$category_id = $cat_id[0]->id;
 
-		$products = DB::table('products as p')
+		$product_inst = DB::table('products as p')
 		->select('p.*')
 		->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id')
-		->where(['apc.category_id' => $category_id])
-		->orderBy('p.title', 'ASC')
-		->get();
+		->where(['apc.category_id' => $category_id]);
+
+		if( $sort_by_price == '1' )
+			$product_inst->orderByRaw('CAST(trtt_p.price AS DECIMAL(10,2)) DESC');
+		else if( $sort_by_price == '2' )
+			$product_inst->orderByRaw('CAST(trtt_p.price AS DECIMAL(10,2)) ASC');
+		
+		if( $sort_by_alpha == '1' )
+			$product_inst->orderBy('p.title', 'ASC');
+		else if( $sort_by_alpha == '2' )
+			$product_inst->orderBy('p.title', 'DESC');
+		
+		$products = $product_inst->get();
 
 	}
 	
@@ -62,7 +97,9 @@ Route::get('/categories/{type}', function ($type) {
     return view('categories', [ 
 		'reg_types'  => $reg_types,
 		'products'   => $products,
-		'categories' => $categories
+		'categories' => $categories,
+		'sort_by_price' => $sort_by_price,
+		'sort_by_alpha' => $sort_by_alpha
     ]);
 });
 

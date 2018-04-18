@@ -374,7 +374,7 @@ section.contact-us h1 {
 
 .item-cats {
     margin-bottom: 30px;
-    border: 1px solid #dcdcdc;
+    /* border: 1px solid #dcdcdc; */
     /* box-shadow: #ccc 0 1px 10px 0;
     -webkit-box-shadow: #ccc 0 1px 10px 0;
     -moz-box-shadow: #ccc 0 1px 10px 0;
@@ -395,18 +395,29 @@ section.contact-us h1 {
 }
 
 .item-cats a{
-	display: block;
+/* 	display: block;
     background: #3e4348;
     margin: 0;
     padding: 10px;
     font-size: 30px;
     color: #fff;
-    font-weight: 300;
+    font-weight: 300; */
+    display: block;
+    margin: 0;
+    padding: 10px;
+    font-size: 26px;
+    color: #777;
+    border-top: 1px solid #ddd;
+    font-family: 'Raleway';
+    font-weight: 200;
+    box-shadow: inset 1px 7px 6px -10px #000;
+    margin-top: 20px;
 }
 
 .item-cats a:hover{
 	transition: .5s ease;
-	background: #e5c100;
+	background: #3e4348;
+    color: #fff;
 }
 
 .products-container {

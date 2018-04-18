@@ -80,18 +80,22 @@
 				<div class="col-sm-9">
 					<div class="products-list-content">
 						<div class="head-products-list">
-							<form class="form-inline">
+							<form class="form-inline" name="sortingFrm" id=sortingFrm method="POST" action="">
+								{{ csrf_field() }}
 								<div class="form-group">
-									<input type="text" class="form-control" id="xtxtAllGifts" name="xtxtAllGifts" value="All Gifts">
-								</div>
-								<div class="form-group">
-									<select class="form-control" id="xslcSortBy" name="xslcSortBy">
-										<option value="Sort By">Sort By</option>
-										<option value="1">High to Low</option>
-										<option value="2">Low to High</option>
+									<select class="form-control" onchange="sortingFrm.submit()" id="xslcSortByPrice" name="xslcSortByPrice">
+										<option value="">Sort By Price</option>
+										<option value="1" {{ $sort_by_price == 1 ? 'selected' : '' }} >High to Low</option>
+										<option value="2" {{ $sort_by_price == 2 ? 'selected' : '' }} >Low to High</option>
 									</select>
 								</div>
-								<button type="button" class="btn btn-primary">Shipping Info</button>
+								<div class="form-group">
+									<select class="form-control" onchange="sortingFrm.submit()" id="xslcSortByAlpha" name="xslcSortByAlpha">
+										<option value="">Sort By Alpha.</option>
+										<option value="1" {{ $sort_by_alpha == 1 ? 'selected' : '' }}>A-Z</option>
+										<option value="2" {{ $sort_by_alpha == 2 ? 'selected' : '' }}>Z-A</option>
+									</select>
+								</div>
 							</form>
 						</div>
 						<div class="block-products-list">
