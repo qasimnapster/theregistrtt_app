@@ -519,6 +519,10 @@ section.contact-us h1 {
 
 .products-list-content .block-products-list .product-box {
     margin-bottom: 20px;
+    height: 320px;
+}
+.products-list-content .block-products-list .product-box.product-rgc {
+    margin-bottom: 20px;
     height: 362px;
 }
 
@@ -540,17 +544,25 @@ section.contact-us h1 {
 .products-list-content .block-products-list .product-box .product-title {
     font-weight: 300;
     position: absolute;
-    bottom: 112px;
+    bottom: 70px;
     left: 0;
     right: 0;
+}
+
+.products-list-content .block-products-list .product-box.product-rgc .product-title{
+    bottom: 112px !important;
 }
 
 .products-list-content .block-products-list .product-box .product-price {
     font-weight: bold;
     position: absolute;
-    bottom: 82px;
+    bottom: 40px;
     left: 0;
     right: 0;
+}
+
+.products-list-content .block-products-list .product-box.product-rgc .product-price{
+    bottom: 82px !important;
 }
 
 .products-list-content .block-products-list .product-box .product-qty {

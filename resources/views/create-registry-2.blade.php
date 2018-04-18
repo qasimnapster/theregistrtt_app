@@ -73,7 +73,7 @@
 							<div class="row">
 								@if( count( $products ) > 0 )
 									@foreach($products as $product)
-										<div class="col-sm-3 product-box text-center">
+										<div class="col-sm-3 product-box product-rgc text-center">
 											<div class="product-img-container space-prod">
 												<img src="{{ $product->image }}" alt="" class="img-responsive">
 											</div>
