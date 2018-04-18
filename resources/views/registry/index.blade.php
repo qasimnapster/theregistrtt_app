@@ -34,7 +34,7 @@
 						@foreach( $registeries as $key => $registry )
 						<tr id="row-{{ $registry->id }}">
 							<td>{{ $key + 1 }}</td>
-							<td><a href="#">{{ $registry->first_name }}</a></td>
+							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}">{{ $registry->first_name }}</a></td>
 							<td>{{ $registry->ocassion->title }}</td>
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>

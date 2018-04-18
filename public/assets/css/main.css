@@ -519,7 +519,7 @@ section.contact-us h1 {
 
 .products-list-content .block-products-list .product-box {
     margin-bottom: 20px;
-    height: 320px;
+    height: 362px;
 }
 
 .products-list-content .block-products-list .product-box .product-img-container {
@@ -540,7 +540,7 @@ section.contact-us h1 {
 .products-list-content .block-products-list .product-box .product-title {
     font-weight: 300;
     position: absolute;
-    bottom: 70px;
+    bottom: 112px;
     left: 0;
     right: 0;
 }
@@ -548,9 +548,21 @@ section.contact-us h1 {
 .products-list-content .block-products-list .product-box .product-price {
     font-weight: bold;
     position: absolute;
+    bottom: 82px;
+    left: 0;
+    right: 0;
+}
+
+.products-list-content .block-products-list .product-box .product-qty {
+    font-weight: bold;
+    position: absolute;
     bottom: 40px;
     left: 0;
     right: 0;
+}
+
+.products-list-content .block-products-list .product-box .product-qty .plus-minus-input{
+    width: 100%;
 }
 
 .products-list-content .block-products-list .product-box .product-purhcase {
@@ -721,4 +733,47 @@ p.light-rale {
     z-index: 1040;
     background-color: #000;
     opacity: 0;
+}
+
+.plus-minus-input {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plus-minus-input .input-group-field {
+  text-align: center;
+  padding: 0 5px;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+}
+.plus-minus-input .input-group-button button {
+    height: 40px;
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.plus-minus-input .input-group-button .circle {
+  /* border-radius: 50%; */
+  padding: 0.25em 0.8em;
+}
+
+.plus-minus-input .input-group-button, .plus-minus-input .input-group-field{
+    display: inline-block;
+}
+.plus-minus-input .input-group-field{
+    width: 60px;
+}
+
+.product-qty .plus-minus-input .input-group-button{
+    position: relative;
+    top: -2px;
+}
+
+.product-qty .plus-minus-input .input-group-button i.fa{
+    color: #fff;
 }

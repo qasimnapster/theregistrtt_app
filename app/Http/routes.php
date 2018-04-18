@@ -188,7 +188,9 @@ Route::post('/registry/delete', function(){
 	}
 });
 
-Route::get('/registry/search/{promo_code}', function($promo_code){
+Route::any('/registry/search/', function(){
+
+	$promo_code = request('promo_code');
 
 	if ( ! Auth::check() || ! $promo_code )
 		return Redirect::to('/');
@@ -197,14 +199,17 @@ Route::get('/registry/search/{promo_code}', function($promo_code){
 	$registry  = DB::table('registeries')->where( 'promo_code', $promo_code )->where( 'registry_status_id', '<>', 3 )->select()->first();
 
 	if( $registry ):
+		$registry->product_nums = count(DB::table('registeries_products')->where('registry_id', $registry->id )->select('product_id')->get());
 		$registry->registry_status = DB::table('registry_status')->where('id', $registry->registry_status_id )->select('name')->get()[0];
 		$registry->ocassion = DB::table('ocassions')->where('id', $registry->ocassion_id )->select('title')->get()[0];
+	else:
+		$registry = false;
 	endif;
 
 
 	return view( 'registry.search', [
-		'reg_types'   => $reg_types,
-		'registry' => $registry
+		'reg_types' => $reg_types,
+		'registry'  => $registry
     ]);
 
 });
@@ -242,6 +247,8 @@ Route::post('/create/registry/store', function () {
 
 	if( count( Input::all() ) > 0 )
 	{
+
+		//exit;
 
 		//var_dump( Input::all() );
 
@@ -328,28 +335,28 @@ Route::post('/create/registry/store', function () {
 
 			if( $step == 2 )
 			{
+				
 
-				$product_ids = request('products_id');
+				$product_ids  = request('products_id');
+				$quantity_ids = request('quantity_id');
 
 				if( ! $latest_registry_id )
 					return Redirect::to('/');
 
 				var_dump( $product_ids );
 
-				//
-
-				if( count( $product_ids ) > 0 )
+				if( count( $quantity_ids ) > 0 )
 				{
-					foreach( $product_ids as $product_id ):
-						if( $product_id ):							
+					foreach( $quantity_ids as $pid => $quantity_id ):
+						if( $quantity_id ):							
 							DB::table('registeries_products')->insertGetId([ 
 								'registry_id' => $latest_registry_id,
-								'product_id'  => $product_id
+								'product_id'  => $pid,
+								'qty'         => $quantity_id[0],
 							]);
 						endif;
 					endforeach;
 				}
-
 
 				//Cookie::queue('alot_promo_code',true, $forver);
 				setcookie('alot_promo_code',true, $forver);
@@ -641,17 +648,19 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 			if( $step == 2 )
 			{
 
-				$product_ids = request('products_id');
+				$product_ids  = request('products_id');
+				$quantity_ids = request('quantity_id');
 
-				if( count( $product_ids ) > 0 )
+				if( count( $quantity_ids ) > 0 )
 				{
 					DB::table('registeries_products')->where('registry_id',$edit_id)->delete();
 
-					foreach( $product_ids as $product_id ):
-						if( $product_id ):
+					foreach( $quantity_ids as $pid => $quantity_id ):
+						if( $quantity_id ):							
 							DB::table('registeries_products')->insertGetId([ 
 								'registry_id' => $edit_id,
-								'product_id'  => $product_id
+								'product_id'  => $pid,
+								'qty'         => $quantity_id[0],
 							]);
 						endif;
 					endforeach;
@@ -690,7 +699,7 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 	$sort_by_cat   = '';
 	$sort_by_price = '';
 	$sort_by_alpha = '';
-	$promo_code    = '';
+	$promo_code    = false;
 
 	if( $step == 1 )
 	{
@@ -750,30 +759,37 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 	if( $step == 3 )
 	{
 
-		// function generate_promo_code( $size = 6 )
-		// {
-		// 	$alpha_key = '';
-		// 	$keys      = range('A', 'Z');
+		function generate_promo_code( $size = 6 )
+		{
+			$alpha_key = '';
+			$keys      = range('A', 'Z');
 
-		// 	for ($i = 0; $i < 2; $i++)
-		// 		$alpha_key .= $keys[array_rand($keys)];
+			for ($i = 0; $i < 2; $i++)
+				$alpha_key .= $keys[array_rand($keys)];
 
-		// 	$length = $size - 2;
-		// 	$key    = '';
-		// 	$keys   = range(0, 9);
+			$length = $size - 2;
+			$key    = '';
+			$keys   = range(0, 9);
 
-		// 	for ($i = 0; $i < $length; $i++)
-		// 		$key .= $keys[array_rand($keys)];
+			for ($i = 0; $i < $length; $i++)
+				$key .= $keys[array_rand($keys)];
 			
-		// 	return $alpha_key . $key;
-		// }
+			return $alpha_key . $key;
+		}
 
-		// $promo_code = generate_promo_code();
-
-		DB::table('registeries')->where('id', $edit_id)->update([
-			//'promo_code'          => $promo_code,
-			'registry_status_id'  => 2
-		]);
+		$rcs = DB::table('registeries')->where(['id' => $edit_id, 'promo_code' => null])->select()->first();
+		
+		if( $rcs ):
+			$promo_code = generate_promo_code();
+			DB::table('registeries')->where('id', $edit_id)->update([
+				'promo_code'          => $promo_code,
+				'registry_status_id'  => 2
+			]);
+		else:
+			DB::table('registeries')->where('id', $edit_id)->update([
+				'registry_status_id'  => 2
+			]);
+		endif;
 
 	}
 

@@ -5,16 +5,16 @@
 @section('content')
 
 	<section class="container container-registeries">
+		<div class="head-main">
+			<h1 class="text-light text-center"> <i class="fa fa-fw fa-heart-o"></i> My Registeries <i class="fa fa-fw fa-heart-o"></i>
+				<span class="head-bottom-line"></span>
+			</h1>
+		</div>
 		@if( ! $registry )
 			<div class="alert alert-warning clearfix">
 				<strong>Oops!</strong> No registry found.
 			</div>
 		@else
-			<div class="head-main">
-				<h1 class="text-light text-center"> <i class="fa fa-fw fa-heart-o"></i> {{ $registry->first_name }}'s Registery <i class="fa fa-fw fa-heart-o"></i>
-					<span class="head-bottom-line"></span>
-				</h1>
-			</div>
 			<div style="margin-top: 30px;">
 				<table class="table table-striped table-hover">
 					<thead>
@@ -24,23 +24,25 @@
 							<th>Ocassion</th>
 							<th>Event Date</th>
 							<th>Promo Code</th>
-							<th>Status</th>
+							<th>Total Items</th>
+							<th>Desired Qty Each</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr id="row-{{ $registry->id }}">
-							<td>{{ 1 }}</td>
-							<td><a href="#">{{ $registry->first_name }}</a></td>
+							<td>{{ $registry->id }}</td>
+							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}">{{ $registry->first_name }}</a></td>
 							<td>{{ $registry->ocassion->title }}</td>
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>
-							<td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'success' : 'warning' }}"> {{ $registry->registry_status->name }} </span> </td>
-							<td> <a href="#" data-id="{{ $registry->id }}" class="btn btn-danger btn-delete-registry"> <i class="fa fa-trash" style="color:inherit;"></i> DELETE</a> <a href="{{ config('app.url') }}edit/registry/1/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-pencil" style="color:inherit;" ></i> EDIT</a> </td>
+							<td><span class="badge">{{ $registry->product_nums }}</span></td>
+							<td><span class="badge">{{ $registry->product_nums }}</span></td>
+							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-eye" style="color:inherit;" ></i> VIEW</a></td>
 						</tr>
 					</tbody>
 				</table>
-			</div>	
+			</div>
 		@endif
 		
 	</section>

@@ -12,17 +12,20 @@
             </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-center">
-                <li>
-                    <div class="anchor-form"><label class="label-navbar" for="">Find a Registry</label></div>
-                </li>
-                <li class="less-mt">
-                    <div class="anchor-form"><input type="text" class="form-control text-center input-navbar" value="Enter Promo Code"></div>
-                </li>
-                <li class="less-mt">
-                    <div class="anchor-form"><button class="btn btn-primary" style="width:100%" type="button">SEARCH</button></div>
-                </li>
-            </ul>
+            <form action="{{ config('app.url') }}registry/search" method="POST">
+                {{ csrf_field() }}
+                <ul class="nav navbar-nav navbar-center">
+                    <li>
+                        <div class="anchor-form"><label class="label-navbar" for="">Find a Registry</label></div>
+                    </li>
+                    <li class="less-mt">
+                        <div class="anchor-form"><input type="text" class="form-control text-center input-navbar" value="Enter Promo Code" name="promo_code"></div>
+                    </li>
+                    <li class="less-mt">
+                        <div class="anchor-form"><button class="btn btn-primary" style="width:100%" type="submit">SEARCH</button></div>
+                    </li>
+                </ul>
+            </form>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::id())
                     <li class="dropdown">
