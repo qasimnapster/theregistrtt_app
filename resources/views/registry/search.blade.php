@@ -67,24 +67,7 @@
 	                $('.loadersmall').fadeIn();
 	                $('#frmSignUp').fadeOut();
 
-	                $.ajax({
-	                    url: '{{ config("app.url") }}registry/delete',
-	                    type: 'POST',
-	                    dataType: 'html',
-	                    data: {
-	                        'registry_id': $registryId,
-	                        'customer_id': {{ Auth::user()->id }},
-	                        _token: '{!! csrf_token() !!}'
-	                    },
-	                    success: function(response){
-	                        console.log(response);
-	                        $row.fadeOut('300');
-	                        alert('Registry deleted successfully!');
-	                    },
-	                    error: function(response){
-	                        //console.log(response)
-	                    }
-	                });
+	             
 
 					}
 				});

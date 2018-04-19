@@ -43,8 +43,12 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="#" data-toggle="modal" data-target=".bs-login-modal-lg"><i class="fa fa-user-o" aria-hidden="true"></i> LOGIN</a></li>
-                    <li><a href="#" data-toggle="modal" data-target=".bs-signup-modal-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> SIGN UP</a></li>
+                    @if( isset( $_COOKIE['guest_cart'] ) )
+                        <li><a href="{{ config('app.url') }}guest/cart/index"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 24px"></i> ITEMS</a></li>
+                    @else
+                        <li><a href="#" data-toggle="modal" data-target=".bs-login-modal-lg"><i class="fa fa-user-o" aria-hidden="true"></i> LOGIN</a></li>
+                        <li><a href="#" data-toggle="modal" data-target=".bs-signup-modal-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> SIGN UP</a></li>
+                    @endif
                 @endif
             </ul>
         </div>

@@ -62,14 +62,14 @@
 					<div class="clearfix"></div>
 					<div class="block-sidebar-details price-slider-container">
 						<div class="price-bar-block col-xs-12">
-							<input type="text" value="" class="price-slider form-control" data-slider-min="-200" data-slider-max="200"
-                         data-slider-step="5" data-slider-handle="square" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+							<input type="text" value="" class="price-slider form-control" data-slider-min="-{{$min}}" data-slider-max="{{$max}}"
+                         data-slider-step="5" data-slider-handle="square" data-slider-value="[-{{$min}},{{$max}}]" data-slider-orientation="horizontal"
                          data-slider-selection="before" data-slider-tooltip="show" data-slider-id="red">
 						</div>
 						<div class="clearfix"></div>
 						<div class="price-details-block clearfix">
 							<div class="col-xs-12 col-sm-7">
-								<p>Price: <b>$430</b> - <b>$630</b></p>
+								<p>Price: <b id="min-price">${{$min}}</b> - <b id="max-price">${{$max}}</b></p>
 							</div>
 							<div class="col-xs-12 col-sm-5">
 								<button class="btn btn-primary">FILTER</button>
@@ -133,7 +133,15 @@
 		<script>
 		  $(function () {
 		    /* BOOTSTRAP SLIDER */
-		    $('.price-slider').slider()
+		    $('.price-slider').slider().on('slideStart', function(ev){
+			    originalVal = $('.price-slider').data('slider').getValue();
+			});
+			$('.price-slider').slider().on('slideStop', function(ev){
+				var newVal = $('.price-slider').data('slider').getValue();
+				console.log(newVal[0],newVal[1],);
+				$('#min-price').html('$'+newVal[0]);
+				$('#max-price').html('$'+newVal[1]);
+			});
 		  })
 		</script>
 	@endsection

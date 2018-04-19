@@ -10,7 +10,19 @@
 				<div class="col-sm-12">
 					<div class="products-list-content">
 						<div class="head-products-list">
-							<h1 class="text-light text-center">{{ $registry_detail->title }}</h1>
+							<div class="row clearfix">
+								<div class="col-sm-9">
+									<div class="h1 text-light text-left" style="margin-top:0">{{ $registry_detail->title }}</div>
+								</div>
+								<div class="col-sm-3">
+									<form action="{{ config('app.url') }}guest/store" method="POST">
+										{{ csrf_field() }}
+										<input type="hidden" name="registry_id" value="{{ $registry_detail->id }}">
+										<button type="submit"  style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn"> <i class="fa fa-shopping-cart" style="color:#e5c100; padding-right:5px"></i> START PURCHASING</button>	
+									</form>
+								</div>
+							</div>
+
 						</div>
 						<div class="block-products-list">
 							<div class="row">
