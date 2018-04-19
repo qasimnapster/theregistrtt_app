@@ -369,11 +369,16 @@ Route::get('/guest/cart/index', function(){
 
 	foreach($guest_cart_data as $item):
 		$pids = [];
-		foreach( $item->products as $pitem ):
-			$pids[] = $pitem->id;
-			$qtys[$pitem->id] = $pitem->qty;
-		endforeach;
-		$cart_synced_data[] = DB::select( DB::raw("SELECT b.*, c.title reg_title, c.first_name, c.promo_code FROM `trtt_registeries_products` a LEFT JOIN trtt_products b on a.product_id = b.id LEFT JOIN trtt_registeries c on a.registry_id = c.id WHERE a.registry_id = $item->registry_id and b.id IN (".implode( ',', $pids ).")") );
+		if( count( $item->products ) > 0 ):
+			foreach( $item->products as $pitem ):
+				$pids[] = $pitem->id;
+				$qtys[$pitem->id] = $pitem->qty;
+			endforeach;
+			// echo '<pre>';
+			// var_dump( $item );
+			// echo '</pre>';
+			$cart_synced_data[] = DB::select( DB::raw("SELECT b.*, c.title reg_title, c.first_name, c.promo_code FROM `trtt_registeries_products` a LEFT JOIN trtt_products b on a.product_id = b.id LEFT JOIN trtt_registeries c on a.registry_id = c.id WHERE a.registry_id = $item->registry_id and b.id IN (".implode( ',', $pids ).")") );
+		endif;
 	endforeach;
 	
 	return view( 'guest.cart.index', [

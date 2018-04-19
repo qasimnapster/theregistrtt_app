@@ -19,7 +19,7 @@
                         <div class="anchor-form"><label class="label-navbar" for="">Find a Registry</label></div>
                     </li>
                     <li class="less-mt">
-                        <div class="anchor-form"><input type="text" class="form-control text-center input-navbar" value="Enter Promo Code" name="promo_code"></div>
+                        <div class="anchor-form"><input type="text" class="form-control text-center input-navbar" placeholder="Enter Promo Code" name="promo_code"></div>
                     </li>
                     <li class="less-mt">
                         <div class="anchor-form"><button class="btn btn-primary" style="width:100%" type="submit">SEARCH</button></div>
@@ -44,7 +44,7 @@
                     </li>
                 @else
                     @if( isset( $_COOKIE['guest_cart'] ) )
-                        <li><a href="{{ config('app.url') }}guest/cart/index"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 24px"></i> ITEMS</a></li>
+                        <li><a href="{{ config('app.url') }}guest/cart/index"><span style="position: absolute; top:10px;" class="badge">{{ count( json_decode(base64_decode($_COOKIE['guest_cart'])) ) }}</span><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 24px"></i> ITEMS</a></li>
                     @else
                         <li><a href="#" data-toggle="modal" data-target=".bs-login-modal-lg"><i class="fa fa-user-o" aria-hidden="true"></i> LOGIN</a></li>
                         <li><a href="#" data-toggle="modal" data-target=".bs-signup-modal-lg"><i class="fa fa-user-plus" aria-hidden="true"></i> SIGN UP</a></li>

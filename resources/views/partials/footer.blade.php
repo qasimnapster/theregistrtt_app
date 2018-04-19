@@ -22,6 +22,9 @@
 		$('.common-alert button.close').on('click', function(){
 			$('.alert-overlay').css({'opacity':0}).fadeOut(300);	
 		});
+		$('#navbar ul.navbar-nav .anchor-form .input-navbar').focusin(function(){
+			//$(this).val('');
+		});
 	});
 </script>
 </body>
