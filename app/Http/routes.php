@@ -49,11 +49,16 @@ Route::any('/categories/{type}', function ($type) {
 	$sort_by_price = request('xslcSortByPrice');
 	$sort_by_alpha = request('xslcSortByAlpha');
 
+	$product_inst = DB::table('products as p');
+
+	$max = $product_inst->max('price');
+	$min = $product_inst->min('price');
+	
 	if( $type == 'all' )
 	{
 		if( count( Input::all() ) > 0 )
 		{
-			$product_inst = DB::table('products');
+			
 			if( $sort_by_price == '1' )
 				$product_inst->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
 			else if( $sort_by_price == '2' )
@@ -74,8 +79,7 @@ Route::any('/categories/{type}', function ($type) {
 		$cat_id = DB::table('categories')->where('slug', '=', $type)->select('id')->get();
 		$category_id = $cat_id[0]->id;
 
-		$product_inst = DB::table('products as p')
-		->select('p.*')
+		$product_inst->select('p.*')
 		->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id')
 		->where(['apc.category_id' => $category_id]);
 
@@ -95,11 +99,13 @@ Route::any('/categories/{type}', function ($type) {
 	
 	$categories = DB::table('categories')->select()->get();
     return view('categories', [ 
-		'reg_types'  => $reg_types,
-		'products'   => $products,
-		'categories' => $categories,
+		'reg_types'     => $reg_types,
+		'products'      => $products,
+		'categories'    => $categories,
 		'sort_by_price' => $sort_by_price,
-		'sort_by_alpha' => $sort_by_alpha
+		'sort_by_alpha' => $sort_by_alpha,
+		'max'           => $max,
+		'min'           => $min
     ]);
 });
 
@@ -225,11 +231,210 @@ Route::post('/registry/delete', function(){
 	}
 });
 
+Route::post('/guest/store', function(){
+	if ( Auth::check() )
+		return Redirect::to('/');
+
+	$registry_id = request('registry_id');
+
+	if ( ! $registry_id )
+		return Redirect::to('/');
+
+	$forever = time() + (10 * 365 * 24 * 60 * 60);
+
+	function set_cart_cookie( $arr )
+	{
+		global $forever;		
+		setcookie('guest_cart', base64_encode(json_encode($arr)), $forever);
+	}
+	function set_registry_selected( $rid )
+	{
+		global $forever;
+		setcookie('registry_selected', base64_encode(json_encode($rid)), $forever);	
+	}
+	function get_cart_cookie()
+	{
+		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
+	}
+	function get_registry_selected()
+	{
+		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
+	}
+	
+	if( ! isset($_COOKIE['guest_cart']) )
+	{
+		$cart_arr[] = ['registry_id' => $registry_id, 'products' => []];
+		set_cart_cookie($cart_arr);
+		set_registry_selected(['id'=>$registry_id]);
+		
+	} else
+	{
+
+		$cart_arr = get_cart_cookie();
+		$reg_ids = [];
+
+		foreach( $cart_arr as $item )
+			$reg_ids[] = $item->registry_id;
+		
+		var_dump( in_array( $registry_id, $reg_ids ) );
+		
+		if( in_array( $registry_id, $reg_ids ) == false ):
+			$cart_arr[count( $cart_arr )] = ['registry_id' => $registry_id, 'products' => []];
+			set_cart_cookie($cart_arr);
+			set_registry_selected(['id'=>$registry_id]);
+		endif;
+	}
+
+	return Redirect::to('/guest/shopping');
+});
+
+Route::get('/guest/shopping', function(){
+	if ( Auth::check() )
+		return Redirect::to('/');
+
+	function get_cart_cookie()
+	{
+		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
+	}
+	function get_registry_selected()
+	{
+		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
+	}
+
+	$guest_cart        = get_cart_cookie();
+	$registry_selected = get_registry_selected();
+	$view_id = $registry_selected->id;
+
+
+	$products = [];
+	$_pids    = [];
+
+	$registry_detail   = DB::table('registeries')->where('id',$view_id)->select()->get();
+
+	if( count( $registry_detail ) > 0 )
+	{
+		$reg_types         = DB::table('registry_types')->select()->get();
+		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $view_id)->select()->get();
+
+		$qtys = [];
+
+		if( count( $edit_products_ids ) > 0 )
+		{
+			foreach( $edit_products_ids as $epid ):
+				$_pids[] = $epid->product_id;
+				$qtys[$epid->product_id] = $epid->qty;
+			endforeach;
+			//var_dump( $_pids );
+			$products = DB::table('products')->whereIn('id', $_pids)->get();
+		}
+
+		// var_dump( $products );
+		// var_dump( $registry_detail[0] );
+		// exit;
+
+		return view('guest.shopping', [
+			'reg_types' => $reg_types,
+			'products'  => $products,
+			'registry_detail' => $registry_detail[0],
+			'qtys' => $qtys
+	    ]);
+	} else {
+		return response()->view('errors.503',[],503);
+	}
+
+});
+
+Route::get('/guest/cart/index', function(){
+	$forever   = time() + (10 * 365 * 24 * 60 * 60);
+	$reg_types = DB::table('registry_types')->select()->get();
+	function set_cart_cookie( $arr )
+	{
+		global $forever;		
+		setcookie('guest_cart', base64_encode(json_encode($arr)), $forever);
+	}
+	function get_cart_cookie()
+	{
+		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
+	}
+	function get_registry_selected()
+	{
+		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
+	}
+
+	$guest_cart_data         = get_cart_cookie();
+	$guest_selected_registry = get_registry_selected()->id;
+
+	$cart_synced_data = [];
+	$qtys = [];
+
+	foreach($guest_cart_data as $item):
+		$pids = [];
+		foreach( $item->products as $pitem ):
+			$pids[] = $pitem->id;
+			$qtys[$pitem->id] = $pitem->qty;
+		endforeach;
+		$cart_synced_data[] = DB::select( DB::raw("SELECT b.*, c.title reg_title, c.first_name, c.promo_code FROM `trtt_registeries_products` a LEFT JOIN trtt_products b on a.product_id = b.id LEFT JOIN trtt_registeries c on a.registry_id = c.id WHERE a.registry_id = $item->registry_id and b.id IN (".implode( ',', $pids ).")") );
+	endforeach;
+	
+	return view( 'guest.cart.index', [
+		'reg_types' => $reg_types,
+		'qtys'      => $qtys,
+		'data'      => $cart_synced_data
+    ]);
+	
+});
+
+Route::post('/guest/cart/store', function(){
+	$forever = time() + (10 * 365 * 24 * 60 * 60);
+	function set_cart_cookie( $arr )
+	{
+		global $forever;		
+		setcookie('guest_cart', base64_encode(json_encode($arr)), $forever);
+	}
+	function get_cart_cookie()
+	{
+		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
+	}
+	function get_registry_selected()
+	{
+		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
+	}
+	if( count( Input::all() ) > 0 ):
+		
+		$product_ids  = request('products_id');
+		$quantity_ids = request('quantity_id');
+		if( $product_ids && $quantity_ids )
+		{
+			$cart_items = get_cart_cookie();
+			$registry_slc = get_registry_selected();
+			foreach( $cart_items as $item ):
+				if( $item->registry_id == $registry_slc->id ):
+					foreach( $quantity_ids as $pid => $quantity_id ):
+						if( $quantity_id ):
+							$item->products[] = ['id' => $pid, 'qty' => $quantity_id[0]];
+							//$item->products = [];
+						endif;
+					endforeach;
+					break;
+				endif;
+			endforeach;
+			
+			set_cart_cookie( $cart_items );
+			return Redirect::to('/guest/cart/index');
+
+		} else
+		{
+			return response()->view('errors.503',[],503);
+		}
+
+	endif;
+});
+
 Route::any('/registry/search/', function(){
 
 	$promo_code = request('promo_code');
 
-	if ( ! Auth::check() || ! $promo_code )
+	if ( ! $promo_code )
 		return Redirect::to('/');
 	
 	$reg_types = DB::table('registry_types')->select()->get();
@@ -280,7 +485,7 @@ Route::post('/create/registry/store', function () {
 	if ( ! Auth::check())
 		return Redirect::to('/');
 
-	$forver = time() + (10 * 365 * 24 * 60 * 60);
+	$forever = time() + (10 * 365 * 24 * 60 * 60);
 
 	if( count( Input::all() ) > 0 )
 	{
@@ -363,8 +568,8 @@ Route::post('/create/registry/store', function () {
 					var_dump( $insertion_shippings );
 				}
 
-				//Cookie::queue('latest_registry_id', $inserted_registry_id, $forver);
-				setcookie('latest_registry_id',$inserted_registry_id,$forver);
+				//Cookie::queue('latest_registry_id', $inserted_registry_id, $forever);
+				setcookie('latest_registry_id',$inserted_registry_id,$forever);
 				return Redirect::to('/create/registry/2');
 				
 			
@@ -395,8 +600,8 @@ Route::post('/create/registry/store', function () {
 					endforeach;
 				}
 
-				//Cookie::queue('alot_promo_code',true, $forver);
-				setcookie('alot_promo_code',true, $forver);
+				//Cookie::queue('alot_promo_code',true, $forever);
+				setcookie('alot_promo_code',true, $forever);
 				return Redirect::to('/create/registry/3');	
 				
 			}
@@ -590,7 +795,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 	if ( ! Auth::check())
 		return Redirect::to('/');
 
-	$forver = time() + (10 * 365 * 24 * 60 * 60);
+	$forever = time() + (10 * 365 * 24 * 60 * 60);
 
 	if( count( Input::all() ) > 0 )
 	{
@@ -682,7 +887,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 
 					//var_dump( $updated_shippings );
 				}
-				//Cookie::queue('edit_registry_id', $inserted_registry_id, $forver);
+				//Cookie::queue('edit_registry_id', $inserted_registry_id, $forever);
 				return Redirect::to('/edit/registry/2/' . $edit_id);
 			}
 
