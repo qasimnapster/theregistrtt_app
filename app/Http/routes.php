@@ -12,12 +12,11 @@
 |
 */
 
-Route::get('/', function () {
-	if (Auth::check()) {
-		// The user is logged in...
-		// var_dump( Auth::user()->first_name . ' ' . Auth::user()->last_name );
-		// exit;
-	}
+use Illuminate\Cookie\CookieJar;
+use Illuminate\Contracts\Cookie\Factory;
+
+
+Route::get('/', function (Factory $cookie) {
 	$reg_types = DB::table('registry_types')->select()->get();
     return view('home', [ 'reg_types' => $reg_types ]);
 });
@@ -197,7 +196,7 @@ Route::any('/profile', function () {
     ]);
 });
 
-Route::post('/registry/delete', function(){
+Route::post('/registry/delete', function(Factory $cookie){
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
@@ -211,19 +210,10 @@ Route::post('/registry/delete', function(){
 		if( Auth::user()->id == $customer_id )
 		{
 
-			// if( $registry_id == Cookie::get('latest_registry_id') )
-			// {
-			// 	Cookie::queue(
-			// 		Cookie::forget('latest_registry_id')
-			// 	);
-			// }
-
-			if( isset($_COOKIE['latest_registry_id']) && $registry_id == $_COOKIE['latest_registry_id'] )
+			if( session()->has('latest_registry_id') && $registry_id == session()->get('latest_registry_id') )
 			{
-				// Cookie::queue(
-				// 	Cookie::forget('latest_registry_id')
-				// );
-				setcookie("latest_registry_id", "", time() - 3600);
+
+				session()->forget("latest_registry_id");
 			}
 
 			return DB::table('registeries')->where( ['id'=>$registry_id,'customer_id'=>$customer_id] )->delete();
@@ -231,7 +221,7 @@ Route::post('/registry/delete', function(){
 	}
 });
 
-Route::post('/guest/store', function(){
+Route::post('/guest/store', function(Factory $cookie){
 	if ( Auth::check() )
 		return Redirect::to('/');
 
@@ -240,74 +230,43 @@ Route::post('/guest/store', function(){
 	if ( ! $registry_id )
 		return Redirect::to('/');
 
-	$forever = time() + (10 * 365 * 24 * 60 * 60);
-
-	function set_cart_cookie( $arr )
-	{
-		global $forever;		
-		setcookie('guest_cart', base64_encode(json_encode($arr)), $forever);
-	}
-	function set_registry_selected( $rid )
-	{
-		global $forever;
-		setcookie('registry_selected', base64_encode(json_encode($rid)), $forever);	
-	}
-	function get_cart_cookie()
-	{
-		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
-	}
-	function get_registry_selected()
-	{
-		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
-	}
 	
-	if( ! isset($_COOKIE['guest_cart']) )
+	
+
+	if( ! session()->has('guest_cart') )
 	{
-		$cart_arr[] = ['registry_id' => $registry_id, 'products' => []];
-		set_cart_cookie($cart_arr);
-		set_registry_selected(['id'=>$registry_id]);
+		session()->put('guest_cart', [['registry_id' => $registry_id, 'products' => []]]);
+		session()->put('registry_selected', $registry_id);
 		
 	} else
 	{
-
-		$cart_arr = get_cart_cookie();
+		$cart_arr = session()->get('guest_cart');
 		$reg_ids = [];
 
 		foreach( $cart_arr as $item )
-			$reg_ids[] = $item->registry_id;
-		
-		var_dump( in_array( $registry_id, $reg_ids ) );
+			$reg_ids[] = $item['registry_id'];
 		
 		if( in_array( $registry_id, $reg_ids ) == false ):
 			$cart_arr[count( $cart_arr )] = ['registry_id' => $registry_id, 'products' => []];
-			set_cart_cookie($cart_arr);
-			set_registry_selected(['id'=>$registry_id]);
+			session()->put('guest_cart', $cart_arr);
+			session()->put('registry_selected', $registry_id);
 		endif;
 	}
-
 	return Redirect::to('/guest/shopping');
+
 });
 
-Route::get('/guest/shopping', function(){
+Route::get('/guest/shopping', function(Factory $cookie){
 	if ( Auth::check() )
 		return Redirect::to('/');
 
-	function get_cart_cookie()
-	{
-		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
-	}
-	function get_registry_selected()
-	{
-		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
-	}
-
-	$guest_cart        = get_cart_cookie();
-	$registry_selected = get_registry_selected();
-	$view_id = $registry_selected->id;
-
+	$guest_cart        = session()->has('guest_cart') ? session()->get('guest_cart') : [];
+	$registry_selected = session()->has('registry_selected') ? session()->get('registry_selected') : [];
+	$view_id           = $registry_selected;
 
 	$products = [];
 	$_pids    = [];
+	$cart_pqs = [];
 
 	$registry_detail   = DB::table('registeries')->where('id',$view_id)->select()->get();
 
@@ -324,19 +283,30 @@ Route::get('/guest/shopping', function(){
 				$_pids[] = $epid->product_id;
 				$qtys[$epid->product_id] = $epid->qty;
 			endforeach;
-			//var_dump( $_pids );
 			$products = DB::table('products')->whereIn('id', $_pids)->get();
 		}
 
-		// var_dump( $products );
-		// var_dump( $registry_detail[0] );
-		// exit;
-
+		if( count( $guest_cart ) > 0 )
+		{
+			foreach($guest_cart as $item)
+			{
+				if( $item['registry_id'] == $registry_selected )
+				{
+					if( count( $item['products'] ) > 0 )
+					{
+						foreach( $item['products'] as $p )
+							$cart_pqs[$p['id']] = $p['qty'];
+					}
+					break;
+				}	
+			}	
+		}
 		return view('guest.shopping', [
-			'reg_types' => $reg_types,
-			'products'  => $products,
+			'reg_types'       => $reg_types,
+			'products'        => $products,
 			'registry_detail' => $registry_detail[0],
-			'qtys' => $qtys
+			'qtys'            => $qtys,
+			'cart_pqs'        => $cart_pqs
 	    ]);
 	} else {
 		return response()->view('errors.503',[],503);
@@ -344,40 +314,42 @@ Route::get('/guest/shopping', function(){
 
 });
 
-Route::get('/guest/cart/index', function(){
-	$forever   = time() + (10 * 365 * 24 * 60 * 60);
+Route::post('/guest/checkout/process/store', function(Factory $cookie){
+	
 	$reg_types = DB::table('registry_types')->select()->get();
-	function set_cart_cookie( $arr )
-	{
-		global $forever;		
-		setcookie('guest_cart', base64_encode(json_encode($arr)), $forever);
-	}
-	function get_cart_cookie()
-	{
-		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
-	}
-	function get_registry_selected()
-	{
-		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
-	}
+	
+	
+});
 
-	$guest_cart_data         = get_cart_cookie();
-	$guest_selected_registry = get_registry_selected()->id;
+Route::any('/guest/cart/checkout/view', function(Factory $cookie){
+	
+	$reg_types = DB::table('registry_types')->select()->get();
+	
+	
+
+});
+
+Route::get('/guest/cart/index', function(Factory $cookie){
+	
+	$reg_types = DB::table('registry_types')->select()->get();
+	
+	$guest_cart_data         = session()->has('guest_cart') ? session()->get('guest_cart') : [];
+	$guest_selected_registry = session()->has('registry_selected') ? session()->get('registry_selected') : [];
 
 	$cart_synced_data = [];
 	$qtys = [];
 
 	foreach($guest_cart_data as $item):
 		$pids = [];
-		if( count( $item->products ) > 0 ):
-			foreach( $item->products as $pitem ):
-				$pids[] = $pitem->id;
-				$qtys[$pitem->id] = $pitem->qty;
+		if( count( $item['products'] ) > 0 ):
+			foreach( $item['products'] as $pitem ):
+				$pids[] = $pitem['id'];
+				$qtys[$pitem['id']] = $pitem['qty'];
 			endforeach;
 			// echo '<pre>';
 			// var_dump( $item );
 			// echo '</pre>';
-			$cart_synced_data[] = DB::select( DB::raw("SELECT b.*, c.title reg_title, c.first_name, c.promo_code FROM `trtt_registeries_products` a LEFT JOIN trtt_products b on a.product_id = b.id LEFT JOIN trtt_registeries c on a.registry_id = c.id WHERE a.registry_id = $item->registry_id and b.id IN (".implode( ',', $pids ).")") );
+			$cart_synced_data[] = DB::select( DB::raw("SELECT b.*, c.title reg_title, c.first_name, c.promo_code FROM `trtt_registeries_products` a LEFT JOIN trtt_products b on a.product_id = b.id LEFT JOIN trtt_registeries c on a.registry_id = c.id WHERE a.registry_id = {$item['registry_id']} and b.id IN (".implode( ',', $pids ).")") );
 		endif;
 	endforeach;
 	
@@ -389,48 +361,53 @@ Route::get('/guest/cart/index', function(){
 	
 });
 
-Route::post('/guest/cart/store', function(){
-	$forever = time() + (10 * 365 * 24 * 60 * 60);
-	function set_cart_cookie( $arr )
-	{
-		global $forever;		
-		setcookie('guest_cart', base64_encode(json_encode($arr)), $forever);
-	}
-	function get_cart_cookie()
-	{
-		return isset($_COOKIE['guest_cart']) ? json_decode(base64_decode($_COOKIE['guest_cart'])) : [];
-	}
-	function get_registry_selected()
-	{
-		return isset($_COOKIE['registry_selected']) ? json_decode(base64_decode($_COOKIE['registry_selected'])) : [];
-	}
+Route::post('/guest/cart/store', function(Factory $cookie){
+	
 	if( count( Input::all() ) > 0 ):
 		
 		$product_ids  = request('products_id');
 		$quantity_ids = request('quantity_id');
+
 		if( $product_ids && $quantity_ids )
 		{
-			$cart_items = get_cart_cookie();
-			$registry_slc = get_registry_selected();
+			$cart_items   = session()->has('guest_cart') ? session()->get('guest_cart') : [];
+			$registry_slc = session()->has('registry_selected') ? session()->get('registry_selected') : [];
+
+			$cart_emptying_items = [];
 			foreach( $cart_items as $item ):
-				if( $item->registry_id == $registry_slc->id ):
+				if( $item['registry_id'] == $registry_slc ):
 					foreach( $quantity_ids as $pid => $quantity_id ):
 						if( $quantity_id ):
-							$item->products[] = ['id' => $pid, 'qty' => $quantity_id[0]];
-							//$item->products = [];
+							$item['products'] = [];
 						endif;
 					endforeach;
-					break;
 				endif;
+				$cart_emptying_items[] = $item;
 			endforeach;
+
+			// emptying products index in cart session array
+			session()->put('guest_cart', $cart_emptying_items );
 			
-			set_cart_cookie( $cart_items );
+			$cart_items   = session()->has('guest_cart') ? session()->get('guest_cart') : [];
+
+			$cart_updated_items = [];
+			foreach( $cart_items as $item ):
+				if( $item['registry_id'] == $registry_slc ):
+					foreach( $quantity_ids as $pid => $quantity_id ):
+						if( $quantity_id ):
+							$item['products'][] = ['id' => $pid, 'qty' => $quantity_id[0]];
+						endif;
+					endforeach;
+				endif;
+				$cart_updated_items[] = $item;
+			endforeach;
+
+			session()->put('guest_cart', $cart_updated_items );
+			
 			return Redirect::to('/guest/cart/index');
 
 		} else
-		{
 			return response()->view('errors.503',[],503);
-		}
 
 	endif;
 });
@@ -485,12 +462,12 @@ Route::get('/registry/index', function(){
 
 });
 
-Route::post('/create/registry/store', function () {
+Route::post('/create/registry/store', function (Factory $cookie) {
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
 
-	$forever = time() + (10 * 365 * 24 * 60 * 60);
+	
 
 	if( count( Input::all() ) > 0 )
 	{
@@ -503,7 +480,7 @@ Route::post('/create/registry/store', function () {
 
 		//$latest_registry_id = Cookie::get('latest_registry_id');
 
-		$latest_registry_id = isset( $_COOKIE['latest_registry_id'] ) ? $_COOKIE['latest_registry_id'] : false;
+		$latest_registry_id = session()->has('latest_registry_id' ) ? session()->get('latest_registry_id') : false;
 
 		if( count( Input::all() ) > 0 )
 		{
@@ -538,7 +515,7 @@ Route::post('/create/registry/store', function () {
 				$customer_id      = Auth::user()->id;
 				$registry_title   = request('xtxtRegTitle');
 
-				var_dump( Auth::user()->id );
+				//var_dump( Auth::user()->id );
 
 				$inserted_registry_id = DB::table('registeries')->insertGetId([ 
 					'customer_id'            => $customer_id,
@@ -552,7 +529,7 @@ Route::post('/create/registry/store', function () {
 					'registry_status_id'    => 1
 				]);
 
-				var_dump( $inserted_registry_id );
+				//var_dump( $inserted_registry_id );
 
 				if( $del_pref == 1 && $inserted_registry_id )
 				{
@@ -570,11 +547,11 @@ Route::post('/create/registry/store', function () {
 						'phone_number' => $shipping_pnum
 					]);
 
-					var_dump( $insertion_shippings );
+					//var_dump( $insertion_shippings );
 				}
 
-				//Cookie::queue('latest_registry_id', $inserted_registry_id, $forever);
-				setcookie('latest_registry_id',$inserted_registry_id,$forever);
+				//Cookie::queue('latest_registry_id', $inserted_registry_id);
+				session()->put('latest_registry_id',$inserted_registry_id);
 				return Redirect::to('/create/registry/2');
 				
 			
@@ -590,7 +567,7 @@ Route::post('/create/registry/store', function () {
 				if( ! $latest_registry_id )
 					return Redirect::to('/');
 
-				var_dump( $product_ids );
+				//var_dump( $product_ids );
 
 				if( count( $quantity_ids ) > 0 )
 				{
@@ -605,8 +582,8 @@ Route::post('/create/registry/store', function () {
 					endforeach;
 				}
 
-				//Cookie::queue('alot_promo_code',true, $forever);
-				setcookie('alot_promo_code',true, $forever);
+				//Cookie::queue('alot_promo_code',true);
+				session()->put('alot_promo_code',true);
 				return Redirect::to('/create/registry/3');	
 				
 			}
@@ -615,7 +592,7 @@ Route::post('/create/registry/store', function () {
 
 });
 
-Route::any('/create/registry/{step}', function ($step) {
+Route::any('/create/registry/{step}', function ($step,Factory $cookie) {
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
@@ -692,8 +669,8 @@ Route::any('/create/registry/{step}', function ($step) {
 		// $latest_registry_id = Cookie::get('latest_registry_id');
 		// $alot_promo_code    = Cookie::get('alot_promo_code');
 
-		$latest_registry_id = isset( $_COOKIE['latest_registry_id'] ) ? $_COOKIE['latest_registry_id'] : false;
-		$alot_promo_code    = isset( $_COOKIE['alot_promo_code'] ) ? $_COOKIE['alot_promo_code'] : false;
+		$latest_registry_id = session()->has('latest_registry_id' ) ? session()->get('latest_registry_id') : false;
+		$alot_promo_code    = session()->has('alot_promo_code' ) ? session()->get('alot_promo_code') : false;
 		
 		if( ! $latest_registry_id  )
 			return Redirect::to('/');
@@ -734,8 +711,8 @@ Route::any('/create/registry/{step}', function ($step) {
 		// 	Cookie::forget('latest_registry_id')
 		// );
 
-		setcookie("alot_promo_code", "", time() - 3600);
-		setcookie("latest_registry_id", "", time() - 3600);
+		session()->forget("alot_promo_code");
+		session()->forget("latest_registry_id");
 
 	}
 
@@ -800,7 +777,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 	if ( ! Auth::check())
 		return Redirect::to('/');
 
-	$forever = time() + (10 * 365 * 24 * 60 * 60);
+	
 
 	if( count( Input::all() ) > 0 )
 	{
@@ -839,7 +816,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 				$customer_id      = Auth::user()->id;
 				$registry_title   = request('xtxtRegTitle');
 
-				var_dump( Auth::user()->id );
+				//var_dump( Auth::user()->id );
 
 				$updated_registry_id = DB::table('registeries')->where('id',$edit_id)->update([ 
 					'ocassion_id'            => $ocassion_id,
@@ -852,7 +829,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 					'updated_at'             => 'NOW()'
 				]);
 
-				var_dump( $updated_registry_id );
+				//var_dump( $updated_registry_id );
 
 				if( $del_pref == 1 )
 				{
@@ -892,7 +869,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 
 					//var_dump( $updated_shippings );
 				}
-				//Cookie::queue('edit_registry_id', $inserted_registry_id, $forever);
+				//Cookie::queue('edit_registry_id', $inserted_registry_id);
 				return Redirect::to('/edit/registry/2/' . $edit_id);
 			}
 

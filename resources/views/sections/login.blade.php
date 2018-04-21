@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-login" role="document">
         <div class="modal-content" style="padding: 30px; background: #f8f9f9d1;">
             <button type="button"  class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="font-size: 26px;">&times;</span></button>
-        <form method="POST" action="./login">
+        <form method="POST" action="{{ config('app.url') }}login">
             {{ csrf_field() }}
             <h1 class="text-light text-center">Login To ttRegistry</h1>
           <div class="form-group" style="margin-top: 20px">

@@ -11,9 +11,9 @@
 					<h1 class="text-light text-left"> <i class="fa fa-fw fa-shopping-cart"></i> Shopping Cart</h1>
 				</div>
 				<div class="col-sm-3" style="padding-top: 20px;">
-					<form action="{{config('app.url')}}guest/cart/checkout/view" method="POST" class="storeFrm">
+					<form action="{{config('app.url')}}guest/cart/process/1" method="POST" class="storeFrm">
 						{{ csrf_field() }}
-						<button type="submit"  style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn"> <i class="fa fa-cc" style="color:#e5c100; padding-right:5px"></i> PROCEED TO CHECKOUT</button>
+						<button type="button"  style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn"> <i class="fa fa-cc" style="color:#e5c100; padding-right:5px"></i> PROCEED TO CHECKOUT</button>
 					</form>
 				</div>
 			</div>

@@ -18,6 +18,12 @@
 									<form action="{{config('app.url')}}guest/cart/store" method="POST" class="storeFrm">
 										{{ csrf_field() }}
 										<button type="button"  style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn"> <i class="fa fa-cart-plus" style="color:#e5c100; padding-right:5px"></i> ADD ITEMS TO SHOPPING CART</button>
+										@if( count( $cart_pqs ) > 0 )
+											@foreach( $cart_pqs as $pid => $qty )
+												<input data-val="{{ $pid }}" class="hidden-pids" type="hidden" name="products_id[]" value="{{ $pid }}">
+												<input data-val-q="{{ $pid }}" class="hidden-pids" type="hidden" name="quantity_id[{{ $pid }}][]" value="{{ $qty }}">
+											@endforeach
+										@endif
 									</form>
 								</div>
 							</div>
@@ -39,7 +45,7 @@
 												            <i class="fa fa-minus" aria-hidden="true"></i>
 												        </button>
 												    </div>
-												    <input class="input-group-field" id="q__{{$product->id}}" type="number" name="quantity[]" value="1" min="1" max="{{ $qtys[$product->id] }}">
+												    <input class="input-group-field" id="q__{{$product->id}}" type="number" name="quantity[]" value="{{ isset($cart_pqs[$product->id]) ? $cart_pqs[$product->id] : 1 }}" min="1" max="{{ $qtys[$product->id] }}">
 												    <div class="input-group-button">
 												        <button type="button" class="btn btn-primary" data-quantity="plus" data-field="q__{{$product->id}}">
 												            <i class="fa fa-plus" aria-hidden="true"></i>
@@ -71,6 +77,10 @@
 	@section('scripts')
 		<script>
 			$(function(){
+				$.each( $('.hidden-pids'), function(index, value){
+			    	$('.btn-add-gift[data-product-id="'+ $(value).data('val') +'"]').fadeOut();
+			    	$('.btn-remove-gift[data-product-id="'+ $(value).data('val') +'"]').fadeIn();
+			    });
 				$('.btn-add-gift').on('click', function(){
 			    	var $this = $(this),
 						$pId  = $this.data('product-id'),
