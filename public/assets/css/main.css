@@ -800,3 +800,58 @@ p.light-rale {
 .product-qty .plus-minus-input .input-group-button i.fa{
     color: #fff;
 }
+.content-checkout h3, .order-details h3{
+    margin-top: 0;
+}
+.content-checkout{
+    background: #eee;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.order-details{
+    border: 1px solid #eee;
+    padding: 20px;
+    margin-bottom: 20px;   
+}
+.head-order{
+    margin-bottom: 20px;
+}
+.head-checkout .badge{
+    font-size: 15px;
+    position: relative;
+    top: -2px;
+}
+.content-order{
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.content-order .order-items{
+    margin-bottom: 10px;
+}
+.content-order .order-items .oi{
+    display: inline-block;
+}
+.content-order .order-items .oi-price{
+    float: right;
+}
+.checkout-fields-container{
+    margin-top: 30px;
+}
+.checkout-fields-container label{
+    font-weight: 500;
+}
+.checkout-fields-container .form-control{
+    border: 0 !important;
+    height: 40px !important;
+    box-shadow: none !important; 
+}
+.checkout-fields-container .input-group-addon{
+    background: #fff !important;
+    border: 0 !important;
+}
+.checkout-fields-container .input-group-addon .glyphicon{
+    color: #999
+}
+.oi.oi-name {
+    width: 75%;
+}

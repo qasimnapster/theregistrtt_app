@@ -16,7 +16,7 @@ use Illuminate\Cookie\CookieJar;
 use Illuminate\Contracts\Cookie\Factory;
 
 
-Route::get('/', function (Factory $cookie) {
+Route::get('/', function () {
 	$reg_types = DB::table('registry_types')->select()->get();
     return view('home', [ 'reg_types' => $reg_types ]);
 });
@@ -196,7 +196,7 @@ Route::any('/profile', function () {
     ]);
 });
 
-Route::post('/registry/delete', function(Factory $cookie){
+Route::post('/registry/delete', function(){
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
@@ -221,7 +221,7 @@ Route::post('/registry/delete', function(Factory $cookie){
 	}
 });
 
-Route::post('/guest/store', function(Factory $cookie){
+Route::post('/guest/store', function(){
 	if ( Auth::check() )
 		return Redirect::to('/');
 
@@ -256,7 +256,7 @@ Route::post('/guest/store', function(Factory $cookie){
 
 });
 
-Route::get('/guest/shopping', function(Factory $cookie){
+Route::get('/guest/shopping', function(){
 	if ( Auth::check() )
 		return Redirect::to('/');
 
@@ -314,22 +314,119 @@ Route::get('/guest/shopping', function(Factory $cookie){
 
 });
 
-Route::post('/guest/checkout/process/store', function(Factory $cookie){
+Route::post('/guest/checkout/process/store', function(){
 	
-	$reg_types = DB::table('registry_types')->select()->get();
-	
+	$post_data  = Input::all();
+
+	$guest_fname = request('xtxtGuestFirstName');
+	$guest_lname = request('xtxtGuestLastName');
+	$guest_eaddr = request('xtxtGuestEmailAddress');
+	$guest_anony = null !== request('xchckAnonymous') ? request('xchckAnonymous') : false;
+	$guest_gwrap = null !== request('xchckWrap') ? request('xchckWrap') : false;
+
+	$guest_cart = session()->has('guest_cart') ? session()->get('guest_cart') : [];
+	if( count( $post_data ) > 0 && $guest_cart )
+	{
+
+		foreach( $guest_cart as $item )
+		{
+			$registry_id = $item['registry_id'];
+
+			$guest_id = DB::table('guests')->insertGetId([
+				'first_name'    => $guest_fname,
+				'last_name'     => $guest_lname,
+				'email_address' => $guest_eaddr,
+				'info_secret'   => $guest_anony,
+				'wrap_gift'     => $guest_gwrap,
+				'registry_id'   => $registry_id
+			]);
+
+			$products    = $item['products'];
+			$total_product_prices = 0;
+			foreach( $products as $product )
+			{
+				$pd = DB::table('guest_purchase_detail')->insertGetId([
+					'guest_id'      => $guest_id,
+					'registry_id'   => $registry_id,
+					'product_id'    => $product['id'],
+					'qty'           => $product['qty']
+				]);
+				$price = DB::table('products')->where('id',$product['id'])->select('price')->first();
+				
+				DB::table('registeries_products')->where([
+					'registry_id' => $registry_id,
+					'product_id'  => $product['id']
+				])->update([ 
+					'received' => $product['qty']
+				]);
+
+				$total_product_prices += $price->price;
+				// var_dump( $pd );
+				// var_dump( $total_product_prices );
+			}
+			$txn = DB::table('guest_transactions')->insertGetId([
+				'guest_id'     => $guest_id,
+				'registry_id'  => $registry_id,
+				'total_amount' => $total_product_prices
+			]);
+			//var_dump( $txn );
+		}
+		// var_dump( $post_data );
+		// var_dump( $guest_cart );
+		// exit;
+		session()->forget('guest_cart');
+		session()->forget('registry_selected');
+		session()->put('completed_purchasing', true);
+		return Redirect::to('/checkout/process/completed');
+	} else
+	{
+		return response()->view('errors.503',[],503);
+	}
 	
 });
 
-Route::any('/guest/cart/checkout/view', function(Factory $cookie){
+Route::any('/checkout/process/completed', function(){
+	$reg_types = DB::table('registry_types')->select()->get();
+	if( session()->has('completed_purchasing') )
+	{
+		return view('guest.cart.complete', [
+			'reg_types' => $reg_types
+	    ]);
+	}
+	return response()->view('errors.503',[],503);
+});
+
+Route::any('/guest/cart/checkout/view', function(){
 	
 	$reg_types = DB::table('registry_types')->select()->get();
-	
-	
+
+	if( session()->has('guest_cart') )
+	{
+
+		$guest_cart = session()->get('guest_cart');	
+		$pids = [];
+		foreach( $guest_cart as $item )
+		{	
+			$products = $item['products'];
+			if( count( $products ) > 0 )
+			{
+				foreach( $products as $product )
+					$pids[] = $product['id'];
+			}
+		}
+		$products = DB::table('products')->whereIn('id', $pids)->get();
+		return view('guest.cart.checkout', [
+			'reg_types' => $reg_types,
+			'products'  => $products
+	    ]);
+	} else
+	{
+		return response()->view('errors.503',[],503);
+	}
 
 });
 
-Route::get('/guest/cart/index', function(Factory $cookie){
+Route::get('/guest/cart/index', function(){
 	
 	$reg_types = DB::table('registry_types')->select()->get();
 	
@@ -361,7 +458,7 @@ Route::get('/guest/cart/index', function(Factory $cookie){
 	
 });
 
-Route::post('/guest/cart/store', function(Factory $cookie){
+Route::post('/guest/cart/store', function(){
 	
 	if( count( Input::all() ) > 0 ):
 		
@@ -462,7 +559,7 @@ Route::get('/registry/index', function(){
 
 });
 
-Route::post('/create/registry/store', function (Factory $cookie) {
+Route::post('/create/registry/store', function () {
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
@@ -592,7 +689,7 @@ Route::post('/create/registry/store', function (Factory $cookie) {
 
 });
 
-Route::any('/create/registry/{step}', function ($step,Factory $cookie) {
+Route::any('/create/registry/{step}', function ($step) {
 
 	if ( ! Auth::check())
 		return Redirect::to('/');
