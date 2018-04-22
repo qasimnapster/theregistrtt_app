@@ -39,7 +39,7 @@
 													<h4 class="text-light">Desired: {{ $qtys[$product->id] }}</h4>
 												</div>
 												<div class="col-sm-6 pull-right">
-													<h4 class="text-light">Recieved: 0</h4>
+													<h4 class="text-light">Recieved: {{ $rec_qtys[$product->id] }}</h4>
 												</div>
 											</div>
 										</div>

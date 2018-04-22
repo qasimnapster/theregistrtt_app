@@ -38,25 +38,32 @@
 											</div>
 											<div class="product-title space-prod">{{ $product->title }}</div>
 											<div class="product-price space-prod">${{ $product->price }}</div>
-											<div class="product-qty">
-												<div class="input-group plus-minus-input">
-												    <div class="input-group-button">
-												        <button type="button" class="btn btn-primary" data-quantity="minus" data-field="q__{{$product->id}}">
-												            <i class="fa fa-minus" aria-hidden="true"></i>
-												        </button>
-												    </div>
-												    <input class="input-group-field" id="q__{{$product->id}}" type="number" name="quantity[]" value="{{ isset($cart_pqs[$product->id]) ? $cart_pqs[$product->id] : 1 }}" min="1" max="{{ $qtys[$product->id] }}">
-												    <div class="input-group-button">
-												        <button type="button" class="btn btn-primary" data-quantity="plus" data-field="q__{{$product->id}}">
-												            <i class="fa fa-plus" aria-hidden="true"></i>
-												        </button>
-												    </div>
+											@if( $qtys[$product->id] != $rec_qtys[$product->id]  )
+												<div class="product-qty">
+													<div class="input-group plus-minus-input">
+													    <div class="input-group-button">
+													        <button type="button" class="btn btn-primary" data-quantity="minus" data-field="q__{{$product->id}}">
+													            <i class="fa fa-minus" aria-hidden="true"></i>
+													        </button>
+													    </div>
+													    <input class="input-group-field" id="q__{{$product->id}}" type="number" name="quantity[]" value="{{ isset($cart_pqs[$product->id]) ? $cart_pqs[$product->id] : 1 }}" min="1" max="{{ ($qtys[$product->id] - $rec_qtys[$product->id]) }}">
+													    <div class="input-group-button">
+													        <button type="button" class="btn btn-primary" data-quantity="plus" data-field="q__{{$product->id}}">
+													            <i class="fa fa-plus" aria-hidden="true"></i>
+													        </button>
+													    </div>
+													</div>
 												</div>
-											</div>
-											<div class="product-purhcase">
-												<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-add-gift text-uppercase">add this gift to cart</button>
-												<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-remove-gift text-uppercase" style="display: none">remove this gift from cart</button>
-											</div>
+												<div class="product-purhcase">
+													<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-add-gift text-uppercase">add this gift to cart</button>
+													<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-remove-gift text-uppercase" style="display: none">remove this gift from cart</button>
+												</div>
+											@else
+												<div class="product-purhcase">
+													<h3 class="text-light text-center">Quantity Received.</h3>
+												</div>
+											@endif
+											
 										</div>
 									@endforeach
 								@else

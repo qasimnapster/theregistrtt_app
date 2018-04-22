@@ -275,13 +275,15 @@ Route::get('/guest/shopping', function(){
 		$reg_types         = DB::table('registry_types')->select()->get();
 		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $view_id)->select()->get();
 
-		$qtys = [];
+		$qtys     = [];
+		$rec_qtys = [];
 
 		if( count( $edit_products_ids ) > 0 )
 		{
 			foreach( $edit_products_ids as $epid ):
-				$_pids[] = $epid->product_id;
-				$qtys[$epid->product_id] = $epid->qty;
+				$_pids[]                     = $epid->product_id;
+				$qtys[$epid->product_id]     = $epid->qty;
+				$rec_qtys[$epid->product_id] = $epid->received;
 			endforeach;
 			$products = DB::table('products')->whereIn('id', $_pids)->get();
 		}
@@ -306,6 +308,7 @@ Route::get('/guest/shopping', function(){
 			'products'        => $products,
 			'registry_detail' => $registry_detail[0],
 			'qtys'            => $qtys,
+			'rec_qtys'        => $rec_qtys,
 			'cart_pqs'        => $cart_pqs
 	    ]);
 	} else {
@@ -351,19 +354,35 @@ Route::post('/guest/checkout/process/store', function(){
 					'product_id'    => $product['id'],
 					'qty'           => $product['qty']
 				]);
-				$price = DB::table('products')->where('id',$product['id'])->select('price')->first();
+
+				$price   = DB::table('products')->where('id',$product['id'])->select('price')->first();
+				
+				$received = DB::table('registeries_products')->where('product_id',$product['id'])->where('registry_id',$registry_id)->select('received')->first();
 				
 				DB::table('registeries_products')->where([
 					'registry_id' => $registry_id,
 					'product_id'  => $product['id']
 				])->update([ 
-					'received' => $product['qty']
+					'received' => ($product['qty']+$received->received)
 				]);
 
 				$total_product_prices += $price->price;
 				// var_dump( $pd );
 				// var_dump( $total_product_prices );
 			}
+
+			$rp_purchased = DB::table('registeries_products')->where('registry_id',$registry_id)->whereRaw('qty = received')->select()->get();
+			$rp_all = DB::table('registeries_products')->where('registry_id',$registry_id)->select()->get();
+
+			if( count( $rp_all ) == count( $rp_purchased )  )
+			{
+				DB::table('registeries')->where([
+					'id' => $registry_id
+				])->update([ 
+					'registry_status_id' => 4
+				]);
+			}
+
 			$txn = DB::table('guest_transactions')->insertGetId([
 				'guest_id'     => $guest_id,
 				'registry_id'  => $registry_id,
@@ -842,13 +861,15 @@ Route::any('/detail/registry/{view_id}', function ($view_id) {
 		$reg_types         = DB::table('registry_types')->select()->get();
 		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $view_id)->select()->get();
 
-		$qtys = [];
+		$qtys     = [];
+		$rec_qtys = [];
 
 		if( count( $edit_products_ids ) > 0 )
 		{
 			foreach( $edit_products_ids as $epid ):
-				$_pids[] = $epid->product_id;
-				$qtys[$epid->product_id] = $epid->qty;
+				$_pids[]                     = $epid->product_id;
+				$qtys[$epid->product_id]     = $epid->qty;
+				$rec_qtys[$epid->product_id] = $epid->received;
 			endforeach;
 			//var_dump( $_pids );
 			$products = DB::table('products')->whereIn('id', $_pids)->get();
@@ -858,10 +879,11 @@ Route::any('/detail/registry/{view_id}', function ($view_id) {
 		// exit;
 
 		return view('registry.detail', [
-			'reg_types' => $reg_types,
-			'products'  => $products,
+			'reg_types'       => $reg_types,
+			'products'        => $products,
 			'registry_detail' => $registry_detail[0],
-			'qtys' => $qtys
+			'qtys'            => $qtys,
+			'rec_qtys'        => $rec_qtys
 	    ]);
 	} else {
 		return response()->view('errors.503',[],503);
