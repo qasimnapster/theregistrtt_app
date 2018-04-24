@@ -11,15 +11,15 @@
 				<ul class="container">
 					<li class="container__item">
 					    <div class="stepper" data-debug="data-debug">
-					        <input class="stepper__input" id="stepper-3-0" name="stepper-3" type="radio" checked="checked">
+					        <input class="stepper__input" id="stepper-3-0" name="stepper-3" type="radio" checked="checked" disabled>
 					        <div class="stepper__step">
 					            <label class="stepper__button" for="stepper-3-0">Step: 1</label>
 					        </div>
-					        <input class="stepper__input" id="stepper-3-1" name="stepper-3" type="radio">
+					        <input class="stepper__input" id="stepper-3-1" name="stepper-3" type="radio" disabled>
 					        <div class="stepper__step">
 					            <label class="stepper__button" for="stepper-3-1">Step: 2</label>
 					        </div>
-					        <input class="stepper__input" id="stepper-3-2" name="stepper-3" type="radio">
+					        <input class="stepper__input" id="stepper-3-2" name="stepper-3" type="radio" disabled>
 					        <div class="stepper__step">
 					            <label class="stepper__button" for="stepper-3-2">Step: 3</label>
 					        </div>
