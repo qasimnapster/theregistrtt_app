@@ -388,11 +388,20 @@ Route::post('/guest/checkout/process/store', function(){
 				'registry_id'  => $registry_id,
 				'total_amount' => $total_product_prices
 			]);
+
+			$registry_customer = DB::table('registeries')->where('id',$registry_id)->select('customer_id')->first();
+			$customer_id = $registry_customer->customer_id;
+
+			$customer = DB::table('customers')->where('id',$customer_id)->select('email_address')->first();
+
+			Mail::send('emails.gift_purchased', [$customer], function($message) use ($customer) {
+		        $message->from('theregistrytt1@gmail.com');
+		        $message->to($customer->email_address);
+		        $message->subject('Gift Purchased');
+		    });
 			//var_dump( $txn );
 		}
-		// var_dump( $post_data );
-		// var_dump( $guest_cart );
-		// exit;
+		
 		session()->forget('guest_cart');
 		session()->forget('registry_selected');
 		session()->put('completed_purchasing', true);

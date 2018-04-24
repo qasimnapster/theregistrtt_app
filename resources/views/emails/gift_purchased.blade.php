@@ -1,0 +1,1 @@
+Congrats! An item has been purchased of your registry.

@@ -14,6 +14,7 @@
 								<div class="col-sm-9">
 									<div class="h1 text-light text-left" style="margin-top:0">{{ $registry_detail->title }}</div>
 								</div>
+								@if( ! Auth::check() )
 								<div class="col-sm-3">
 									<form action="{{ config('app.url') }}guest/store" method="POST">
 										{{ csrf_field() }}
@@ -21,6 +22,7 @@
 										<button type="submit"  style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn"> <i class="fa fa-shopping-cart" style="color:#e5c100; padding-right:5px"></i> START PURCHASING</button>	
 									</form>
 								</div>
+								@endif
 							</div>
 
 						</div>
