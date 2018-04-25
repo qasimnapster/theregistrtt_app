@@ -169,9 +169,7 @@ Route::any('/profile', function () {
 		$first_name  = Input::get('xtxtCustFirstName');
 		$last_name   = Input::get('xtxtCustLastName');
 		$address_1   = Input::get('xtxtAddress1');
-		$address_2   = Input::get('xtxtAddress2');
-		$postal_code = Input::get('xtxtPostalcode');
-		$state       = Input::get('xtxtState');
+		$address_2   = Input::get('xtxtAddress2');;
 		$city        = Input::get('xtxtCity');
 		$country     = Input::get('xtxtCountry');
 
@@ -182,8 +180,6 @@ Route::any('/profile', function () {
 				'last_name'   => $last_name,
 				'address_1'   => $address_1,
 				'address_2'   => $address_2,
-				'postal_code' => $postal_code,
-				'state'       => $state,
 				'city'        => $city,
 				'country'     => $country
             ]);
@@ -632,9 +628,7 @@ Route::post('/create/registry/store', function () {
 				$shipping_lname   = request('xtxtShippingLastName');
 				$shipping_addr1   = request('xtxtAddress1');
 				$shipping_addr2   = request('xtxtAddress2');
-				$shipping_zipcode = request('xtxtZipcode');
 				$shipping_city    = request('xtxtCity');
-				$shipping_state   = request('xtxtState');
 				$shipping_country = request('xslsCountry');
 				$shipping_pnum    = request('xtxtShippingPhoneNumber');
 				$customer_id      = Auth::user()->id;
@@ -665,9 +659,7 @@ Route::post('/create/registry/store', function () {
 						'last_name'    => $shipping_lname,
 						'address_1'    => $shipping_addr1,
 						'address_2'    => $shipping_addr2,
-						'postal_code'  => $shipping_zipcode,
-						'state_id'     => 1,
-						'city_id'      => 1,
+						'city_id'      => $shipping_city,
 						'country_id'   => $shipping_country,
 						'phone_number' => $shipping_pnum
 					]);
@@ -729,7 +721,6 @@ Route::any('/create/registry/{step}', function ($step) {
 	$ocassions     = [];
 	$delivery_pref = [];
 	$countries     = [];
-	$states        = [];
 	$cities        = [];
 
 	$sort_by_cat   = '';
@@ -743,8 +734,6 @@ Route::any('/create/registry/{step}', function ($step) {
 		$delivery_pref = DB::table('gift_delivery_preference')->select()->get();
 
 		$countries = DB::table('countries')->orderBy('name', 'asc')->select()->get();
-		// $states    = DB::table('states')->orderBy('name', 'asc')->select()->get();
-		// $cities    = DB::table('cities')->orderBy('name', 'asc')->select()->get();
 	}
 
 	if( $step == 2 )
@@ -852,7 +841,6 @@ Route::any('/create/registry/{step}', function ($step) {
 		'ocassions'     => $ocassions,
 		'delivery_pref' => $delivery_pref,
 		'countries'     => $countries,
-		'states'        => $states,
 		'cities'        => $cities
     ]);
 
@@ -936,9 +924,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 				$shipping_lname   = request('xtxtShippingLastName');
 				$shipping_addr1   = request('xtxtAddress1');
 				$shipping_addr2   = request('xtxtAddress2');
-				$shipping_zipcode = request('xtxtZipcode');
 				$shipping_city    = request('xtxtCity');
-				$shipping_state   = request('xtxtState');
 				$shipping_country = request('xslsCountry');
 				$shipping_pnum    = request('xtxtShippingPhoneNumber');
 				$customer_id      = Auth::user()->id;
@@ -973,9 +959,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 							'last_name'    => $shipping_lname,
 							'address_1'    => $shipping_addr1,
 							'address_2'    => $shipping_addr2,
-							'postal_code'  => $shipping_zipcode,
-							'state_id'     => 1,
-							'city_id'      => 1,
+							'city_id'      => $shipping_city,
 							'country_id'   => $shipping_country,
 							'phone_number' => $shipping_pnum
 						]);
@@ -986,9 +970,7 @@ Route::post('/edit/registry/store/{edit_id}', function ($edit_id) {
 							'last_name'    => $shipping_lname,
 							'address_1'    => $shipping_addr1,
 							'address_2'    => $shipping_addr2,
-							'postal_code'  => $shipping_zipcode,
-							'state_id'     => 1,
-							'city_id'      => 1,
+							'city_id'      => $shipping_city,
 							'country_id'   => $shipping_country,
 							'phone_number' => $shipping_pnum,
 							'updated_at'   => 'NOW()'
@@ -1047,7 +1029,6 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 	$ocassions         = [];
 	$delivery_pref     = [];
 	$countries         = [];
-	$states            = [];
 	$cities            = [];
 	$shipping_detail   = [];
 	$edit_products_ids = [];
@@ -1066,8 +1047,6 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 
 
 		$countries = DB::table('countries')->orderBy('name', 'asc')->select()->get();
-		// $states    = DB::table('states')->orderBy('name', 'asc')->select()->get();
-		// $cities    = DB::table('cities')->orderBy('name', 'asc')->select()->get();
 	}
 
 	if( $step == 2 )
@@ -1160,7 +1139,6 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 		'ocassions'     => $ocassions,
 		'delivery_pref' => $delivery_pref,
 		'countries'     => $countries,
-		'states'        => $states,
 		'cities'        => $cities,
 		'edit_details'  => $edit_details[0],
 		'shipping_detail' => $shipping_detail,

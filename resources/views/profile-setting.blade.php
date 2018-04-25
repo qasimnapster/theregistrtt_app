@@ -49,16 +49,6 @@
 					    </div>
 					    <div class="row">
 					    	<div class="form-group col-sm-6">
-						        <label class="text-light" for="xtxtPostalcode">Postal Code:</label>
-						        <input type="text" class="form-control" name="xtxtPostalcode" id="xtxtPostalcode" placeholder="Enter Your Postal Code" value="{{ $customer->postal_code }}" required>
-						    </div>
-						    <div class="form-group col-sm-6">
-						        <label class="text-light" for="xtxtState">State:</label>
-						        <input type="text" class="form-control" name="xtxtState" id="xtxtState" placeholder="Enter Your State" value="{{ $customer->state }}" required>
-						    </div>
-					    </div>
-					    <div class="row">
-					    	<div class="form-group col-sm-6">
 						        <label class="text-light" for="xtxtCity">City:</label>
 						        <input type="text" class="form-control" name="xtxtCity" id="xtxtCity" placeholder="Enter Your City" value="{{ $customer->city }}" required>
 						    </div>

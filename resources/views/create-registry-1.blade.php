@@ -114,10 +114,6 @@
 									    <input type="text" class="form-control" name="xtxtAddress2" id="xtxtAddress2" placeholder="Your Address 2">
 									</div>
 									<div class="form-group">
-									    <label for="xtxtZipcode">Zipcode</label>
-									    <input type="text" class="form-control" id="xtxtZipcode" name="xtxtZipcode" placeholder="Your Zipcode">
-									</div>
-									<div class="form-group">
 									    <label for="xtxtCity">City</label>
 									    <!-- <select class="form-control" id="xtxtCity" name="xtxtCity" required>
 									    	<option value="">SELECT</option>
@@ -127,16 +123,6 @@
 									    </select> -->
 									    <input type="text" name="xtxtCity" id="xtxtCity" class="form-control" required placeholder="Your City Name">
 
-									</div>
-									<div class="form-group">
-									    <label for="xtxtState">State</label>
-									    <!-- <select class="form-control" id="xtxtState" name="xtxtState" required>
-									    	<option value="">SELECT</option>
-									    	@foreach( $states as $state ):
-										    	<option value="{{ $state->id }}">{{ $state->name }}</option>
-									    	@endforeach
-									    </select> -->
-									    <input type="text" name="xtxtState" id="xtxtState" class="form-control" required placeholder="Your State Name">
 									</div>
 									<div class="form-group">
 									    <label for="xslsCountry">Country</label>
