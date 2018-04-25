@@ -227,28 +227,25 @@ Route::post('/guest/store', function(){
 	if ( ! $registry_id )
 		return Redirect::to('/');
 
-	
-	
-
-	if( ! session()->has('guest_cart') )
-	{
+	// if( ! session()->has('guest_cart') )
+	// {
 		session()->put('guest_cart', [['registry_id' => $registry_id, 'products' => []]]);
 		session()->put('registry_selected', $registry_id);
-		
-	} else
-	{
-		$cart_arr = session()->get('guest_cart');
-		$reg_ids = [];
+	// }
+	// else
+	// {
+	// 	$cart_arr = session()->get('guest_cart');
+	// 	$reg_ids = [];
 
-		foreach( $cart_arr as $item )
-			$reg_ids[] = $item['registry_id'];
+	// 	foreach( $cart_arr as $item )
+	// 		$reg_ids[] = $item['registry_id'];
 		
-		if( in_array( $registry_id, $reg_ids ) == false ):
-			$cart_arr[count( $cart_arr )] = ['registry_id' => $registry_id, 'products' => []];
-			session()->put('guest_cart', $cart_arr);
-			session()->put('registry_selected', $registry_id);
-		endif;
-	}
+	// 	if( in_array( $registry_id, $reg_ids ) == false ):
+	// 		$cart_arr[count( $cart_arr )] = ['registry_id' => $registry_id, 'products' => []];
+	// 		session()->put('guest_cart', $cart_arr);
+	// 		session()->put('registry_selected', $registry_id);
+	// 	endif;
+	// }
 	return Redirect::to('/guest/shopping');
 
 });
