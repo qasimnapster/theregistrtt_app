@@ -22,9 +22,52 @@
 		$('.common-alert button.close').on('click', function(){
 			$('.alert-overlay').css({'opacity':0}).fadeOut(300);	
 		});
-		$('#navbar ul.navbar-nav .anchor-form .input-navbar').focusin(function(){
-			//$(this).val('');
-		});
+		
+		$('[data-toggle="tooltip"]').tooltip();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('.btn-create-account').on('click', function(){
+            $('.loadersmall').fadeIn();
+            $('#frmSignUp').fadeOut();
+            xslcRegType       = $('#xslcRegType').val();
+            xtxtFirstName     = $('#xtxtFirstName').val();
+            xtxtLastName      = $('#xtxtLastName').val();
+            xemlEmailAddr     = $('#xemlEmailAddr').val();
+            xemlConfEmailAddr = $('#xemlConfEmailAddr').val();
+            xpsPassword       = $('#xpsPassword').val();
+            xpsConfPassword   = $('#xpsConfPassword').val();
+            $.ajax({
+                url: '{{ config("app.url") }}signup',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    'xslcRegType': xslcRegType,
+                    'xtxtFirstName': xtxtFirstName,
+                    'xtxtLastName': xtxtLastName,
+                    'xemlEmailAddr': xemlEmailAddr,
+                    'xemlConfEmailAddr': xemlConfEmailAddr,
+                    'xpsPassword': xpsPassword,
+                    'xpsConfPassword': xpsConfPassword,
+                    _token: '{!! csrf_token() !!}'
+                },
+                success: function(response){
+                    $('.loadersmall').fadeOut();
+                    $result = JSON.parse(response);
+                    $('.bs-signup-modal-lg').modal('toggle')
+                    alert( $result.message );
+                    //console.log(response)
+                },
+                error: function(response){
+                    //console.log(response)
+                }
+            });
+        });
+		
 	});
 </script>
 </body>

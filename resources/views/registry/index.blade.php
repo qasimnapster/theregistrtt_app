@@ -13,7 +13,7 @@
 		@if( count( $registeries ) == 0 )
 			<div class="alert alert-warning clearfix">
 				<strong>Oops!</strong> No registry found.
-				<a href="{{ config('app.url') }}create/registry/1" class=" btn btn-info pull-right"> Create your first free registry </a>
+				<a href="{{ config('app.url') }}create/registry/1" class=" btn btn-default pull-right"> Create your first free registry </a>
 			</div>
 		@else
 			<div style="margin-top: 30px;">

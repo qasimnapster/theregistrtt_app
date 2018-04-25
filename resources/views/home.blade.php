@@ -1,14 +1,7 @@
 @extends('master')
 @section('stylesheets')
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ config('app.url') }}vendors/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="{{ config('app.url') }}vendors/bxslider/css/jquery.bxslider.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="{{ config('app.url') }}plugins/iCheck/all.css">
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script> -->
     <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
@@ -203,80 +196,8 @@
     @include('sections.contactus')
     @section('scripts')
         
-
-        <script src="{{ config('app.url') }}/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <!-- datepicker -->
-        <script src="{{ config('app.url') }}/vendors/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="{{ config('app.url') }}/vendors/bxslider/js/jquery.bxslider.min.js"></script>
-        <script src="{{ config('app.url') }}/plugins/iCheck/icheck.min.js"></script>
-
         <script>
-        $(document).ready(function(){
-            
-            // $('.slider').bxSlider({
-            //     responsive: true,
-            //     mode: 'fade',
-            //     auto: true,
-            //     speed: 1500,
-            //     hideControlOnEnd: true,
-            //     controls: false,
-            //     pager: false
-            // });
-
-            $('[data-toggle="tooltip"]').tooltip();
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('.btn-create-account').on('click', function(){
-                $('.loadersmall').fadeIn();
-                $('#frmSignUp').fadeOut();
-                xslcRegType       = $('#xslcRegType').val();
-                xtxtFirstName     = $('#xtxtFirstName').val();
-                xtxtLastName      = $('#xtxtLastName').val();
-                xemlEmailAddr     = $('#xemlEmailAddr').val();
-                xemlConfEmailAddr = $('#xemlConfEmailAddr').val();
-                xpsPassword       = $('#xpsPassword').val();
-                xpsConfPassword   = $('#xpsConfPassword').val();
-                $.ajax({
-                    url: '{{ config("app.url") }}signup',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        'xslcRegType': xslcRegType,
-                        'xtxtFirstName': xtxtFirstName,
-                        'xtxtLastName': xtxtLastName,
-                        'xemlEmailAddr': xemlEmailAddr,
-                        'xemlConfEmailAddr': xemlConfEmailAddr,
-                        'xpsPassword': xpsPassword,
-                        'xpsConfPassword': xpsConfPassword,
-                        _token: '{!! csrf_token() !!}'
-                    },
-                    success: function(response){
-                        $('.loadersmall').fadeOut();
-                        $result = JSON.parse(response);
-                        $('.bs-signup-modal-lg').modal('toggle')
-                        alert( $result.message );
-                        //console.log(response)
-                    },
-                    error: function(response){
-                        //console.log(response)
-                    }
-                });
-            });
-
-            //Flat red color scheme for iCheck
-            // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            //     checkboxClass: 'icheckbox_minimal-blue',
-            //     radioClass   : 'iradio_minimal-blue'
-            // })
-        });
-
-
-        $(document).ready(function() {
+        $(function(){
 
             $('#rev_slider_1').revolution({
                 sliderLayout: 'fullscreen',
