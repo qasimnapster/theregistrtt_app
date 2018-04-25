@@ -101,17 +101,17 @@
 										</div>
 									    <label for="xtxtShippingFirstName">Ship to Name</label>
 									    <div class="clearfix">
-										    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->first_name : '' }} " class="field-control col-sm-5" name="xtxtShippingFirstName" id="xtxtShippingFirstName" placeholder="Your First Name" required>
-										    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->last_name : '' }} " class="field-control col-sm-5 col-sm-offset-2" name="xtxtShippingLastName" id="xtxtShippingLastName" placeholder="Your Last Name" required>
+										    <input type="text" value="{{ $shipping_detail ? $shipping_detail->first_name : '' }}" class="field-control col-sm-5" name="xtxtShippingFirstName" id="xtxtShippingFirstName" placeholder="Your First Name" required>
+										    <input type="text" value="{{ $shipping_detail ? $shipping_detail->last_name : '' }}" class="field-control col-sm-5 col-sm-offset-2" name="xtxtShippingLastName" id="xtxtShippingLastName" placeholder="Your Last Name" required>
 									    </div>
 									</div>
 									<div class="form-group">
 									    <label for="xtxtAddress1">Address 1</label>
-									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->address_1 : '' }} " class="form-control" name="xtxtAddress1" id="xtxtAddress1" placeholder="Your Address 1" required>
+									    <input type="text" value="{{ $shipping_detail ? $shipping_detail->address_1 : '' }}" class="form-control" name="xtxtAddress1" id="xtxtAddress1" placeholder="Your Address 1" required>
 									</div>
 									<div class="form-group">
 									    <label for="xtxtAddress2">Address 2 (optional)</label>
-									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->address_2 : '' }} " class="form-control" name="xtxtAddress2" id="xtxtAddress2" placeholder="Your Address 2">
+									    <input type="text" value="{{ $shipping_detail ? $shipping_detail->address_2 : '' }}" class="form-control" name="xtxtAddress2" id="xtxtAddress2" placeholder="Your Address 2">
 									</div>
 									<div class="form-group">
 									    <label for="xtxtCity">City</label>
@@ -121,7 +121,7 @@
 										    	<option value="{{ $city->id }}">{{ $city->name }}</option>
 									    	@endforeach
 									    </select> -->
-									    <input type="text" value=" {{ $shipping_detail ? $shipping_detail->city_id : '' }} " name="xtxtCity" id="xtxtCity" class="form-control" required placeholder="Your City Name">
+									    <input type="text" value="{{ $shipping_detail ? $shipping_detail->city_id : '' }}" name="xtxtCity" id="xtxtCity" class="form-control" required placeholder="Your City Name">
 
 									</div>
 									<div class="form-group">
