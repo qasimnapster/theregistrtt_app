@@ -139,8 +139,8 @@
 		    /* BOOTSTRAP SLIDER */
 
 		    $.each( $('.hidden-pids'), function(index, value){
-		    	$('.btn-add-gift[data-product-id="'+ $(value).data('val') +'"]').fadeOut();
-		    	$('.btn-remove-gift[data-product-id="'+ $(value).data('val') +'"]').fadeIn();
+		    	$('.btn-add-gift[data-product-id="'+ $(value).data('val') +'"]').hide();
+		    	$('.btn-remove-gift[data-product-id="'+ $(value).data('val') +'"]').show();
 		    });
 
 		    $('.price-slider').slider()
@@ -156,8 +156,10 @@
 		    	frmStorm.append('<input data-val="'+$pId+'" type="hidden" name="products_id[]" value="'+$pId+'">');
 		    	frmStorm.append('<input data-val-q="'+$pId+'" type="hidden" name="quantity_id['+$pId+'][]" value="'+$qty+'">');
 		    	alert('Item added to your registry!');
-		    	$this.fadeOut();
-		    	$this.siblings('.btn-remove-gift').fadeIn();
+		    	$this.hide();
+		    	setTimeout(function(){
+		    		$this.siblings('.btn-remove-gift').show();
+		    	}, 200);
 
 		    });
 
@@ -174,8 +176,10 @@
 				$('#q__'+$pId).val(1);
 
 		    	alert('Item removed from your registry!');
-		    	$this.fadeOut();
-		    	$this.siblings('.btn-add-gift').fadeIn();
+		    	$this.hide();
+		    	setTimeout(function(){
+		    		$this.siblings('.btn-add-gift').show();
+		    	}, 200);
 		    });
 		    $('[data-quantity="plus"]').click(function(e){
 		        // Stop acting like a button
