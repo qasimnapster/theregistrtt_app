@@ -59,7 +59,7 @@
 								<div class="clearfix">
 									<div class="col-sm-12 checkbox">
 										<label>
-											<input type="checkbox" name="xchckWrap" value="1">
+											<input type="checkbox" name="xchckWrap" value="1" {{ $do_gift_wrapping ? 'checked disabled':'' }}>
 											Want to wrap gift in gift cover?
 										</label>
 									</div>
@@ -134,13 +134,13 @@
 							</div>
 							<div class="order-items">
 								<div class="oi oi-name">Estimated Fee</div>
-								<div class="oi oi-price">$0</div>
+								<div class="oi oi-price">${{ $applicable_fee }}</div>
 							</div>
 						</div>
 						<div class="clearfix content-order">
 							<div class="order-items">
 								<div class="oi oi-name">Total</div>
-								<div class="oi oi-price" style="font-size: 24px; font-family:'Raleway'; font-weight: bold">${{ $total_amount }}</div>
+								<div class="oi oi-price" style="font-size: 24px; font-family:'Raleway'; font-weight: bold">${{ ($total_amount+$applicable_fee) }}</div>
 							</div>
 						</div>
 					</div>

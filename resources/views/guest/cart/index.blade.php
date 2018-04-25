@@ -13,7 +13,7 @@
 				<div class="col-sm-3" style="padding-top: 20px;">
 					<form action="{{config('app.url')}}guest/cart/checkout/view" method="POST" class="storeFrm">
 						{{ csrf_field() }}
-						<button type="submit"  style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn"> <i class="fa fa-cc" style="color:#e5c100; padding-right:5px"></i> PROCEED TO CHECKOUT</button>
+						<button type="button" style="font-size:18px;" class="btn btn-default btn-lg pull-right start-purhcasing-btn proceed-to-checkout"> <i class="fa fa-cc" style="color:#e5c100; padding-right:5px"></i> PROCEED TO CHECKOUT</button>
 					</form>
 				</div>
 			</div>
@@ -54,9 +54,66 @@
 		
 	</section>
 
+
+	<div class="modal fade" id="modal-gift-wrapping" tabindex="-1" role="dialog">
+	    <div class="modal-dialog" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                <h4 class="modal-title">Alert</h4>
+	            </div>
+	            <div class="modal-body clearfix">
+	                <div class="col-sm-12 checkbox">
+						<label for="T__xtxtDoGiftWrapping">
+							<input type="checkbox" id="T__xtxtDoGiftWrapping" value="1">
+							Would you like to leave a personal note for the couple and have your present gift wrapped?
+						</label>
+					</div>
+					<div class="col-sm-12 form-group note-control" style="margin:10px 0; display: none">
+						<textarea id="T__xtxtNoteForGuest" class="form-control" style="height: 100px"></textarea>
+					</div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                <button type="button" class="btn btn-primary btn-final">Proceed</button>
+	            </div>
+	        </div>
+	        <!-- /.modal-content -->
+	    </div>
+	    <!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
 	@section('scripts')
 		<script>
-			
+			$(function(){
+				var modalWrap   = $('#modal-gift-wrapping'),
+					btnProceed  = $('button.proceed-to-checkout'),
+					btnFinalize = $('.btn-final'),
+					stormForm   = $('.storeFrm'),
+					giftWrapChk = $('#T__xtxtDoGiftWrapping'),
+					noteGuest   = $('#T__xtxtNoteForGuest'),
+					noteCtrl    = $('.note-control');
+				btnProceed.on('click', function(){
+					modalWrap.modal('toggle');
+				});
+				btnFinalize.on('click', function(){
+					$('#xtxtNoteForGuest').val( noteGuest.val() );
+					stormForm.submit();
+				});
+				giftWrapChk.on('change', function(){
+					noteCtrl.stop().slideToggle();
+					if( $(this).is(':checked') )
+					{
+						stormForm.append('<input type="hidden" name="xtxtDoGiftWrapping" id="xtxtDoGiftWrapping" value="1" /><input type="hidden" name="xtxtNoteForGuest" id="xtxtNoteForGuest" value="'+noteGuest.val()+'" />');
+					} 
+					else
+					{
+						$('#xtxtDoGiftWrapping').remove();
+						$('#xtxtNoteForGuest').remove();
+					}
+				});
+			});
 		</script>
 	@endsection
 

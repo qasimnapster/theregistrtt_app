@@ -205,14 +205,15 @@ Route::post('/registry/delete', function(){
 
 		if( Auth::user()->id == $customer_id )
 		{
-
-			if( session()->has('latest_registry_id') && $registry_id == session()->get('latest_registry_id') )
-			{
-
-				session()->forget("latest_registry_id");
-			}
-
-			return DB::table('registeries')->where( ['id'=>$registry_id,'customer_id'=>$customer_id] )->delete();
+			DB::table('registeries')->where([
+				'id'          => $registry_id,
+				'customer_id' => $customer_id
+			])->delete();
+			DB::table('customers_shipping_info')->where( 'registry_id', $registry_id )->delete();
+			DB::table('registeries_products')->where( 'registry_id', $registry_id )->delete();
+			DB::table('guests')->where( 'registry_id', $registry_id )->delete();
+			DB::table('guest_transactions')->where( 'registry_id', $registry_id )->delete();
+			return DB::table('guest_purchase_detail')->where( 'registry_id', $registry_id )->delete();
 		}
 	}
 });
@@ -322,6 +323,8 @@ Route::post('/guest/checkout/process/store', function(){
 	$guest_eaddr = request('xtxtGuestEmailAddress');
 	$guest_anony = null !== request('xchckAnonymous') ? request('xchckAnonymous') : false;
 	$guest_gwrap = null !== request('xchckWrap') ? request('xchckWrap') : false;
+	if( ! $guest_gwrap && session()->get('note_for_guest') )
+		$guest_gwrap = true;
 
 	$guest_cart = session()->has('guest_cart') ? session()->get('guest_cart') : [];
 	if( count( $post_data ) > 0 && $guest_cart )
@@ -336,7 +339,8 @@ Route::post('/guest/checkout/process/store', function(){
 				'last_name'     => $guest_lname,
 				'email_address' => $guest_eaddr,
 				'info_secret'   => $guest_anony,
-				'wrap_gift'     => $guest_gwrap,
+				'wrap_gift'     => $guest_gwrap ? $guest_gwrap : $guest_gwrap,
+				'note'          => session()->get('note_for_guest'),
 				'registry_id'   => $registry_id
 			]);
 
@@ -382,10 +386,11 @@ Route::post('/guest/checkout/process/store', function(){
 			$txn = DB::table('guest_transactions')->insertGetId([
 				'guest_id'     => $guest_id,
 				'registry_id'  => $registry_id,
-				'total_amount' => $total_product_prices
+				'total_amount' => ($total_product_prices + session()->get('applicable_fee'))
 			]);
 
 			$registry_customer = DB::table('registeries')->where('id',$registry_id)->select('customer_id')->first();
+
 			$customer_id = $registry_customer->customer_id;
 
 			$customer = DB::table('customers')->where('id',$customer_id)->select('email_address')->first();
@@ -424,6 +429,18 @@ Route::any('/guest/cart/checkout/view', function(){
 	
 	$reg_types = DB::table('registry_types')->select()->get();
 
+	$applicable_fee   = 0;
+	session()->put('applicable_fee', $applicable_fee );
+	$do_gift_wrapping = null !== request('xtxtDoGiftWrapping') ? request('xtxtDoGiftWrapping') : false;
+	$note_for_guest   = null !== request('xtxtNoteForGuest') ? request('xtxtNoteForGuest') : false;
+	if( $do_gift_wrapping )
+	{
+		$applicable_fee = 10;
+		session()->put('applicable_fee', $applicable_fee );
+	}
+
+	session()->put('note_for_guest', $note_for_guest );
+
 	if( session()->has('guest_cart') )
 	{
 
@@ -439,9 +456,13 @@ Route::any('/guest/cart/checkout/view', function(){
 			}
 		}
 		$products = DB::table('products')->whereIn('id', $pids)->get();
+
 		return view('guest.cart.checkout', [
-			'reg_types' => $reg_types,
-			'products'  => $products
+			'reg_types'        => $reg_types,
+			'products'         => $products,
+			'note_for_guest'   => $note_for_guest,
+			'do_gift_wrapping' => $do_gift_wrapping,
+			'applicable_fee'   => $applicable_fee
 	    ]);
 	} else
 	{
