@@ -34,12 +34,12 @@
 						@foreach( $registeries as $key => $registry )
 						<tr id="row-{{ $registry->id }}">
 							<td>{{ $key + 1 }}</td>
-							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}">{{ $registry->first_name }}</a></td>
+							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}">{{ $registry->title }}</a></td>
 							<td>{{ $registry->ocassion->title }}</td>
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>
 							<td align="center"><span class="badge">{{ $registry->product_nums }}</span></td>
-							<td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'success' : 'warning' }}"> {{ $registry->registry_status->name }} </span> </td>
+							<td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'info' : ($registry->registry_status->name == 'delivered' ? 'success' : 'warning') }}"> {{ $registry->registry_status->name }} </span> </td>
 							<td>
 								<a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-eye" style="color:inherit;" ></i> VIEW</a>
 								<a href="#" data-id="{{ $registry->id }}" class="btn btn-danger btn-delete-registry"> <i class="fa fa-trash" style="color:inherit;"></i> DELETE</a>

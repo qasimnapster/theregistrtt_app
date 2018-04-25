@@ -12,12 +12,11 @@
 |
 */
 
-use Illuminate\Cookie\CookieJar;
-use Illuminate\Contracts\Cookie\Factory;
+use App\Helpers\Registry\Lib;
 
 
 Route::get('/', function () {
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
     return view('home', [ 'reg_types' => $reg_types ]);
 });
 
@@ -29,18 +28,18 @@ Route::get('/logout', function () {
 });
 
 Route::get('/about-us', function () {
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
     return view('about-us', [ 'reg_types' => $reg_types ]);
 });
 
 Route::get('/products', function () {
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
     return view('products', [ 'reg_types' => $reg_types ]);
 });
 
 Route::any('/categories/{type}', function ($type) {
 
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
 
 	$sort_by_price = '';
 	$sort_by_alpha = '';
@@ -135,21 +134,20 @@ Route::post('/signup', function () {
 	
 	if( count( $verf_customer ) == 0 )
 	{
-		$insertion = DB::table('customers')->insertGetId(
-			[ 
-				'first_name'       => $first_name,
-				'last_name'        => $last_name,
-				'email_address'    => $email_addr,
-				'password'         => $encrypted_pass,
-				'registry_type_id' => $reg_type
-			]
-		);
+		$insertion = DB::table('customers')->insertGetId([ 
+			'first_name'       => $first_name,
+			'last_name'        => $last_name,
+			'email_address'    => $email_addr,
+			'password'         => $encrypted_pass,
+			'registry_type_id' => $reg_type
+		]);
 		
 		if( $insertion )
 			return Response::json(array('message' => 'Successfully signed up'));
 		else
 			return Response::json(array('message' => 'Something went wrong'));
-	} else 
+	}
+	else 
 	{
 		return Response::json(array('message' => 'Already exists'));
 	}
@@ -160,7 +158,7 @@ Route::post('/login', array('uses' => 'LoginController@doLogin'));
 
 Route::any('/profile', function () {
 	
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
 
 	$updation = 0;
 
@@ -266,7 +264,7 @@ Route::get('/guest/shopping', function(){
 
 	if( count( $registry_detail ) > 0 )
 	{
-		$reg_types         = DB::table('registry_types')->select()->get();
+		$reg_types         = Lib::get_registry_types();
 		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $view_id)->select()->get();
 
 		$qtys     = [];
@@ -412,7 +410,7 @@ Route::post('/guest/checkout/process/store', function(){
 });
 
 Route::any('/checkout/process/completed', function(){
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
 	if( session()->has('completed_purchasing') )
 	{
 		return view('guest.cart.complete', [
@@ -424,7 +422,7 @@ Route::any('/checkout/process/completed', function(){
 
 Route::any('/guest/cart/checkout/view', function(){
 	
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
 
 	$applicable_fee   = 0;
 	session()->put('applicable_fee', $applicable_fee );
@@ -470,7 +468,7 @@ Route::any('/guest/cart/checkout/view', function(){
 
 Route::get('/guest/cart/index', function(){
 	
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
 	
 	$guest_cart_data         = session()->has('guest_cart') ? session()->get('guest_cart') : [];
 	$guest_selected_registry = session()->has('registry_selected') ? session()->get('registry_selected') : [];
@@ -558,7 +556,7 @@ Route::any('/registry/search/', function(){
 	if ( ! $promo_code )
 		return Redirect::to('/');
 	
-	$reg_types = DB::table('registry_types')->select()->get();
+	$reg_types = Lib::get_registry_types();
 	$registry  = DB::table('registeries')->where( 'promo_code', $promo_code )->where( 'registry_status_id', '<>', 3 )->select()->first();
 
 	if( $registry ):
@@ -582,7 +580,7 @@ Route::get('/registry/index', function(){
 	if ( ! Auth::check())
 		return Redirect::to('/');
 	
-	$reg_types   = DB::table('registry_types')->select()->get();
+	$reg_types   = Lib::get_registry_types();
 	$registeries = DB::table('registeries')->where('customer_id', Auth::user()->id )->select()->get();
 
 	if( count( $registeries ) > 0 ):
@@ -732,7 +730,7 @@ Route::any('/create/registry/{step}', function ($step) {
 	if ( ! Auth::check())
 		return Redirect::to('/');
 	
-	$reg_types  = DB::table('registry_types')->select()->get();
+	$reg_types  = Lib::get_registry_types();
 
 	$products      = [];
 	$categories    = [];
@@ -873,7 +871,7 @@ Route::any('/detail/registry/{view_id}', function ($view_id) {
 
 	if( count( $registry_detail ) > 0 )
 	{
-		$reg_types         = DB::table('registry_types')->select()->get();
+		$reg_types         = Lib::get_registry_types();
 		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $view_id)->select()->get();
 
 		$qtys     = [];
@@ -1040,7 +1038,7 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 	if( count( $edit_details ) == 0 )
 		return Redirect::to('/registry/index');
 	
-	$reg_types  = DB::table('registry_types')->select()->get();
+	$reg_types  = Lib::get_registry_types();
 
 	$products          = [];
 	$categories        = [];
