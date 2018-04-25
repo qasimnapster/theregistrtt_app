@@ -74,8 +74,7 @@ Route::any('/categories/{type}', function ($type) {
 		}
 	} else 
 	{
-		$cat_id = DB::table('categories')->where('slug', '=', $type)->select('id')->get();
-		$category_id = $cat_id[0]->id;
+		$category_id = Lib::get_category_by_id_or_slug('slug', $type)->id;
 
 		$product_inst->select('p.*')
 		->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id')
@@ -95,7 +94,7 @@ Route::any('/categories/{type}', function ($type) {
 
 	}
 	
-	$categories = DB::table('categories')->select()->get();
+	$categories = Lib::get_categories();
     return view('categories', [ 
 		'reg_types'     => $reg_types,
 		'products'      => $products,
@@ -560,9 +559,9 @@ Route::any('/registry/search/', function(){
 	$registry  = DB::table('registeries')->where( 'promo_code', $promo_code )->where( 'registry_status_id', '<>', 3 )->select()->first();
 
 	if( $registry ):
-		$registry->product_nums = count(DB::table('registeries_products')->where('registry_id', $registry->id )->select('product_id')->get());
-		$registry->registry_status = DB::table('registry_status')->where('id', $registry->registry_status_id )->select('name')->get()[0];
-		$registry->ocassion = DB::table('ocassions')->where('id', $registry->ocassion_id )->select('title')->get()[0];
+		$registry->product_nums    = count(DB::table('registeries_products')->where('registry_id', $registry->id )->select('product_id')->get());
+		$registry->registry_status = Lib::get_registry_status_by_id( $registry->registry_status_id );
+		$registry->ocassion        = Lib::get_occassion_by_id( $registry->ocassion_id );
 	else:
 		$registry = false;
 	endif;
@@ -584,12 +583,11 @@ Route::get('/registry/index', function(){
 	$registeries = DB::table('registeries')->where('customer_id', Auth::user()->id )->select()->get();
 
 	if( count( $registeries ) > 0 ):
-		foreach( $registeries as $reg ):
-			$reg->product_nums = count(DB::table('registeries_products')->where('registry_id', $reg->id )->select('product_id')->get());
-			$reg->registry_status = DB::table('registry_status')->where('id', $reg->registry_status_id )->select('name')->get()[0];
-			$reg->ocassion = DB::table('ocassions')->where('id', $reg->ocassion_id )->select('title')->get()[0];
+		foreach( $registeries as $registry ):
+			$registry->product_nums = count(DB::table('registeries_products')->where('registry_id', $registry->id )->select('product_id')->get());
+			$registry->registry_status = Lib::get_registry_status_by_id( $registry->registry_status_id );
+			$registry->ocassion        = Lib::get_occassion_by_id( $registry->ocassion_id );
 		endforeach;
-
 	endif;
 
 	return view( 'registry.index', [
@@ -661,7 +659,7 @@ Route::post('/create/registry/store', function () {
 					'partner_name'           => $partner_name,
 					'event_date'             => $event_date,
 					'delivery_preference_id' => $del_pref,
-					'registry_status_id'    => 1
+					'registry_status_id'     => 1
 				]);
 
 				//var_dump( $inserted_registry_id );
@@ -746,16 +744,16 @@ Route::any('/create/registry/{step}', function ($step) {
 
 	if( $step == 1 )
 	{
-		$ocassions     = DB::table('ocassions')->select()->get();
-		$delivery_pref = DB::table('gift_delivery_preference')->select()->get();
+		$ocassions     = Lib::get_ocassions();
+		$delivery_pref = Lib::get_gift_delivery_preference();
 
-		$countries = DB::table('countries')->orderBy('name', 'asc')->select()->get();
+		$countries = Lib::get_countries();
 	}
 
 	if( $step == 2 )
 	{
 
-		$categories = DB::table('categories')->select()->get();
+		$categories = Lib::get_categories();
 
 		if( count( Input::all() ) > 0 )
 		{
@@ -1056,19 +1054,19 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 
 	if( $step == 1 )
 	{
-		$ocassions     = DB::table('ocassions')->select()->get();
-		$delivery_pref = DB::table('gift_delivery_preference')->select()->get();
+		$ocassions     = Lib::get_ocassions();
+		$delivery_pref = Lib::get_gift_delivery_preference();
 
 		$shipping_detail = DB::table('customers_shipping_info')->where('registry_id', $edit_id)->select()->first();
 
 
-		$countries = DB::table('countries')->orderBy('name', 'asc')->select()->get();
+		$countries = Lib::get_countries();
 	}
 
 	if( $step == 2 )
 	{
 
-		$categories        = DB::table('categories')->select()->get();
+		$categories        = Lib::get_categories();
 
 		$edit_products_ids = DB::table('registeries_products')->where('registry_id', $edit_id)->select()->get();
 		if( count( Input::all() ) > 0 )

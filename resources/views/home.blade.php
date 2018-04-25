@@ -51,7 +51,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="https://assets3.classic-assets.com/product_photo/48301/large_20014-glassware-vinea-set-1_1473717653.jpg" alt="" class="img-responsive">
+                            <img src="{{ config('app.url') }}assets/img/categories/glassware.jpg" alt="" class="img-responsive">
                         </div>
                         <a href="{{ config('app.url') }}categories/glassware" class="h4 text-center text-capitalize">glassware</a>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="http://cookingchefshop.com/1491-large_default/maxwell-williams-servizio-18pz-piatti-motion.jpg" alt="" class="img-responsive">
+                            <img src="{{ config('app.url') }}assets/img/categories/crockery.jpg" alt="" class="img-responsive">
                         </div>
                         <a href="{{ config('app.url') }}categories/crockery" class="h4 text-center text-capitalize">crockery</a>
                     </div>
@@ -67,7 +67,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="https://ae01.alicdn.com/kf/HTB1ZKg2QVXXXXc0XVXXq6xXFXXXh/Kids-Stainless-Steel-Kitchen-Cooking-Utensils-Pots-Pans-Food-Gift-Miniature-Kitchen-Tools-Set-Simulation-Play.jpg_640x640.jpg" alt="" class="img-responsive">
+                            <img src="{{ config('app.url') }}assets/img/categories/kitchen_utensils.jpg" alt="" class="img-responsive">
                         </div>
                         <a href="{{ config('app.url') }}categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
                     </div>
@@ -75,7 +75,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="https://cdn.shopify.com/s/files/1/0951/7126/products/linen-hardcore-bundle_cream--cream--cream_background_480x.jpg?v=1510930368" alt="" class="img-responsive" style="">
+                            <img src="{{ config('app.url') }}assets/img/categories/linens.jpg" alt="" class="img-responsive" style="">
                         </div>
                         <a href="{{ config('app.url') }}categories/linens" class="h4 text-center text-capitalize">linens</a>
                     </div>
@@ -83,7 +83,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="https://images.cb2.com/is/image/CB2/RubberBathSinkGroupFHF16Group/?$web_product_hero$&161121140920&wid=625&hei=625" alt="" class="img-responsive">
+                            <img src="{{ config('app.url') }}assets/img/categories/bathroom_accessories.jpg" alt="" class="img-responsive">
                         </div>
                         <a href="{{ config('app.url') }}categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
                     </div>
@@ -91,7 +91,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="https://www.courts.com.sg/media/catalog/product/cache/image/4dd88cc0ac8c2f36fda1eefecbc98069/i/p/ip084299_00.jpg" alt="" class="img-responsive">
+                            <img src="{{ config('app.url') }}assets/img/categories/mini_appliances.jpg" alt="" class="img-responsive">
                         </div>
                         <a href="{{ config('app.url') }}categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
                     </div>
@@ -102,7 +102,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="item-cats">
                         <div class="img-cats">
-                            <img src="http://www.sneakerdunk.com/wp-content/uploads/2018/04/bathroom-shelf-decorating-ideas-pictures-of9g18-tjihome-amazing-1024x1024.jpg" alt="" class="img-responsive">
+                            <img src="{{ config('app.url') }}assets/img/categories/home_accents.jpg" alt="" class="img-responsive">
                         </div>
                         <a href="{{ config('app.url') }}categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
                     </div>

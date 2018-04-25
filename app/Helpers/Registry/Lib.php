@@ -1,11 +1,79 @@
 <?php
-//app/Helpers/Registry/Lib.php
+
 namespace App\Helpers\Registry;
  
 use Illuminate\Support\Facades\DB;
  
-class Lib {
-    public static function get_registry_types() {
-        return DB::table('registry_types')->select()->get();
+class Lib
+{
+
+	public static function get_countries()
+	{
+		return DB::table('countries')->orderBy('name', 'asc')->select()->get();
+	}
+
+	public static function get_country_by_id( $country_id )
+	{
+		return DB::table('countries')->where('id', $country_id)->select('name')->first();
+	}
+    
+    public static function get_registry_types()
+    {
+        return DB::table('registry_types')->where('status', 1)->select()->get();
+    }
+
+    public static function get_registry_status_by_id( $registry_status_id )
+    {
+    	return DB::table('registry_status')->where('id', $registry_status_id )->select('name')->get()[0];
+    }
+
+    public static function get_ocassions()
+    {
+    	return DB::table('ocassions')->select()->get();
+    }
+
+    public static function get_occassion_by_id( $ocassion_id )
+    {
+    	return DB::table('ocassions')->where('id', $ocassion_id )->select('title')->get()[0];
+    }
+
+    public static function get_gift_delivery_preference()
+    {
+    	return DB::table('gift_delivery_preference')->select()->get();
+    }
+
+    public static function get_gift_delivery_preference_by_id( $pref_id )
+    {
+    	return DB::table('gift_delivery_preference')->where('id', $pref_id )->select()->first();
+    }
+
+    public static function get_categories()
+    {
+    	return DB::table('categories')->select()->get();
+    }
+
+    public static function get_category_by_id_or_slug( $col, $val )
+    {
+    	return DB::table('categories')->where($col, $val)->select()->first();
+    }
+
+    // public static function get_category_by_col_vals( $cols, $vals )
+    // {
+    // 	if( ! is_array( $cols ) && ! is_array( $cols ) )
+    // 	{
+    // 		$cols[] = $cols;
+    // 		$vals[] = $vals;
+    // 	}
+    // 	$cat_inst = DB::table('categories');
+    // 	for( $i=0; $i<count($cols); $i++ )
+    // 	{
+    // 		$cat_inst->where($cols[$i], $vals[$i]);
+    // 	}
+    // 	return DB::table('categories')->where('id', $category_id)->select()->first();
+    // }
+
+    public static function get_products( $orderBy = 'asc' )
+    {
+    	return DB::table('products')->orderBy('title', $orderBy)->select()->get();
     }
 }
