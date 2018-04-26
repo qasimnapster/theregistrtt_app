@@ -105,11 +105,15 @@
 										<div class="col-sm-3 product-box text-center">
 											<div class="product-img-container space-prod">
 												<img src="{{ $product->image }}" alt="" class="img-responsive">
+												<!-- <div class="view-product" style="display: none">
+													<button type="button" class="btn btn-default"><i class="fa fa-eye"></i></button>
+												</div> -->
 											</div>
 											<div class="product-title space-prod">{{ $product->title }}</div>
 											<div class="product-price space-prod">${{ $product->price }}</div>
 											<div class="product-purhcase">
-												<button class="btn btn-primary text-uppercase">add or view this gift</button>
+												<button type="button" class="btn btn-primary btn-add-gift text-uppercase"><i class="fa fa-plus"></i> add</button>
+												<button type="button" data-detail-id="{{ $product->id }}" class="btn btn-default text-uppercase detail-product-view"><i class="fa fa-eye"></i> view</button>
 											</div>
 										</div>
 									@endforeach

@@ -1,4 +1,4 @@
-@extends('master')
+	@extends('master')
 @section('stylesheets')
 
 @endsection
@@ -55,8 +55,9 @@
 													</div>
 												</div>
 												<div class="product-purhcase">
-													<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-add-gift text-uppercase">add this gift to cart</button>
-													<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-remove-gift text-uppercase" style="display: none">remove this gift from cart</button>
+													<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-add-gift text-uppercase"><i class="fa fa-plus"></i> add</button>
+													<button data-product-id="{{ $product->id }}" class="btn btn-primary btn-remove-gift text-uppercase" style="display: none"><i class="fa fa-minus"></i>remove</button>
+													<button type="button" data-detail-id="{{ $product->id }}" class="btn btn-default text-uppercase detail-product-view"><i class="fa fa-eye"></i> view</button>
 												</div>
 											@else
 												<div class="product-purhcase">

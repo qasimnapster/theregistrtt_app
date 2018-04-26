@@ -57,6 +57,15 @@ class Lib
     	return DB::table('categories')->where($col, $val)->select()->first();
     }
 
+    public static function get_category_title_n_slug_by_product_id( $product_id )
+    {
+        $cat = DB::table('products_categories as pc')
+            ->select('c.title', 'c.slug')
+            ->leftJoin('categories as c', 'pc.category_id', '=', 'c.id')
+            ->where(['pc.product_id' => $product_id])->first();
+        return $cat;
+    }
+
     // public static function get_category_by_col_vals( $cols, $vals )
     // {
     // 	if( ! is_array( $cols ) && ! is_array( $cols ) )
@@ -75,5 +84,10 @@ class Lib
     public static function get_products( $orderBy = 'asc' )
     {
     	return DB::table('products')->orderBy('title', $orderBy)->select()->get();
+    }
+
+    public static function get_product_by_id( $id )
+    {
+        return DB::table('products')->where('id', $id)->select()->get();
     }
 }

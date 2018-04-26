@@ -37,6 +37,32 @@ Route::get('/products', function () {
     return view('products', [ 'reg_types' => $reg_types ]);
 });
 
+Route::get('/product/detail/{id}', function($id){
+
+	if( $id )
+	{
+		$product_detail = Lib::get_product_by_id( $id );
+		if( count( $product_detail ) > 0 )
+		{
+			$product_category = Lib::get_category_title_n_slug_by_product_id( $id );
+
+			$product_detail[0]->category      = $product_category->title;
+			$product_detail[0]->category_slug = config('app.url') . 'categories/' . $product_category->slug;
+
+			return Response::json(array('data' => $product_detail[0]));
+		} 
+		else
+		{
+			return Response::json(array('data' => []));
+		}
+	}
+	else
+	{
+		return Response::json(array('data' => []));
+	}
+
+});
+
 Route::any('/categories/{type}', function ($type) {
 
 	$reg_types = Lib::get_registry_types();
@@ -680,7 +706,7 @@ Route::post('/create/registry/store', function () {
 				$quantity_ids = request('quantity_id');
 
 				$latest_registry_id = session()->has('latest_registry_id') ? session()->get('latest_registry_id') : false;
-				
+
 				if( ! $latest_registry_id )
 					return Redirect::to('/');
 
