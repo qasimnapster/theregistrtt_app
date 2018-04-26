@@ -602,29 +602,15 @@ Route::post('/create/registry/store', function () {
 	if ( ! Auth::check())
 		return Redirect::to('/');
 
-	
-
 	if( count( Input::all() ) > 0 )
 	{
-
-		//exit;
-
-		//var_dump( Input::all() );
-
 		$step = request('step');
-
-		//$latest_registry_id = Cookie::get('latest_registry_id');
-
-		$latest_registry_id = session()->has('latest_registry_id' ) ? session()->get('latest_registry_id') : false;
 
 		if( count( Input::all() ) > 0 )
 		{
 
 			if( $step == 1 )
 			{
-		
-				if( $latest_registry_id )
-					return Redirect::to('/create/registry/2');	
 				
 				$ocassion_id      = request('xtxtOccs');
 
@@ -648,7 +634,7 @@ Route::post('/create/registry/store', function () {
 				$customer_id      = Auth::user()->id;
 				$registry_title   = request('xtxtRegTitle');
 
-				//var_dump( Auth::user()->id );
+				// var_dump( Auth::user()->id );
 
 				$inserted_registry_id = DB::table('registeries')->insertGetId([ 
 					'customer_id'            => $customer_id,
@@ -662,7 +648,7 @@ Route::post('/create/registry/store', function () {
 					'registry_status_id'     => 1
 				]);
 
-				//var_dump( $inserted_registry_id );
+				// var_dump( $inserted_registry_id );
 
 				if( $del_pref == 1 && $inserted_registry_id )
 				{
@@ -678,14 +664,12 @@ Route::post('/create/registry/store', function () {
 						'phone_number' => $shipping_pnum
 					]);
 
-					//var_dump( $insertion_shippings );
+					// var_dump( $insertion_shippings );
 				}
 
-				//Cookie::queue('latest_registry_id', $inserted_registry_id);
 				session()->put('latest_registry_id',$inserted_registry_id);
 				return Redirect::to('/create/registry/2');
-				
-			
+						
 			}
 
 			if( $step == 2 )
@@ -695,10 +679,10 @@ Route::post('/create/registry/store', function () {
 				$product_ids  = request('products_id');
 				$quantity_ids = request('quantity_id');
 
+				$latest_registry_id = session()->has('latest_registry_id') ? session()->get('latest_registry_id') : false;
+				
 				if( ! $latest_registry_id )
 					return Redirect::to('/');
-
-				//var_dump( $product_ids );
 
 				if( count( $quantity_ids ) > 0 )
 				{

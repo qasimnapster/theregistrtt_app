@@ -32,7 +32,7 @@
 					<tbody>
 						<tr id="row-{{ $registry->id }}">
 							<td>{{ $registry->id }}</td>
-							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}">{{ $registry->first_name }}</a></td>
+							<td><a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}">{{ $registry->title }}</a></td>
 							<td>{{ $registry->ocassion->title }}</td>
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>
