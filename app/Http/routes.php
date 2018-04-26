@@ -854,7 +854,7 @@ Route::any('/create/registry/{step}', function ($step) {
 
 	}
 
-	return view('create-registry-' . $step, [
+	return view('registry.create.step.' . $step, [
 		'reg_types'     => $reg_types,
 		'products'      => $products,
 		'categories'    => $categories,
@@ -1152,7 +1152,7 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 
 	}
 
-	return view('registry.edit-' . $step, [
+	return view('registry.edit.step.' . $step, [
 		'reg_types'     => $reg_types,
 		'products'      => $products,
 		'categories'    => $categories,

@@ -43,7 +43,9 @@
 							<td>
 								<a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-eye" style="color:inherit;" ></i> VIEW</a>
 								<a href="#" data-id="{{ $registry->id }}" class="btn btn-danger btn-delete-registry"> <i class="fa fa-trash" style="color:inherit;"></i> DELETE</a>
-								<a href="{{ config('app.url') }}edit/registry/1/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-pencil" style="color:inherit;" ></i> EDIT</a>
+								@if( $registry->registry_status->name != 'delivered' )
+									<a href="{{ config('app.url') }}edit/registry/1/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-pencil" style="color:inherit;" ></i> EDIT</a>
+								@endif
 							</td>
 						</tr>
 						@endforeach
