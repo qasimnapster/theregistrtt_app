@@ -96,7 +96,7 @@
 			    	
 			    	$('.storeFrm').append('<input data-val="'+$pId+'" type="hidden" name="products_id[]" value="'+$pId+'">');
 			    	$('.storeFrm').append('<input data-val-q="'+$pId+'" type="hidden" name="quantity_id['+$pId+'][]" value="'+$qty+'">');
-			    	alert('Item added to your registry!');
+			    	alert('Item added to your cart!');
 			    	$this.fadeOut();
 			    	$this.siblings('.btn-remove-gift').fadeIn();
 

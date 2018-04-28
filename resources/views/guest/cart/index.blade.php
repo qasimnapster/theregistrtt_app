@@ -66,7 +66,7 @@
 	                <div class="col-sm-12 checkbox">
 						<label for="T__xtxtDoGiftWrapping">
 							<input type="checkbox" id="T__xtxtDoGiftWrapping" value="1">
-							Would you like to leave a personal note for the couple and have your present gift wrapped?
+							Would you like to leave a personal note for the couple and have your present gift wrapped (*$10 fee applicable)?
 						</label>
 					</div>
 					<div class="col-sm-12 form-group note-control" style="margin:10px 0; display: none">

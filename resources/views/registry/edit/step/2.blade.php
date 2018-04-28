@@ -156,7 +156,7 @@
 		    	
 		    	frmStorm.append('<input data-val="'+$pId+'" type="hidden" name="products_id[]" value="'+$pId+'">');
 		    	frmStorm.append('<input data-val-q="'+$pId+'" type="hidden" name="quantity_id['+$pId+'][]" value="'+$qty+'">');
-		    	alert('Item added to your registry!');
+		    	alert('Item added to your cart!');
 		    	$this.hide();
 		    	setTimeout(function(){
 		    		$this.siblings('.btn-remove-gift').show();

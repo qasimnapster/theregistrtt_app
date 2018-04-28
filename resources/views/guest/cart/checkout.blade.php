@@ -133,7 +133,7 @@
 								<div class="oi oi-price">${{ $total_amount }}</div>
 							</div>
 							<div class="order-items">
-								<div class="oi oi-name">Estimated Fee</div>
+								<div class="oi oi-name">Personalization Fee</div>
 								<div class="oi oi-price">${{ $applicable_fee }}</div>
 							</div>
 						</div>
