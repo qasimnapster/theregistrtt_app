@@ -203,6 +203,17 @@
                 sliderLayout: 'fullscreen',
             });
 
+            $('#accordion .panel-collapse').on('shown.bs.collapse', function () {
+                console.log('test');
+                $(this).prev().find(".glyphicon").removeClass("glyphicon-plus-sign").addClass("glyphicon-minus-sign");
+            });
+
+            //The reverse of the above on hidden event:
+
+            $('#accordion .panel-collapse').on('hidden.bs.collapse', function () {
+                $(this).prev().find(".glyphicon").removeClass("glyphicon-minus-sign").addClass("glyphicon-plus-sign");
+            });
+
         }); //ready
         </script>
     @endsection
