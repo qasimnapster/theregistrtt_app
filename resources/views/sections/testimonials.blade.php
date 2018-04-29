@@ -7,8 +7,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div style="position: relative;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: 0;width:100%">
+                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-1.png" alt="Browse and Purchase from your mobilesmartphone" style="width:100%; position: relative; z-index:1;">
+                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-2.png" alt="Browse and Purchase from your mobilesmartphone" style=" position: absolute; top: 35px; left:0; z-index: 0;width:100%">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-sm-6 pull-right">
                                 <div style="position: relative;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/2.jpeg" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
+                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/2.jpeg" alt="Complimentary Registry Invites" style="width:100%; position: relative; z-index:1;">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -62,8 +62,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div style="position: relative;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-1.png" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/mobile-preview-2.png" alt="Add gifts on-the-go from your smartphone" style=" position: absolute; top: 35px; left:0; z-index: 0;width:100%">
+                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/3.jpeg" alt="Exclusive Bridal Party Discounts at Kooti's" style="width:100%; position: relative; z-index:1;">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -90,7 +89,7 @@
                         <div class="row">
                             <div class="col-sm-6 pull-right">
                                 <div style="position: relative;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/4.jpeg" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
+                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/4.jpeg" alt="Complete your Registry at Discounted Prices" style="width:100%; position: relative; z-index:1;">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -117,7 +116,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div style="position: relative;">
-                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/5.jpeg" alt="Add gifts on-the-go from your smartphone" style="width:100%; position: relative; z-index:1;">
+                                    <img class="hp_w100" src="{{ config('app.url') }}/assets/img/banner-home-bottom/5.jpeg" alt="Access to Special Order Items" style="width:100%; position: relative; z-index:1;">
                                 </div>
                             </div>
                             <div class="col-sm-6">
