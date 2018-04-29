@@ -36,7 +36,7 @@
 				<div class="col-sm-12">
 					<div class="products-list-content">
 						<div class="head-products-list">
-							<form class="form-inline" name="sortingFrm" id=sortingFrm method="POST" action="">
+							<form class="form-inline form-inline-registry" name="sortingFrm" id=sortingFrm method="POST" action="">
 								{{ csrf_field() }}
 								<div class="form-group">
 									<select class="form-control" onchange="sortingFrm.submit()" id="xslcCat" name="xslcCat">
@@ -61,12 +61,12 @@
 									</select>
 								</div>
 							</form>
-							<form action="{{config('app.url')}}create/registry/store" method="POST" accept-charset="UTF-8" class="storeFrm">
+							<form class="form-inline form-inline-registry pull-right storeFrm" action="{{config('app.url')}}create/registry/store" method="POST" accept-charset="UTF-8">
 								{{ csrf_field() }}
 								<input type="hidden" name="step" value="2">
 								<input type="hidden" class="rep-id" name="products_id[]" value="0">
 								<input type="hidden" class="rep-id" name="quantity_id[]" value="0">
-								<button type="submit" class="btn btn-primary pull-right">FINALIZE</button>
+								<button type="submit" class="btn btn-primary">FINALIZE</button>
 							</form>
 						</div>
 						<div class="block-products-list">
