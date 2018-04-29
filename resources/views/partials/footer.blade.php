@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-sm-4">
-                <img src="http://theregistrytt.optimalsolutionsonline.com//assets/img/uploads/Bathroom Caddy Double Chrome] Bathroom Accesories] $100.jpg" class="img-responsive" alt="">
+                <img class="detail-image img-responsive" src="http://theregistrytt.optimalsolutionsonline.com//assets/img/uploads/Bathroom Caddy Double Chrome] Bathroom Accesories] $100.jpg" alt="">
             </div>
             <div class="col-sm-8">
                 <div class="detail-title">
@@ -107,6 +107,8 @@
                     //console.log(response);
                     $response = JSON.parse(response);
                     console.log( $response );
+                    $('.detail-image').attr('src', $response.data.image );
+                    $('.detail-image').attr('alt', $response.data.title );
                     $('.detail-title > *').html( $response.data.title );
                     $('.detail-cat > a').attr('href', $response.data.category_slug );
                     $('.detail-cat > *').html( $response.data.category );
