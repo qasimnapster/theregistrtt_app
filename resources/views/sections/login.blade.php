@@ -23,6 +23,9 @@
               <input type="checkbox"> I agree to the website terms
             </label>
           </div>
+          <div class="form-group">
+            <a href="javascript:;" class="text-primary modal-fp">Forgot password?</a>
+          </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>

@@ -28,6 +28,10 @@
 
 @include('sections.login')
 @include('sections.signup')
+@include('sections.forgot-password')
+@if( Auth::check() )
+    @include('sections.change-password')
+@endif
 
 @if( Route::getCurrentRoute()->getPath() != '/' )
 	<!-- jQuery 3 -->
@@ -133,6 +137,60 @@
                 $('[data-target=".bs-signup-modal-lg"]').trigger('click');
             @endif
         });
+
+        $('.modal-fp').on('click', function(){
+            $('.bs-login-modal-lg').modal('toggle');
+            setTimeout(function(){
+                $('.bs-forgot-password-modal-lg').modal('toggle');
+            },500);
+        });
+
+        $('.btn-change-password').on('click', function(){
+            $('#frmChangePass').fadeOut();
+            $('.loadersmall').fadeIn();
+            
+            xtxtCurrPassword = $('#xtxtCurrPassword').val();
+            xtxtNewPassword  = $('#xtxtNewPassword').val();
+            if( xtxtCurrPassword.length > 0 && xtxtNewPassword.length > 0 )
+            {
+                $.ajax({
+                    url: '{{ config("app.url") }}change-password',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        'xtxtCurrPassword': xtxtCurrPassword,
+                        'xtxtNewPassword': xtxtNewPassword,
+                        _token: '{!! csrf_token() !!}'
+                    },
+                    success: function(response){
+                        $('.loadersmall').fadeOut();
+                        response = JSON.parse(response);
+                        if( response.message == 1 )
+                        {
+                            $('.bs-change-password-modal-lg').modal('toggle');
+                            alert('Successfully updated password');
+                            location.reload();
+                        }
+                        else
+                        {
+                            $('#frmChangePass').fadeIn();
+                            alert(response.message);
+                        }
+                    },
+                    error: function(response){
+                        //console.log(response)
+                    }
+                });
+
+            }
+            else
+            {
+                $('#frmChangePass').fadeIn();
+                $('.loadersmall').fadeOut();
+                alert('Enter your Current/New Password!');
+            }
+        });
+
 		
 	});
 </script>

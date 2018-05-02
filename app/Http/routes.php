@@ -136,21 +136,72 @@ Route::any('/categories/{type}', function ($type) {
     ]);
 });
 
+Route::post('/forgot-password', function () {
+
+	$email_addr = strlen( Input::get('F__xemlEmailAddr') ) > 0 ? Input::get('F__xemlEmailAddr') : false;
+	
+	if( $email_addr )
+	{
+
+		$verf_customer = Lib::verify_customer( 'email_address', $email_addr );
+	
+		if( $verf_customer )
+		{
+			Mail::send('emails.forgot_password', [$verf_customer], function($message) use ($verf_customer) {
+		        $message->from( 'theregistrytt1@gmail.com' );
+		        $message->to( $email_addr );
+		        $message->subject( 'TheRegistrytt - Forgot Password' );
+		    });
+			// if( $insertion )
+			// 	return Response::json(array('message' => 'Successfully signed up'));
+			// else
+			// 	return Response::json(array('message' => 'Something went wrong'));
+		}
+		else
+		{
+			return Response::json(array('message' => 'Email Addres does not exist'));	
+		}
+	}
+});
+
+Route::post('/change-password', function () {
+
+	if( Auth::check() )
+	{
+		$old_password = strlen( Input::get('xtxtCurrPassword') ) > 0 ? Input::get('xtxtCurrPassword') : false;
+		$new_password = strlen( Input::get('xtxtNewPassword') ) > 0 ? Input::get('xtxtNewPassword') : false;
+		
+		if( $old_password && $new_password )
+		{
+			$encrypted_pass = Hash::make( $new_password );
+			$query_old_pass = Lib::get_customer_by_cols( 'email_address', Auth::user()->email_address, 'password' );
+
+			if( Hash::check($old_password, $query_old_pass->password) )
+			{
+				$updation = DB::table('customers')->where('id', Auth::user()->id)->update([
+					'password' => $encrypted_pass
+				]);
+				return Response::json(array('message' => $updation));
+			}
+			else
+			{
+				return Response::json(array('message' => 'Incorrect current password'));
+			}
+		}
+		else
+		{
+			return Response::json(array('message' => 'Enter your current/new password'));
+		}
+	}
+	else
+	{
+		return Response::json(array('message' => 'Requires Authorization'));
+	}
+
+});
+
 Route::post('/signup', function () {
 
-	// try {
-	// 	Mail::send('emails.welcome', [], function ($message) {
-	// 		$message->from('tester.registrytt@gmail.com', 'Testing - email verification');
-
-	// 		$message->to('qasimnepster@gmail.com');
-	// 	});
-	// } catch(Exception $e) {
-	// 	echo $e->getMessage();
-	// }
-
-	
- //    exit;
-	
 	$reg_type   = strlen( Input::get('xslcRegType') ) > 0 ? Input::get('xslcRegType') : 'N/A';
 	$first_name = strlen( Input::get('xtxtFirstName') ) > 0 ? Input::get('xtxtFirstName') : 'N/A';
 	$last_name  = strlen( Input::get('xtxtLastName') ) > 0 ? Input::get('xtxtLastName') : 'N/A';
@@ -159,9 +210,9 @@ Route::post('/signup', function () {
 
 	$encrypted_pass = Hash::make( $password );
 
-	$verf_customer = DB::table('customers')->select()->where('email_address', '=', $email_addr)->get();
+	$verf_customer = Lib::verify_customer( 'email_address', $email_addr );
 	
-	if( count( $verf_customer ) == 0 )
+	if( ! $verify_customer )
 	{
 		$insertion = DB::table('customers')->insertGetId([ 
 			'first_name'       => $first_name,
@@ -420,9 +471,9 @@ Route::post('/guest/checkout/process/store', function(){
 			$customer = DB::table('customers')->where('id',$customer_id)->select('email_address')->first();
 
 			Mail::send('emails.gift_purchased', [$customer], function($message) use ($customer) {
-		        $message->from('theregistrytt1@gmail.com');
-		        $message->to($customer->email_address);
-		        $message->subject('Gift Purchased');
+		        $message->from( 'theregistrytt1@gmail.com' );
+		        $message->to( $customer->email_address );
+		        $message->subject( 'TheRegistrytt - Gift Purchased' );
 		    });
 			//var_dump( $txn );
 		}

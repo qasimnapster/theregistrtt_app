@@ -95,4 +95,15 @@ class Lib
     {
         return DB::table('products')->where('id', $id)->select()->get();
     }
+
+    public static function verify_customer( $column, $value )
+    {
+        return DB::table('customers')->where( $column, $value )->select()->first();
+    }
+
+    public static function get_customer_by_cols( $column_to_verf, $value, $select_column )
+    {
+        return DB::table('customers')->where( $column_to_verf, $value )->select( $select_column )->first();
+    }
+
 }

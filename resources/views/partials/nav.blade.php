@@ -37,7 +37,7 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ config('app.url') }}profile"> <i class="fa fa-gear"></i> Profile Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"> <i class="fa fa-edit"></i> Change Password</a></li>
+                            <li><a href="javascript:;" data-toggle="modal" data-target=".bs-change-password-modal-lg"> <i class="fa fa-edit"></i> Change Password</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ config('app.url') }}logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
                         </ul>
