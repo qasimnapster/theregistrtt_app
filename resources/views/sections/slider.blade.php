@@ -7,18 +7,6 @@
                 <img src="{{ config('app.url') }}assets/img/logo.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 <!-- LAYERS -->
                 <!-- LAYERS -->
-                <div class="tp-caption mediumlarge_light_darkblue skewfromleftshort customout"
-                    data-x="right"
-                    data-y="center" data-voffset="-200"
-                    data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                    data-speed="500"
-                    data-start="1600"
-                    data-easing="Back.easeOut"
-                    data-endspeed="500"
-                    data-endeasing="Power4.easeIn"
-                    data-captionhidden="on"
-                    style="z-index: 10">THE #1 UNIVERSAL
-                </div>
                 <div class="tp-caption mediumlarge_light_darkblue skewfromrightshort customout"
                     data-x="right"
                     data-y="center" data-voffset="-120"
@@ -51,18 +39,7 @@
                 <img src="{{ config('app.url') }}assets/img/main-banner/3.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 <!-- LAYERS -->
                 <!-- LAYERS -->
-                <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                    data-x="right"
-                    data-y="center" data-voffset="-200"
-                    data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                    data-speed="500"
-                    data-start="1600"
-                    data-easing="Back.easeOut"
-                    data-endspeed="500"
-                    data-endeasing="Power4.easeIn"
-                    data-captionhidden="on"
-                    style="z-index: 10">THE #1 UNIVERSAL
-                </div>
+                
                 <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
                     data-x="right"
                     data-y="center" data-voffset="-120"
@@ -95,18 +72,7 @@
                 <img src="{{ config('app.url') }}assets/img/main-banner/4.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 <!-- LAYERS -->
                 <!-- LAYERS -->
-                <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                    data-x="right"
-                    data-y="center" data-voffset="-200"
-                    data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                    data-speed="500"
-                    data-start="1600"
-                    data-easing="Back.easeOut"
-                    data-endspeed="500"
-                    data-endeasing="Power4.easeIn"
-                    data-captionhidden="on"
-                    style="z-index: 10">THE #1 UNIVERSAL
-                </div>
+                
                 <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
                     data-x="right"
                     data-y="center" data-voffset="-120"
@@ -139,18 +105,7 @@
                 <img src="{{ config('app.url') }}assets/img/main-banner/5.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 <!-- LAYERS -->
                 <!-- LAYERS -->
-                <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                    data-x="right"
-                    data-y="center" data-voffset="-200"
-                    data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                    data-speed="500"
-                    data-start="1600"
-                    data-easing="Back.easeOut"
-                    data-endspeed="500"
-                    data-endeasing="Power4.easeIn"
-                    data-captionhidden="on"
-                    style="z-index: 10">THE #1 UNIVERSAL
-                </div>
+                
                 <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
                     data-x="right"
                     data-y="center" data-voffset="-120"
@@ -183,18 +138,7 @@
                 <img src="{{ config('app.url') }}assets/img/main-banner/2.jpeg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
                 <!-- LAYERS -->
                 <!-- LAYERS -->
-                <div class="tp-caption mediumlarge_light_white skewfromleftshort customout"
-                    data-x="right"
-                    data-y="center" data-voffset="-200"
-                    data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                    data-speed="500"
-                    data-start="1600"
-                    data-easing="Back.easeOut"
-                    data-endspeed="500"
-                    data-endeasing="Power4.easeIn"
-                    data-captionhidden="on"
-                    style="z-index: 10">THE #1 UNIVERSAL
-                </div>
+                
                 <div class="tp-caption mediumlarge_light_white skewfromrightshort customout"
                     data-x="right"
                     data-y="center" data-voffset="-120"

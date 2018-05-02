@@ -16,8 +16,12 @@ use App\Helpers\Registry\Lib;
 
 
 Route::get('/', function () {
-	$reg_types = Lib::get_registry_types();
-    return view('home', [ 'reg_types' => $reg_types ]);
+	$reg_types  = Lib::get_registry_types();
+	$categories = Lib::get_parent_categories();
+    return view('home', [
+    	'reg_types'  => $reg_types,
+    	'categories' => $categories
+    ]);
 });
 
 Route::get('/logout', function () {

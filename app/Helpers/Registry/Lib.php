@@ -52,6 +52,11 @@ class Lib
     	return DB::table('categories')->select()->get();
     }
 
+    public static function get_parent_categories()
+    {
+        return DB::table('categories')->where('parent_id', 0)->select()->get();
+    }
+
     public static function get_category_by_id_or_slug( $col, $val )
     {
     	return DB::table('categories')->where($col, $val)->select()->first();
