@@ -16,7 +16,7 @@
 				<div class="title-profile-head text-light clearfix">
 					<i class="fa fa-user" style="padding-right: 8px;"></i> Profile Setting
 					<div class="pull-right">
-						<a href="#" class="btn btn-primary ">CREATE YOUR FREE REGISTRY</a>
+						<a href="javascript:;" data-create-registry="true" class="btn btn-primary ">CREATE YOUR FREE REGISTRY</a>
 					</div>
 				</div>
 			</div>

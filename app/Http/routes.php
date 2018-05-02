@@ -390,7 +390,7 @@ Route::post('/guest/checkout/process/store', function(){
 					'received' => ($product['qty']+$received->received)
 				]);
 
-				$total_product_prices += $price->price;
+				$total_product_prices += ($price->price * $product['qty']);
 				// var_dump( $pd );
 				// var_dump( $total_product_prices );
 			}
@@ -470,23 +470,28 @@ Route::any('/guest/cart/checkout/view', function(){
 
 		$guest_cart = session()->get('guest_cart');	
 		$pids = [];
+		$qtys = [];
 		foreach( $guest_cart as $item )
 		{	
 			$products = $item['products'];
 			if( count( $products ) > 0 )
 			{
 				foreach( $products as $product )
+				{
 					$pids[] = $product['id'];
+					$qtys[$product['id']] = $product['qty'];
+				}
 			}
 		}
 		$products = DB::table('products')->whereIn('id', $pids)->get();
-
+		
 		return view('guest.cart.checkout', [
 			'reg_types'        => $reg_types,
 			'products'         => $products,
 			'note_for_guest'   => $note_for_guest,
 			'do_gift_wrapping' => $do_gift_wrapping,
-			'applicable_fee'   => $applicable_fee
+			'applicable_fee'   => $applicable_fee,
+			'qtys'             => $qtys
 	    ]);
 	} else
 	{

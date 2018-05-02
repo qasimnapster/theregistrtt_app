@@ -116,7 +116,7 @@
 							@foreach($products as $product)
 							<div class="order-items">
 								<div class="oi oi-name">{{ $product->title }}</div>
-								<div class="oi oi-price">${{ $product->price }}</div>
+								<div class="oi oi-price">{{ $qtys[$product->id] }} x ${{ $product->price }}</div>
 							</div>
 							@endforeach
 						</div>
@@ -124,9 +124,9 @@
 							<div class="order-items">
 								<?php
 								$total_amount = 0;
-								foreach($products as $product)
-									$total_amount += $product->price;
-								
+								foreach($products as $product):
+									$total_amount += ($product->price * $qtys[$product->id]);
+								endforeach;
 
 								?>
 								<div class="oi oi-name">Total Amount</div>

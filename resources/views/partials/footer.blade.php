@@ -125,6 +125,14 @@
         $('.close-detail-view').on('click', function(){
             detailView.css({'display':'none', 'opacity':0});
         });
+
+        $('[data-create-registry="true"]').on('click', function(){
+            @if( Auth::check() )
+                window.location.href = "{{ config('app.url') }}create/registry/1";
+            @else
+                $('[data-target=".bs-signup-modal-lg"]').trigger('click');
+            @endif
+        });
 		
 	});
 </script>
