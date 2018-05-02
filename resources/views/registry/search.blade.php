@@ -21,11 +21,12 @@
 						<tr>
 							<th>#</th>
 							<th>Title</th>
-							<th>Ocassion</th>
+							<th>Type of Registry</th>
+							<!-- <th>Ocassion</th> -->
 							<th>Event Date</th>
-							<th>Promo Code</th>
+							<th>Regsitry Code</th>
 							<th>Total Items</th>
-							<th>Desired Qty Each</th>
+							<th>Number of Items</th>
 							<th>Action</th>
 						</tr>
 					</thead>

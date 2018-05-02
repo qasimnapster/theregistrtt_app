@@ -71,9 +71,6 @@ Route::any('/categories/{type}', function ($type) {
 
 	$reg_types = Lib::get_registry_types();
 
-	$sort_by_price = '';
-	$sort_by_alpha = '';
-
 	$sort_by_price = request('xslcSortByPrice');
 	$sort_by_alpha = request('xslcSortByAlpha');
 
@@ -81,21 +78,24 @@ Route::any('/categories/{type}', function ($type) {
 
 	$max = $product_inst->max('price');
 	$min = $product_inst->min('price');
+
+	// var_dump( $sort_by_price );
+	// var_dump( $sort_by_alpha );
 	
 	if( $type == 'all' )
 	{
 		if( count( Input::all() ) > 0 )
 		{
 			
-			if( $sort_by_price == '1' )
-				$product_inst->orderByRaw('CAST(price AS DECIMAL(10,2)) DESC');
-			else if( $sort_by_price == '2' )
-				$product_inst->orderByRaw('CAST(price AS DECIMAL(10,2)) ASC');
-
 			if( $sort_by_alpha == '1' )
 				$product_inst->orderBy('title', 'ASC');
 			else if( $sort_by_alpha == '2' )
 				$product_inst->orderBy('title', 'DESC');
+			
+			if( $sort_by_price == '1' )
+				$product_inst->orderBy('price', 'DESC');
+			else if( $sort_by_price == '2' )
+				$product_inst->orderBy('price', 'ASC');
 
 			$products = $product_inst->select()->get();
 		} else 

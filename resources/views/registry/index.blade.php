@@ -22,11 +22,13 @@
 						<tr>
 							<th>#</th>
 							<th>Title</th>
-							<th>Ocassion</th>
+							<th>Type of Registry</th>
+							<!-- <th>Ocassion</th> -->
 							<th>Event Date</th>
-							<th>Promo Code</th>
-							<th>Num. of Items</th>
-							<th>Status</th>
+							<th>Regsitry Code</th>
+							<th>Total Items</th>
+							<th>Number of Items</th>
+							<!-- <th>Status</th> -->
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -39,7 +41,8 @@
 							<td>{{ $registry->event_date }}</td>
 							<td>{{ $registry->promo_code }}</td>
 							<td align="center"><span class="badge">{{ $registry->product_nums }}</span></td>
-							<td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'info' : ($registry->registry_status->name == 'delivered' ? 'success' : 'warning') }}"> {{ $registry->registry_status->name }} </span> </td>
+							<td align="center"><span class="badge">{{ $registry->product_nums }}</span></td>
+							<!-- <td> <span class="label label-{{ $registry->registry_status->name == 'completed' ? 'info' : ($registry->registry_status->name == 'delivered' ? 'success' : 'warning') }}"> {{ $registry->registry_status->name }} </span> </td> -->
 							<td>
 								<a href="{{ config('app.url') }}detail/registry/{{ $registry->id }}" class="btn btn-default"> <i class="fa fa-eye" style="color:inherit;" ></i> VIEW</a>
 								<a href="#" data-id="{{ $registry->id }}" class="btn btn-danger btn-delete-registry"> <i class="fa fa-trash" style="color:inherit;"></i> DELETE</a>

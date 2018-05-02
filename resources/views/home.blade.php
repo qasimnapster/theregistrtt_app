@@ -7,36 +7,16 @@
     <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="{{ config('app.url') }}plugins/rs-plugin/css/settings.css" media="screen" />
-    <style>
-        .bx-viewport{
-            /*height: 500px !important;*/
-        }
-    </style>
 @endsection
 @section('content')
     <div class="slider">
-
         @include('sections.slider')
-
-        <!-- <div class="banner-main">
-            <div class="col-md-6 pull-right container-site-info text-center">
-                <h3 class="text-light">THE #1 UNIVERSAL</h3>
-                <h1 class="text-light">Wedding Registry, Baby Registry <br /> and Gift Registry for all occasions</h1>
-                <a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE REGISTRY</a>
-            </div>
-        </div>
-        <div class="banner-main" style="background-image:url(./assets/img/slide2.jpg)">
-            <div class="col-md-6 pull-right container-site-info text-center">
-                <h3 class="text-light">THE #1 UNIVERSAL</h3>
-                <h1 class="text-light">Wedding Registry, Baby Registry <br /> and Gift Registry for all occasions</h1>
-                <a href="{{ config('app.url') }}create/registry/1" class="btn btn-primary btn-site-info-big text-light">CREATE YOUR FREE REGISTRY</a>
-            </div>
-        </div> -->
-
     </div>
+
     <div class="ticker-main text-center">
         <span><i class="fa fa-fw fa-heart-o"></i></span> Why you’ll Adore using TheRegistrytt.com <span><i class="fa fa-fw fa-heart-o"></i></span> 
     </div>
+
     <section class="brands-container text-center">
         <h1 class="text-light" style="margin-bottom: 30px;" >Items Categories</h1>
         <div class="clearfix container">
@@ -64,68 +44,6 @@
                 @endif
             @endforeach
         </div>
-            <!-- <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/glassware.jpg" alt="" class="img-responsive">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/glassware" class="h4 text-center text-capitalize">glassware</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/crockery.jpg" alt="" class="img-responsive">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/crockery" class="h4 text-center text-capitalize">crockery</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/kitchen_utensils.jpg" alt="" class="img-responsive">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/kitchen_utensils" class="h4 text-center text-capitalize">kitchen utensils</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/linens.jpg" alt="" class="img-responsive" style="">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/linens" class="h4 text-center text-capitalize">linens</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/bathroom_accessories.jpg" alt="" class="img-responsive">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/bathroom_accessories" class="h4 text-center text-capitalize">bathroom accessories</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/mini_appliances.jpg" alt="" class="img-responsive">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/mini_appliances" class="h4 text-center text-capitalize">mini appliances</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4">&nbsp;</div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="item-cats">
-                        <div class="img-cats">
-                            <img src="{{ config('app.url') }}assets/img/categories/home_accents.jpg" alt="" class="img-responsive">
-                        </div>
-                        <a href="{{ config('app.url') }}categories/home_accents" class="h4 text-center text-capitalize">home accents</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">&nbsp;</div>
-            </div> -->
         </div>
     </section>
 
@@ -140,6 +58,7 @@
     @include('sections.testimonials')
     
     @include('sections.contactus')
+
     @section('scripts')
         
         <script>
@@ -162,6 +81,7 @@
 
         }); //ready
         </script>
+
     @endsection
 
 @endsection
