@@ -41,6 +41,7 @@
 								<div class="form-group">
 									<select class="form-control" onchange="sortingFrm.submit()" id="xslcCat" name="xslcCat">
 										<option value="">SELECT CATEGORY</option>
+										<option {{ $sort_by_cat == 'all' ? 'selected' : '' }} value="all">All Products</option>
 										@foreach( $categories as $cat ):
 											<option {{ $sort_by_cat == $cat->id ? 'selected' : '' }}  value="{{ $cat->id }}">{{ $cat->title }}</option>
 										@endforeach

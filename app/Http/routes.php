@@ -91,7 +91,7 @@ Route::any('/categories/{type}', function ($type) {
 				$product_inst->orderBy('title', 'ASC');
 			else if( $sort_by_alpha == '2' )
 				$product_inst->orderBy('title', 'DESC');
-			
+
 			if( $sort_by_price == '1' )
 				$product_inst->orderBy('price', 'DESC');
 			else if( $sort_by_price == '2' )
@@ -779,7 +779,7 @@ Route::any('/create/registry/{step}', function ($step) {
 			->select('p.*')
 			->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id');
 
-			if( strlen( $sort_by_cat ) > 0 )
+			if( strlen( $sort_by_cat ) > 0 && $sort_by_cat != 'all' )
 			{
 				$category_id = $sort_by_cat;
 				$product_inst->where(['apc.category_id' => $category_id]);
@@ -1093,7 +1093,7 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 			->select('p.*')
 			->leftJoin('products_categories as apc', 'p.id', '=', 'apc.product_id');
 
-			if( strlen( $sort_by_cat ) > 0 )
+			if( strlen( $sort_by_cat ) > 0 && $sort_by_cat != 'all' )
 			{
 				$category_id = $sort_by_cat;
 				$product_inst->where(['apc.category_id' => $category_id]);

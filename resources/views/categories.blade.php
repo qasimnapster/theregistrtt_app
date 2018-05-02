@@ -22,7 +22,12 @@
 						<div class="lists-container">
 							<div class="panel-group" role="tablist">
 							    <div class="panel panel-default">
-							    	@foreach($categories as $cat)    
+							    	<div class="panel-heading" role="tab" id="collapseListGroupHeading0">
+							            <h4 class="panel-title">
+							            	<a href="{{ config('app.url') }}categories/all" class="collapsed"> All Products </a>
+							            </h4>
+							        </div>
+							    	@foreach($categories as $cat)
 								        <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
 								            <h4 class="panel-title">
 								            	<a href="{{ config('app.url') }}categories/{{ $cat->slug }}" class="collapsed"> {{ $cat->title }} </a>
