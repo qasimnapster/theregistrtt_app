@@ -76,6 +76,7 @@
         $('.btn-create-account').on('click', function(){
             $('.loadersmall').fadeIn();
             $('#frmSignUp').fadeOut();
+            $('.bs-signup-modal-lg .modal-footer').fadeOut();
             xslcRegType       = $('#xslcRegType').val();
             xtxtFirstName     = $('#xtxtFirstName').val();
             xtxtLastName      = $('#xtxtLastName').val();
@@ -98,14 +99,15 @@
                     _token: '{!! csrf_token() !!}'
                 },
                 success: function(response){
-                    $('.loadersmall').fadeOut();
+                    //console.log(response)
                     $result = JSON.parse(response);
+                    $('.loadersmall').fadeOut();
+                    $('.bs-signup-modal-lg .modal-footer').fadeIn();
                     $('.bs-signup-modal-lg').modal('toggle')
                     alert( $result.message );
-                    //console.log(response)
                 },
                 error: function(response){
-                    //console.log(response)
+                    console.log(response)
                 }
             });
         });

@@ -275,9 +275,11 @@ Route::post('/signup', function () {
 
 	$encrypted_pass = Hash::make( $password );
 
+
 	$verf_customer = Lib::verify_customer( 'email_address', $email_addr );
+
 	
-	if( ! $verify_customer )
+	if( $verf_customer == null )
 	{
 		$insertion = DB::table('customers')->insertGetId([ 
 			'first_name'       => $first_name,

@@ -1,12 +1,12 @@
 <div class="modal site-modal fade bs-signup-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-login" role="document">
-        <div class="loadersmall" style="display:none"></div>
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h2 class="text-light text-center">Sign up to TheRegistryTT</h2>
           </div>
           <div class="modal-body">
+            <div class="loadersmall" style="display:none"></div>
             <form method="POST" action="#" id="frmSignUp">
               {{ csrf_field() }}
               <div class="form-group" style="margin-top: 20px">
