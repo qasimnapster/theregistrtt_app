@@ -42,6 +42,22 @@
 @yield('scripts')
 <script>
 	$(function(){
+
+        var display_response_message = function ( $message, $error )
+        {
+            var alertPopup = $('.alert-popups');
+            $error == true ? alertPopup.removeClass('alert-success').addClass('alert-danger') : alertPopup.removeClass('alert-danger').addClass('alert-success')
+            alertPopup.show();
+            alertPopup.find('p').html( $message )
+        }
+
+        var process_ajax_request = function( $elem )
+        {
+            $('.alert-popups').hide();
+            $elem.fadeOut();
+            $('.loadersmall').fadeIn();
+        }
+
 		if( $('.common-alert p').length > 0 )
 			$('.alert-overlay').css({'opacity':.5}).fadeIn(300);
 		
@@ -143,6 +159,51 @@
             setTimeout(function(){
                 $('.bs-forgot-password-modal-lg').modal('toggle');
             },500);
+        });
+
+        $('.btn-forgot-password').on('click', function(){
+
+            process_ajax_request( $('#frmFp') );
+            
+            var F__xemlEmailAddr = $('#F__xemlEmailAddr').val();
+            if( F__xemlEmailAddr.length > 0 )
+            {
+                $.ajax({
+                    url: '{{ config("app.url") }}forgot-password',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        'F__xemlEmailAddr': F__xemlEmailAddr,
+                        _token: '{!! csrf_token() !!}'
+                    },
+                    success: function(response){
+                        response = JSON.parse(response);
+                        console.log( response );
+                        $('.loadersmall').fadeOut(function(){
+                            if( response.message == 1 )
+                            {
+                                display_response_message( 'Request has been sent', false )
+                                //$('.bs-forgot-password-modal-lg').modal('toggle');
+                            }
+                            else
+                            {
+                                $('#frmFp').fadeIn();
+                                display_response_message( response.message, true )
+                            }
+                        });
+                    },
+                    error: function(response){
+                        display_response_message( response, true )
+                    }
+                });
+
+            }
+            else
+            {
+                $('#frmFp').fadeIn();
+                $('.loadersmall').fadeOut();
+                display_response_message( 'Enter your Email Address!', true);
+            }
         });
 
         $('.btn-change-password').on('click', function(){

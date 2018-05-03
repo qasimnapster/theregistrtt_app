@@ -136,30 +136,95 @@ Route::any('/categories/{type}', function ($type) {
     ]);
 });
 
+Route::any('/password/verify/{code}', function($code){
+
+	$reg_types = Lib::get_registry_types();
+
+	$new_password  = request('xtxtNewPassword');
+	$conf_password = request('xtxtConfPassword');
+
+	$verify   = Lib::verify_pass_code( $code );
+	$updation = false;
+	$message  = '';
+	$error    = true;
+
+	if ( $verify )
+	{
+		if( count( Input::all() ) > 0 )
+		{
+			if( null !== $new_password && null !== $new_password )
+			{
+				if( $new_password == $conf_password )
+				{
+					$encrypted_pass = Hash::make( $new_password );
+					
+					$updation       = DB::table('customers')->where('id', $verify->customer_id)->update([
+						'password' => $encrypted_pass
+					]);
+					$message = 'Password reset successfully';
+					$error   = false;
+				}
+				else
+				{
+					$message = 'New password and confirm password are not same';
+				}
+			}
+			else
+			{
+				$message = 'Invalid new/confirm password';
+			}
+		}
+		return view('reset-password', [
+			'reg_types' => $reg_types,
+			'updation'  => $updation,
+			'message'   => $message,
+			'error'     => $error
+		]);
+	}
+	else 
+	{
+		return 'Unauthorized';
+	}
+
+});
+
 Route::post('/forgot-password', function () {
 
 	$email_addr = strlen( Input::get('F__xemlEmailAddr') ) > 0 ? Input::get('F__xemlEmailAddr') : false;
 	
 	if( $email_addr )
 	{
-
 		$verf_customer = Lib::verify_customer( 'email_address', $email_addr );
 	
 		if( $verf_customer )
 		{
-			Mail::send('emails.forgot_password', [$verf_customer], function($message) use ($verf_customer) {
-		        $message->from( 'theregistrytt1@gmail.com' );
-		        $message->to( $email_addr );
-		        $message->subject( 'TheRegistrytt - Forgot Password' );
-		    });
-			// if( $insertion )
-			// 	return Response::json(array('message' => 'Successfully signed up'));
-			// else
-			// 	return Response::json(array('message' => 'Something went wrong'));
+			$code      = Lib::generate_code_for_fp();
+
+			$insertion = DB::table('password_forgot_history')->insertGetId([ 
+				'customer_id' => $verf_customer->id,
+				'code'        => $code
+			]);
+
+			$verf_customer->code = $code;
+
+			if( $insertion )
+			{
+				Mail::send('emails.forgot_password', ['verf_customer' => $verf_customer], function($message) use ($verf_customer) {
+			        $message->from( 'theregistrytt1@gmail.com' );
+			        $message->to( $verf_customer->email_address );
+			        $message->subject( 'TheRegistrytt - Forgot Password' );
+			    });	
+			    return Response::json(array('message' => 1));
+			}
+			else
+			{
+				return Response::json(array('message' => 'Something went wrong!'));	
+			}
+			
 		}
 		else
 		{
-			return Response::json(array('message' => 'Email Addres does not exist'));	
+			return Response::json(array('message' => 'Email Addres does not exist'));
 		}
 	}
 });

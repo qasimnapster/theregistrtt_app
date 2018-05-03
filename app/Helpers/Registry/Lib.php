@@ -106,4 +106,14 @@ class Lib
         return DB::table('customers')->where( $column_to_verf, $value )->select( $select_column )->first();
     }
 
+    public static function generate_code_for_fp()
+    {
+        return substr(base64_encode(sha1(mt_rand())), 0, 32);
+    }
+
+    public static function verify_pass_code( $code )
+    {
+        return DB::table('password_forgot_history')->where( 'code', $code )->where( 'status', false )->select()->first();
+    }
+
 }

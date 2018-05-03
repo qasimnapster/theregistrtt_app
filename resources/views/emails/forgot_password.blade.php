@@ -1,1 +1,1 @@
-forgot_password
+Click this to change the password: <a href="{{config('app.url')}}password/verify/{{$verf_customer->code}}">{{config('app.url')}}password/verify/{{$verf_customer->code}}</a>

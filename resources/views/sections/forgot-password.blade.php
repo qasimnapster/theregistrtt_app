@@ -6,19 +6,21 @@
             <h2 class="text-light text-center">Forgot Password</h2>
           </div>
           <div class="modal-body">
-            <form method="POST" action="{{ config('app.url') }}forgot-password">
+            <div class="loadersmall" style="display:none"></div>
+            @include('sections.popup_alert')
+            <form method="POST" action="{{ config('app.url') }}forgot-password" id="frmFp" >
                 {{ csrf_field() }}
               <div class="form-group" style="margin-top: 20px">
                 <label class="label-lighter" for="F__xemlEmailAddr">Email Address</label>
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-user"></i> </span>
-                  <input type="email" class="form-control" name="F__xemlEmailAddr" id="F__xemlEmailAddr" placeholder="Enter your Email-Address">
+                  <input type="email" class="form-control" name="F__xemlEmailAddr" id="F__xemlEmailAddr" placeholder="Enter your Email-Address" required>
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" >SEND</button>
+            <button type="button" class="btn btn-forgot-password btn-primary" >SEND</button>
           </div>
         </div>
     </div>
