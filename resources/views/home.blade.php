@@ -1,7 +1,7 @@
 @extends('master')
 @section('stylesheets')
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ config('app.url') }}vendors/jquery/dist/jquery.1.10.1.min.js"></script>
     <!-- <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.plugins.min.js"></script> -->
     <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="{{ config('app.url') }}plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
@@ -52,7 +52,7 @@
         
     <div class="ticker-main ticker-know text-center">
         <h3 class="text-light">Want to know more about us!</h3>
-        <a href="{{ config('app.url') }}about-us" class="btn btn-default btn-lg">Click Here</a>
+        <a href="{{ config('app.url') }}about-us" class="btn btn-default btn-modern btn-lg">Check Out Here</a>
     </div>
     
     @include('sections.testimonials')
@@ -66,6 +66,9 @@
 
             $('#rev_slider_1').revolution({
                 sliderLayout: 'fullscreen',
+                navigation: {
+                    arrows:{enable:true}              
+                }
             });
 
             $('#accordion .panel-collapse').on('shown.bs.collapse', function () {

@@ -40,7 +40,7 @@
 								<td>{{ $subitem->id }}</td>
 								<td><img src="{{ $subitem->image }}" alt="" width="40" height="40"></td>
 								<td>{{ $subitem->title }}</td>
-								<td>${{ $subitem->price }}</td>
+								<td>${{ ($subitem->price * $qtys[$subitem->id]) }}</td>
 								<td>{{ $subitem->reg_title }}</td>
 								<td>{{ $subitem->first_name }}</td>
 								<td><span class="label label-success"> {{ $subitem->promo_code }} </span></td>
@@ -55,12 +55,12 @@
 	</section>
 
 
-	<div class="modal fade" id="modal-gift-wrapping" tabindex="-1" role="dialog">
+	<div class="modal site-modal fade" id="modal-gift-wrapping" tabindex="-1" role="dialog">
 	    <div class="modal-dialog" role="document">
 	        <div class="modal-content">
-	            <div class="modal-header">
+	            <div class="modal-header" style="background: #313538; color: #e5b73b;">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title">Personalize your gift!</h4>
+	                <h2 class="text-light modal-title"> <i class="fa fa-gift" style="color:inherit !important"></i> Personalize your gift!</h2>
 	            </div>
 	            <div class="modal-body clearfix">
 	                <div class="col-sm-12 checkbox">
@@ -70,7 +70,7 @@
 						</label>
 					</div>
 					<div class="col-sm-12 form-group note-control" style="margin:10px 0; display: none">
-						<textarea id="T__xtxtNoteForGuest" class="form-control" style="height: 100px"></textarea>
+						<textarea id="T__xtxtNoteForGuest" class="form-control" style="height: 100px !important"></textarea>
 					</div>
 	            </div>
 	            <div class="modal-footer">
