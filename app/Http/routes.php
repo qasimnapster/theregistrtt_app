@@ -1280,22 +1280,28 @@ Route::any('/edit/registry/{step}/{edit_id}', function ($step, $edit_id) {
 	}
 
 	return view('registry.edit.step.' . $step, [
-		'reg_types'     => $reg_types,
-		'products'      => $products,
-		'categories'    => $categories,
-		'sort_by_cat'   => $sort_by_cat,
-		'sort_by_price' => $sort_by_price,
-		'sort_by_alpha' => $sort_by_alpha,
-		'promo_code'    => $promo_code,
-		'ocassions'     => $ocassions,
-		'delivery_pref' => $delivery_pref,
-		'countries'     => $countries,
-		'cities'        => $cities,
-		'edit_details'  => $edit_details[0],
-		'shipping_detail' => $shipping_detail,
+		'reg_types'         => $reg_types,
+		'products'          => $products,
+		'categories'        => $categories,
+		'sort_by_cat'       => $sort_by_cat,
+		'sort_by_price'     => $sort_by_price,
+		'sort_by_alpha'     => $sort_by_alpha,
+		'promo_code'        => $promo_code,
+		'ocassions'         => $ocassions,
+		'delivery_pref'     => $delivery_pref,
+		'countries'         => $countries,
+		'cities'            => $cities,
+		'edit_details'      => $edit_details[0],
+		'shipping_detail'   => $shipping_detail,
 		'edit_products_ids' => $edit_products_ids
     ]);
 
 });
 
-//
+Route::get( '/administrator', array('uses' => 'AdminController@index') );
+Route::get( '/administrator/login', array('uses' => 'AdminController@login') );
+Route::get( '/administrator/logout', array('uses' => 'AdminController@logout') );
+Route::post( '/administrator/login/process', array('uses' => 'AdminController@login_process') );
+Route::get( '/administrator/products/add', array('uses' => 'AdminController@add_products') );
+Route::post( '/administrator/products/add/process', array('uses' => 'AdminController@add_products_process') );
+Route::post( '/administrator/products/delete', array('uses' => 'AdminController@delete_product') );

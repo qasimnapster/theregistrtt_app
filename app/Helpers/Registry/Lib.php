@@ -91,6 +91,11 @@ class Lib
     	return DB::table('products')->orderBy('title', $orderBy)->select()->get();
     }
 
+    public static function get_products_list( $orderBy = 'desc' )
+    {
+        return DB::table('products')->orderBy('create_datetime', $orderBy)->select()->get();
+    }
+
     public static function get_product_by_id( $id )
     {
         return DB::table('products')->where('id', $id)->select()->get();
