@@ -1304,4 +1304,6 @@ Route::get( '/administrator/logout', array('uses' => 'AdminController@logout') )
 Route::post( '/administrator/login/process', array('uses' => 'AdminController@login_process') );
 Route::get( '/administrator/products/add', array('uses' => 'AdminController@add_products') );
 Route::post( '/administrator/products/add/process', array('uses' => 'AdminController@add_products_process') );
+Route::get( '/administrator/products/edit/{id}', array('uses' => 'AdminController@edit_product') );
+Route::post( '/administrator/products/edit/process', array('uses' => 'AdminController@edit_product_process') );
 Route::post( '/administrator/products/delete', array('uses' => 'AdminController@delete_product') );

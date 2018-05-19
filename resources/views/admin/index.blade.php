@@ -34,7 +34,10 @@
 							        	<td>${{ $product->price }}</td>
 							        	<td><img src="{{ $product->image }}" width="40" height="40" /></td>
 							        	<td>{{ date('F d, Y g:i A', strtotime( $product->create_datetime )) }}</td>
-							        	<!-- <td><button data-product-id="{{ $product->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE</button></td> -->
+							        	<td>
+							        		<a href="{{ config('app.url') }}administrator/products/edit/{{ $product->id }}" class="btn btn-default"> <i class="fa fa-pencil"></i> EDIT </a>
+							        		<!-- <button data-product-id="{{ $product->id }}" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE</button> -->
+							        	</td>
 						        	</tr>
 					        	@endforeach
 					        </tbody>

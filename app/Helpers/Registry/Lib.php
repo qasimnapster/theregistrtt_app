@@ -101,6 +101,16 @@ class Lib
         return DB::table('products')->where('id', $id)->select()->get();
     }
 
+    public static function get_product_by_category( $product_id )
+    {
+        return DB::table('products_categories')->where('product_id', $product_id)->select()->get();
+    }
+
+    public static function get_product_by_cat_ids( $product_id )
+    {
+        return DB::table('products_categories')->where('product_id', $product_id)->select('category_id')->get();
+    }
+
     public static function verify_customer( $column, $value )
     {
         return DB::table('customers')->where( $column, $value )->select()->first();
